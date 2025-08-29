@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuch V - Automotive Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .gradient-orange {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(255, 107, 53, 0.3);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .car-icon {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .service-card {
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            border: 1px solid #333;
+        }
+        
+        .service-card:hover {
+            border-color: #ff6b35;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                        radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Navigation -->
+    <nav class="bg-black/95 backdrop-blur-sm fixed w-full top-0 z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold">
+                        <span class="text-white">Kuch</span><span class="text-orange-500">Care</span>
+                        <span class="text-orange-500 ml-1">V</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-orange-500 transition duration-300 font-medium">Home</a>
+                    <a href="#services" class="text-gray-300 hover:text-orange-500 transition duration-300 font-medium">Services</a>
+                    <a href="#about" class="text-gray-300 hover:text-orange-500 transition duration-300 font-medium">About</a>
+                    <a href="#contact" class="text-gray-300 hover:text-orange-500 transition duration-300 font-medium">Contact</a>
+                    <button class="gradient-orange text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition duration-300">
+                        Book Now
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-orange-500">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-black border-t border-gray-800">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block text-gray-300 hover:text-orange-500 py-2">Home</a>
+                <a href="#services" class="block text-gray-300 hover:text-orange-500 py-2">Services</a>
+                <a href="#about" class="block text-gray-300 hover:text-orange-500 py-2">About</a>
+                <a href="#contact" class="block text-gray-300 hover:text-orange-500 py-2">Contact</a>
+                <button class="gradient-orange text-white px-6 py-2 rounded-lg font-semibold w-full mt-4">
+                    Book Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg pt-16 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        Premium <span class="text-orange-500">Automotive</span> Services
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        Expert car maintenance, repair, and detailing services. Your vehicle deserves the best care from certified professionals.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="gradient-orange text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition duration-300 transform hover:scale-105">
+                            Schedule Service
+                        </button>
+                        <button class="border-2 border-orange-500 text-orange-500 px-8 py-4 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition duration-300">
+                            View Services
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="fade-in lg:text-right">
+                    <div class="relative">
+                        <!-- Car SVG Illustration -->
+                        <svg viewBox="0 0 400 200" class="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
+                            <defs>
+                                <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff6b35"/>
+                                    <stop offset="100%" style="stop-color:#f7931e"/>
+                                </linearGradient>
+                            </defs>
+                           <div class="relative">
+    <img src="C:\Users\shoai\Downloads\KUCHV APP\ChatGPT Image Aug 18, 2025, 01_00_49 AM.png" alt="AutoCare Pro Logo" class="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
+</div>
+
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Our <span class="text-orange-500">Services</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Comprehensive automotive solutions to keep your vehicle running at peak performance
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card hover-lift rounded-xl p-8 text-center transition duration-300">
+                    <div class="text-5xl mb-6 car-icon">🔧</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Engine Repair</h3>
+                    <p class="text-gray-400 mb-6">
+                        Complete engine diagnostics, repair, and maintenance services by certified technicians.
+                    </p>
+                    <div class="text-orange-500 font-bold text-2xl mb-4">From $199</div>
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card hover-lift rounded-xl p-8 text-center transition duration-300">
+                    <div class="text-5xl mb-6 car-icon">🛞</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Tire Services</h3>
+                    <p class="text-gray-400 mb-6">
+                        Tire installation, balancing, rotation, and alignment services for optimal performance.
+                    </p>
+                    <div class="text-orange-500 font-bold text-2xl mb-4">From $89</div>
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card hover-lift rounded-xl p-8 text-center transition duration-300">
+                    <div class="text-5xl mb-6 car-icon">✨</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Auto Detailing</h3>
+                    <p class="text-gray-400 mb-6">
+                        Professional interior and exterior detailing to keep your car looking brand new.
+                    </p>
+                    <div class="text-orange-500 font-bold text-2xl mb-4">From $149</div>
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card hover-lift rounded-xl p-8 text-center transition duration-300">
+                    <div class="text-5xl mb-6 car-icon">🔋</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Battery Service</h3>
+                    <p class="text-gray-400 mb-6">
+                        Battery testing, replacement, and electrical system diagnostics and repairs.
+                    </p>
+                    <div class="text-orange-500 font-bold text-2xl mb-4">From $129</div>
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card hover-lift rounded-xl p-8 text-center transition duration-300">
+                    <div class="text-5xl mb-6 car-icon">🛡️</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Brake Service</h3>
+                    <p class="text-gray-400 mb-6">
+                        Complete brake system inspection, pad replacement, and rotor resurfacing services.
+                    </p>
+                    <div class="text-orange-500 font-bold text-2xl mb-4">From $179</div>
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card hover-lift rounded-xl p-8 text-center transition duration-300">
+                    <div class="text-5xl mb-6 car-icon">🔍</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Diagnostics</h3>
+                    <p class="text-gray-400 mb-6">
+                        Advanced computer diagnostics to identify and resolve vehicle performance issues.
+                    </p>
+                    <div class="text-orange-500 font-bold text-2xl mb-4">From $99</div>
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Why Choose <span class="text-orange-500">AutoCare Pro</span>?
+                    </h2>
+                    <p class="text-gray-400 mb-8 text-lg leading-relaxed">
+                        With over 15 years of experience in automotive service, we've built our reputation on quality workmanship, honest pricing, and exceptional customer service.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-2">Certified Technicians</h4>
+                                <p class="text-gray-400">ASE-certified mechanics with extensive training and experience</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-2">Quality Parts</h4>
+                                <p class="text-gray-400">We use only OEM and high-quality aftermarket parts</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-2">Warranty Guarantee</h4>
+                                <p class="text-gray-400">All work comes with our comprehensive warranty protection</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700">
+                        <div class="grid grid-cols-2 gap-6 text-center">
+                            <div>
+                                <div class="text-3xl font-bold text-orange-500 mb-2">15+</div>
+                                <div class="text-gray-400">Years Experience</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-orange-500 mb-2">5000+</div>
+                                <div class="text-gray-400">Cars Serviced</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-orange-500 mb-2">98%</div>
+                                <div class="text-gray-400">Customer Satisfaction</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-orange-500 mb-2">24/7</div>
+                                <div class="text-gray-400">Emergency Service</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Get In <span class="text-orange-500">Touch</span>
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Schedule your service appointment today or get a free estimate
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-white">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4">
+                                <span class="text-white text-xl">📍</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-white">Address</div>
+                                <div class="text-gray-400">123 Auto Service Lane, City, ST 12345</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4">
+                                <span class="text-white text-xl">📞</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-white">Phone</div>
+                                <div class="text-gray-400">(555) 123-4567</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4">
+                                <span class="text-white text-xl">⏰</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-white">Hours</div>
+                                <div class="text-gray-400">Mon-Fri: 8AM-6PM<br>Sat: 8AM-4PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-6" id="appointmentForm">
+    <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+        <input type="text" id="name" placeholder="Your Name" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white outline-none">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+        <input type="email" id="email" placeholder="your@email.com" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white outline-none">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">Service Needed</label>
+        <select id="service" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white outline-none">
+            <option>Select a service</option>
+            <option>Engine Repair</option>
+            <option>Tire Services</option>
+            <option>Auto Detailing</option>
+            <option>Battery Service</option>
+            <option>Brake Service</option>
+            <option>Diagnostics</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+        <textarea id="message" rows="4" placeholder="Tell us about your vehicle and service needs..." class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white outline-none"></textarea>
+    </div>
+
+    <button type="button" onclick="scheduleAppointment()" class="w-full gradient-orange text-white py-3 rounded-lg font-semibold hover:opacity-90 transition duration-300 transform hover:scale-105">
+        Schedule Appointment
+    </button>
+</form>
+
+<script>
+    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'; // Replace with your deployed Google Apps Script URL
+    const whatsappNumber = 'YOUR_PHONE_NUMBER'; // e.g., '919876543210'
+
+    function scheduleAppointment() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || service === 'Select a service' || !message) {
+            alert('Please fill in all fields and select a service.');
+            return;
+        }
+
+        // 1️⃣ Send data to Google Sheet
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify({ name, email, service, message }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Form data sent to Google Sheet successfully.');
+            } else {
+                console.error('Error sending data to Google Sheet.');
+            }
+        })
+        .catch(err => console.error('Fetch error:', err));
+
+        // 2️⃣ Open WhatsApp with prefilled message
+        const waMessage = `Hello, my name is ${name}. I want to schedule an appointment for ${service}. Message: ${message}`;
+        const waURL = `https://wa.me/${918081049508}?text=${encodeURIComponent(waMessage)}`;
+        window.open(waURL, '_blank');
+
+        // Reset the form
+        document.getElementById('appointmentForm').reset();
+    }
+</script>
+
+                    
+                    <div class="mt-6 p-4 bg-gray-800 rounded-lg border border-gray-700">
+                        <p class="text-sm text-gray-400">
+                            <strong>Note:</strong> This is a demo contact form. In a live website, you would need backend functionality to process appointments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">
+                        <span class="text-white">Auto</span><span class="text-orange-500">Care</span>
+                        <span class="text-orange-500 ml-1">Pro</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Your trusted partner for premium automotive services and repairs.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-orange-500 transition duration-300">Engine Repair</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition duration-300">Tire Services</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition duration-300">Auto Detailing</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition duration-300">Brake Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-orange-500 transition duration-300">Home</a></li>
+                        <li><a href="#services" class="hover:text-orange-500 transition duration-300">Services</a></li>
+                        <li><a href="#about" class="hover:text-orange-500 transition duration-300">About</a></li>
+                        <li><a href="#contact" class="hover:text-orange-500 transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Emergency Service</h4>
+                    <p class="text-gray-400 mb-2">24/7 Roadside Assistance</p>
+                    <p class="text-orange-500 font-bold text-xl">(555) 911-AUTO</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 AutoCare Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.querySelector('input[placeholder="Your Name"]').value;
+            const email = this.querySelector('input[placeholder="your@email.com"]').value;
+            const service = this.querySelector('select').value;
+            const message = this.querySelector('textarea').value;
+            
+            if (!name || !email || service === 'Select a service' || !message) {
+                alert('Please fill in all fields and select a service.');
+                return;
+            }
+            
+            alert(`Thank you ${name}! Your appointment request for ${service} has been received. We'll contact you at ${email} within 24 hours to confirm your appointment.`);
+            this.reset();
+        });
+
+        
+        // Book Now button handlers
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Book Now') || button.textContent.includes('Schedule Service')) {
+                button.addEventListener('click', () => {
+                    document.querySelector('#contact').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            }
+        });
+        
+        // Service card interactions
+        document.querySelectorAll('.service-card button').forEach(button => {
+            button.addEventListener('click', function() {
+                const serviceName = this.closest('.service-card').querySelector('h3').textContent;
+                alert(`Learn more about our ${serviceName}! Call (555) 123-4567 or fill out the contact form below to schedule your appointment.`);
+            });
+        });
+        
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.hover-lift, .fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'972118ede1e6a7b8',t:'MTc1NTY4NDU5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
