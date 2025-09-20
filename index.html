@@ -479,84 +479,66 @@
         </div>
     </div>
 
-    <!-- Booking Modal -->
-    <div id="bookingModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
-        <div class="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 w-full max-w-2xl border border-orange border-opacity-30 shadow-2xl">
-            <div class="flex justify-between items-center mb-8">
-                <h3 class="text-3xl font-bold text-orange">Book Your Service</h3>
-                <button onclick="closeBookingForm()" class="text-gray-400 hover:text-white text-3xl transition duration-300">&times;</button>
-            </div>
-            
-            <form id="bookingForm" class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-white font-semibold mb-3">Name *</label>
-                        <input type="text" id="bookingName" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-white font-semibold mb-3">Phone Number *</label>
-                        <input type="tel" id="bookingPhone" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent">
-                    </div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-white font-semibold mb-3">Service *</label>
-                        <input type="text" id="selectedService" readonly class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-xl text-white">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-white font-semibold mb-3">Price Range</label>
-                        <input type="text" id="servicePrice" readonly class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-xl text-white">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-white font-semibold mb-3">Location</label>
-                    <div class="flex gap-3">
-                        <input type="text" id="bookingLocation" readonly class="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white">
-                        <button type="button" onclick="detectBookingLocation()" class="bg-orange hover:bg-dark-orange text-white px-6 py-3 rounded-xl transition duration-300">
-                            📍 Detect
-                        </button>
-                    </div>
-                    <div id="bookingLocationStatus" class="text-sm text-gray-400 mt-2"></div>
-                </div>
-                
-                <div>
-                    <label class="block text-white font-semibold mb-3">Complete Address *</label>
-                    <textarea id="bookingAddress" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent" rows="3" placeholder="Enter your complete address with landmarks"></textarea>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-white font-semibold mb-3">Preferred Date *</label>
-                        <input type="date" id="bookingDate" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-white font-semibold mb-3">Preferred Time *</label>
-                        <select id="bookingTime" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent">
-                            <option value="">Select time slot</option>
-                            <option value="9:00 AM - 12:00 PM">Morning (9:00 AM - 12:00 PM)</option>
-                            <option value="12:00 PM - 3:00 PM">Afternoon (12:00 PM - 3:00 PM)</option>
-                            <option value="3:00 PM - 6:00 PM">Evening (3:00 PM - 6:00 PM)</option>
-                            <option value="6:00 PM - 9:00 PM">Night (6:00 PM - 9:00 PM)</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-white font-semibold mb-3">Problem Description</label>
-                    <textarea id="bookingDetails" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent" rows="3" placeholder="Describe the issue or requirements in detail"></textarea>
-                </div>
-                
-                <button type="submit" class="w-full bg-gradient-to-r from-orange to-dark-orange hover:from-dark-orange hover:to-orange text-white font-bold py-4 px-8 rounded-xl text-lg transition duration-300 transform hover:scale-105 shadow-2xl">
-                    📱 Send Booking to WhatsApp
-                </button>
-            </form>
-        </div>
-    </div>
+ <!-- Booking Form Modal -->
+<div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-70 hidden z-50 flex items-center justify-center">
+  <div class="bg-white rounded-xl shadow-xl w-full max-w-md relative p-6 max-h-[85vh] overflow-y-auto">
+    
+    <!-- Close Button -->
+    <button onclick="closeBookingForm()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+
+    <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Book Your Service</h2>
+
+<form id="bookingForm" class="space-y-4">
+  <!-- Hidden Inputs (service, price, location, address) -->
+  <input type="hidden" id="selectedService">
+  <input type="hidden" id="servicePrice">
+  <input type="hidden" id="bookingLocation">
+  <input type="hidden" id="bookingAddress">
+
+  <!-- Name -->
+  <div>
+    <label class="block text-gray-700 text-sm mb-1">Name</label>
+    <input id="bookingName" type="text" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm">
+  </div>
+
+  <!-- Phone -->
+  <div>
+    <label class="block text-gray-700 text-sm mb-1">Phone</label>
+    <input id="bookingPhone" type="tel" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm">
+  </div>
+
+  <!-- Date -->
+  <div>
+    <label class="block text-gray-700 text-sm mb-1">Date</label>
+    <input id="bookingDate" type="date" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm">
+  </div>
+
+  <!-- Time -->
+  <div>
+    <label class="block text-gray-700 text-sm mb-1">Time Slot</label>
+    <select id="bookingTime" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm">
+      <option value="">Select Time</option>
+      <option>9 AM - 12 PM</option>
+      <option>12 PM - 3 PM</option>
+      <option>3 PM - 6 PM</option>
+      <option>6 PM - 9 PM</option>
+    </select>
+  </div>
+
+  <!-- Problem -->
+  <div>
+    <label class="block text-gray-700 text-sm mb-1">Problem Description</label>
+    <textarea id="bookingDetails" rows="3" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm"></textarea>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg text-sm transition duration-300">
+    📱 Send Booking to WhatsApp
+  </button>
+</form>
+
+  </div>
+</div>
 
     <!-- Success/Error Messages -->
     <div id="messageContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
@@ -766,7 +748,7 @@ ${bookingData.details || 'No additional details provided'}
 Please confirm the booking and provide estimated arrival time.`;
 
             // Your WhatsApp number (replace with actual)
-            const whatsappNumber = '919876543210';
+            const whatsappNumber = '918851599115';
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
             
             // Save booking data
@@ -845,6 +827,7 @@ Please confirm the booking and provide estimated arrival time.`;
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'977b23dee6a4a804',t:'MTc1NjYyODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
