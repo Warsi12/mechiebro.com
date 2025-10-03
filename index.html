@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MechieBro - Premium Home Services</title>
-      <!-- PWA manifest aur theme color -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#FF6B35">
+    <title>MechieBro - Premium 24/7 Roadside Assistance</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#FF6B35">
+    <meta name="description" content="Premium 24/7 Roadside Assistance - Puncture, Battery, Towing, Fuel Delivery. Instant, Reliable, Professional.">
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiTWVjaGllQnJvIC0gUm9hZHNpZGUgQXNzaXN0YW5jZSIsInNob3J0X25hbWUiOiJNZWNoaWVCcm8iLCJzdGFydF91cmwiOiIvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzAwMDAwMCIsInRoZW1lX2NvbG9yIjoiI0ZGNkIzNSIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0YVdSMGFEMGlNVEk0SWlCb1pXbG5hSFE5SWpFeU9DSWdkbWxsZDBKdmVEMGlNQ0F3SURFME5DQXhORFFpSUdacGJHdzlJaU5HUmpaQ016VWlQanh5WldOMElIZzlJakl3SWlCNVBTSXlNQ0lnZDJsa2RHZzlJamc0SWlCb1pXbG5hSFE5SWpnNElpQnllRDBpTVRRaUlHWnBiR3c5SWlOR1JqWkNNelVpTHo0OEwzTjJaejQ9Iiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -15,19 +18,39 @@
                     colors: {
                         'orange': '#FF6B35',
                         'dark-orange': '#E55A2B',
-                        'light-orange': '#FF8A65'
+                        'light-orange': '#FF8A65',
+                        'premium-gold': '#FFD700',
+                        'deep-blue': '#1E3A8A',
+                        'elegant-gray': '#F8FAFC'
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'slide-up': 'slideUp 0.8s ease-out',
                         'fade-in': 'fadeIn 1s ease-out',
-                        'pulse-slow': 'pulse 3s infinite'
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'gradient-shift': 'gradientShift 3s ease-in-out infinite',
+                        'scale-in': 'scaleIn 0.5s ease-out'
+                    },
+                    fontFamily: {
+                        'premium': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
                     }
                 }
             }
         }
     </script>
+    
     <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -43,34 +66,94 @@
             to { opacity: 1; }
         }
         
-        .parallax-bg {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.8); }
         }
         
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #FF6B35, #E55A2B);
+            background: linear-gradient(135deg, #FF6B35, #FFD700, #E55A2B);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        .premium-gradient {
+            background: linear-gradient(135deg, #FF6B35 0%, #FFD700 50%, #E55A2B 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .service-card {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
         
         .service-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.15);
+        }
+        
+        .hero-bg {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(0,0,0,0.95), rgba(30, 58, 138, 0.1)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="premium-grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="%23333" stroke-width="0.5" opacity="0.2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23premium-grid)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.1);
+        }
+        
+        .premium-button {
+            background: linear-gradient(135deg, #FF6B35, #FFD700);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .premium-button:hover::before {
+            left: 100%;
         }
         
         .floating-elements {
@@ -87,7 +170,7 @@
             position: absolute;
             width: 200px;
             height: 200px;
-            background: linear-gradient(45deg, rgba(255,107,53,0.1), rgba(229,90,43,0.1));
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1), transparent);
             border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
@@ -103,492 +186,978 @@
             right: 10%;
             animation-delay: -4s;
         }
+        
+        .ai-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF6B35, #FFD700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ai-avatar::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+        }
+        
+        .ai-avatar span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF6B35, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .premium-section {
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(30, 58, 138, 0.1) 100%);
+            position: relative;
+        }
+        
+        .premium-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="0.5" fill="%23FF6B35" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
+            pointer-events: none;
+        }
     </style>
 </head>
-<body class="bg-black text-white overflow-x-hidden">
-    <!-- Landing Page -->
-    <div id="landingPage" class="relative">
-        <!-- Navigation -->
-       <nav class="flex items-center justify-between px-6 py-4 bg-black bg-opacity-50 fixed top-0 left-0 w-full z-50">
-  <!-- Logo -->
-  <img src="onlylogo.jpg" alt="MechieBro Logo" class="h-32 w-auto">
-  
-  <!-- Menu -->
-  <ul class="flex space-x-6 text-white font-semibold">
-    <li><a href="#services" class="hover:text-orange">Services</a></li>
-    <li><a href="#about" class="hover:text-orange">About</a></li>
-    <li><a href="#contact" class="hover:text-orange">Contact</a></li>
-  </ul>
-</nav>
 
-        <!-- Hero Section with Parallax -->
-<!-- Hero Section with Background Video -->
-<section class="relative min-h-screen flex items-center justify-center text-center px-6">
-  <div class="animate-slide-up w-full">
-    
-    <!-- Video in place of Title -->
-    <video autoplay muted loop playsinline 
-           class="mx-auto mb-6 w-full max-w-4xl h-auto rounded-xl shadow-lg">
-      <source src="gear.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-
-
-
-
-
-
-                    <p class="text-xl md:text-2xl mb-8 text-gray-300 animate-fade-in">
-                        Premium Home Services at Your Doorstep
-                    </p>
-                    <p class="text-lg mb-12 text-gray-400 max-w-2xl mx-auto animate-fade-in">
-                        Professional technicians • 24/7 Support • Guaranteed Quality • Instant Booking
-                    </p>
-                    
-                    <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                        <button onclick="scrollToRegistration()" class="bg-orange hover:bg-dark-orange text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-2xl">
-                            Get Started Now
-                        </button>
-                        <button onclick="scrollToServices()" class="border-2 border-orange text-orange hover:bg-orange hover:text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                            View Services
-                        </button>
+<body class="bg-black text-white overflow-x-hidden font-premium">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="text-3xl font-black gradient-text flex items-center">
+                        <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center mr-3 shadow-2xl">
+                            <span class="text-white text-xl">🚗</span>
+                        </div>
+                        MechieBro
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Services Preview Section -->
-        <section id="services" class="py-20 bg-gradient-to-b from-black to-gray-900">
-            <div class="container mx-auto px-6">
-                <h2 class="text-5xl font-bold text-center mb-16 gradient-text animate-slide-up">Our Premium Services</h2>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- AC Service -->
-                    <div class="service-card bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-center">
-                        <div class="text-6xl mb-6 animate-float">❄️</div>
-                        <h3 class="text-2xl font-bold mb-4 text-orange">AC Services</h3>
-                        <p class="text-gray-300 mb-6">Installation, repair, and maintenance by certified technicians</p>
-                        <div class="text-3xl font-bold text-white mb-4">₹499+</div>
-                        <div class="bg-orange text-white px-4 py-2 rounded-full text-sm">Most Popular</div>
-                    </div>
-
-                    <!-- Plumbing -->
-                    <div class="service-card bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-center">
-                        <div class="text-6xl mb-6 animate-float" style="animation-delay: -1s;">🔧</div>
-                        <h3 class="text-2xl font-bold mb-4 text-orange">Plumbing</h3>
-                        <p class="text-gray-300 mb-6">Expert plumbers for all your water and drainage needs</p>
-                        <div class="text-3xl font-bold text-white mb-4">₹299+</div>
-                        <div class="bg-green-500 text-white px-4 py-2 rounded-full text-sm">24/7 Available</div>
-                    </div>
-
-                    <!-- Electrical -->
-                    <div class="service-card bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-center">
-                        <div class="text-6xl mb-6 animate-float" style="animation-delay: -2s;">⚡</div>
-                        <h3 class="text-2xl font-bold mb-4 text-orange">Electrical</h3>
-                        <p class="text-gray-300 mb-6">Licensed electricians for safe and reliable work</p>
-                        <div class="text-3xl font-bold text-white mb-4">₹199+</div>
-                        <div class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm">Safety Certified</div>
-                    </div>
-
-                    <!-- Appliance Repair -->
-                    <div class="service-card bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-center">
-                        <div class="text-6xl mb-6 animate-float" style="animation-delay: -3s;">🔨</div>
-                        <h3 class="text-2xl font-bold mb-4 text-orange">Appliance Repair</h3>
-                        <p class="text-gray-300 mb-6">Fix all major home appliances with genuine parts</p>
-                        <div class="text-3xl font-bold text-white mb-4">₹399+</div>
-                        <div class="bg-purple-500 text-white px-4 py-2 rounded-full text-sm">Warranty Included</div>
-                    </div>
-
-                    <!-- Carpentry -->
-                    <div class="service-card bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-center">
-                        <div class="text-6xl mb-6 animate-float" style="animation-delay: -4s;">🪚</div>
-                        <h3 class="text-2xl font-bold mb-4 text-orange">Carpentry</h3>
-                        <p class="text-gray-300 mb-6">Custom furniture and woodwork by skilled craftsmen</p>
-                        <div class="text-3xl font-bold text-white mb-4">₹599+</div>
-                        <div class="bg-yellow-500 text-white px-4 py-2 rounded-full text-sm">Custom Work</div>
-                    </div>
-
-                    <!-- Painting -->
-                    <div class="service-card bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-center">
-                        <div class="text-6xl mb-6 animate-float" style="animation-delay: -5s;">🎨</div>
-                        <h3 class="text-2xl font-bold mb-4 text-orange">Painting</h3>
-                        <p class="text-gray-300 mb-6">Professional painting services for interior and exterior</p>
-                        <div class="text-3xl font-bold text-white mb-4">₹799+</div>
-                        <div class="bg-red-500 text-white px-4 py-2 rounded-full text-sm">Premium Quality</div>
-                    </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="hover:text-orange transition duration-300 font-medium text-lg">Services</a>
+                    <a href="#about" class="hover:text-orange transition duration-300 font-medium text-lg">About</a>
+                    <a href="#testimonials" class="hover:text-orange transition duration-300 font-medium text-lg">Reviews</a>
+                    <a href="#contact" class="hover:text-orange transition duration-300 font-medium text-lg">Contact</a>
+                    <a href="https://api.whatsapp.com/send?phone=918851599115&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately.%0A%0AThank%20you!" target="_blank" class="premium-button text-white px-6 py-3 rounded-full font-bold transition duration-300 shadow-2xl">
+                        🚨 Emergency
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- Registration Section -->
-        <section id="registration" class="py-20 bg-gradient-to-r from-orange to-dark-orange relative overflow-hidden">
-            <div class="floating-elements"></div>
-            
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="text-5xl font-bold text-center mb-8 text-white">Join MechieBro Today</h2>
-                    <p class="text-xl text-center mb-12 text-white opacity-90">Register now and get instant access to premium home services</p>
-                    
-                    <div class="glass-effect rounded-3xl p-8 md:p-12">
-                        <form id="registrationForm" class="grid md:grid-cols-2 gap-6">
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3 text-lg">Full Name *</label>
-                                    <input type="text" id="regName" required class="w-full px-6 py-4 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-xl text-white placeholder-white placeholder-opacity-70 focus:ring-2 focus:ring-white focus:border-transparent backdrop-blur-sm" placeholder="Enter your full name">
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-white font-semibold mb-3 text-lg">Phone Number *</label>
-                                    <input type="tel" id="regPhone" required class="w-full px-6 py-4 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-xl text-white placeholder-white placeholder-opacity-70 focus:ring-2 focus:ring-white focus:border-transparent backdrop-blur-sm" placeholder="+91 98765 43210">
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-white font-semibold mb-3 text-lg">Email Address *</label>
-                                    <input type="email" id="regEmail" required class="w-full px-6 py-4 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-xl text-white placeholder-white placeholder-opacity-70 focus:ring-2 focus:ring-white focus:border-transparent backdrop-blur-sm" placeholder="your@email.com">
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3 text-lg">City *</label>
-                                    <select id="regCity" required class="w-full px-6 py-4 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-xl text-white focus:ring-2 focus:ring-white focus:border-transparent backdrop-blur-sm">
-                                        <option value="" class="text-black">Select your city</option>
-                                        <option value="Mumbai" class="text-black">Mumbai</option>
-                                        <option value="Delhi" class="text-black">Delhi</option>
-                                        <option value="Bangalore" class="text-black">Bangalore</option>
-                                        <option value="Chennai" class="text-black">Chennai</option>
-                                        <option value="Kolkata" class="text-black">Kolkata</option>
-                                        <option value="Pune" class="text-black">Pune</option>
-                                        <option value="Hyderabad" class="text-black">Hyderabad</option>
-                                    </select>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-white font-semibold mb-3 text-lg">Location</label>
-                                    <div class="flex gap-3">
-                                        <input type="text" id="regLocation" readonly class="flex-1 px-6 py-4 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-xl text-white placeholder-white placeholder-opacity-70 backdrop-blur-sm" placeholder="Auto-detecting location...">
-                                        <button type="button" onclick="detectLocation()" class="bg-white bg-opacity-30 hover:bg-opacity-40 text-white px-6 py-4 rounded-xl transition duration-300 backdrop-blur-sm">
-                                            📍 Detect
-                                        </button>
-                                    </div>
-                                    <div id="locationStatus" class="text-sm text-white opacity-70 mt-2"></div>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-white font-semibold mb-3 text-lg">Address</label>
-                                    <textarea id="regAddress" class="w-full px-6 py-4 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-xl text-white placeholder-white placeholder-opacity-70 focus:ring-2 focus:ring-white focus:border-transparent backdrop-blur-sm" rows="3" placeholder="Enter your complete address"></textarea>
-                                </div>
-                            </div>
-                            
-                            <div class="md:col-span-2 text-center">
-                                <button type="submit" class="bg-white text-orange font-bold py-4 px-12 rounded-full text-xl transition duration-300 transform hover:scale-105 shadow-2xl hover:shadow-white/20">
-                                    Register & Continue
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="py-20 bg-black">
-            <div class="container mx-auto px-6">
-                <h2 class="text-5xl font-bold text-center mb-16 gradient-text">Why Choose MechieBro?</h2>
                 
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="text-center animate-slide-up">
-                        <div class="text-5xl mb-6 text-orange">🏆</div>
-                        <h3 class="text-xl font-bold mb-4">Premium Quality</h3>
-                        <p class="text-gray-400">Certified professionals with years of experience</p>
-                    </div>
-                    
-                    <div class="text-center animate-slide-up" style="animation-delay: 0.2s;">
-                        <div class="text-5xl mb-6 text-orange">⚡</div>
-                        <h3 class="text-xl font-bold mb-4">Quick Response</h3>
-                        <p class="text-gray-400">Same-day service available in most areas</p>
-                    </div>
-                    
-                    <div class="text-center animate-slide-up" style="animation-delay: 0.4s;">
-                        <div class="text-5xl mb-6 text-orange">🛡️</div>
-                        <h3 class="text-xl font-bold mb-4">Guaranteed Work</h3>
-                        <p class="text-gray-400">100% satisfaction guarantee on all services</p>
-                    </div>
-                    
-                    <div class="text-center animate-slide-up" style="animation-delay: 0.6s;">
-                        <div class="text-5xl mb-6 text-orange">💰</div>
-                        <h3 class="text-xl font-bold mb-4">Fair Pricing</h3>
-                        <p class="text-gray-400">Transparent pricing with no hidden charges</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Services Page -->
-    <div id="servicesPage" class="hidden min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
-        <!-- Header -->
-        <header class="bg-gradient-to-r from-orange to-dark-orange text-white py-6 px-6 shadow-2xl">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <h1 class="text-3xl font-bold">MechieBro Services</h1>
-                <div class="text-lg">
-                    Welcome, <span id="userName" class="font-bold"></span>
-                    <button onclick="logout()" class="ml-4 bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30 transition duration-300">
-                        Logout
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-orange transition duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
-        </header>
-
-        <!-- Services Grid -->
-        <div class="max-w-7xl mx-auto py-16 px-6">
-            <h2 class="text-4xl font-bold text-center text-white mb-4">Premium Home Services</h2>
-            <p class="text-xl text-center text-gray-400 mb-16">Professional technicians at your service</p>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- AC Service -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 hover:transform hover:scale-105 transition duration-500 shadow-2xl border border-gray-700">
-                    <div class="text-center">
-                        <div class="text-7xl mb-6 animate-float">❄️</div>
-                        <h3 class="text-2xl font-bold text-orange mb-4">AC Repair & Service</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">Professional AC installation, repair, cleaning, and maintenance. Gas refilling, compressor repair, and annual maintenance contracts available.</p>
-                        <div class="bg-orange bg-opacity-20 rounded-2xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-orange mb-2">₹499 - ₹2999</div>
-                            <div class="text-sm text-gray-300">Starting price • Free inspection</div>
-                        </div>
-                        <ul class="text-left text-gray-400 text-sm mb-6 space-y-2">
-                            <li>✓ Certified technicians</li>
-                            <li>✓ Genuine spare parts</li>
-                            <li>✓ 6-month warranty</li>
-                            <li>✓ Same-day service</li>
-                        </ul>
-                        <button onclick="openBookingForm('AC Repair & Service', '₹499 - ₹2999')" class="w-full bg-orange hover:bg-dark-orange text-white font-bold py-4 px-6 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
-                            Book Now
-                        </button>
-                    </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden glass-effect border-t border-orange border-opacity-20">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#services" class="block px-3 py-3 text-white hover:text-orange transition duration-300 text-lg">Services</a>
+                    <a href="#about" class="block px-3 py-3 text-white hover:text-orange transition duration-300 text-lg">About</a>
+                    <a href="#testimonials" class="block px-3 py-3 text-white hover:text-orange transition duration-300 text-lg">Reviews</a>
+                    <a href="#contact" class="block px-3 py-3 text-white hover:text-orange transition duration-300 text-lg">Contact</a>
+                    <a href="https://api.whatsapp.com/send?phone=918851599115&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately%20or%20send%20your%20location%20for%20fastest%20response.%0A%0AThank%20you!" target="_blank" class="block px-3 py-3 premium-button text-white rounded-lg font-bold text-center">
+                        🚨 Emergency
+                    </a>
                 </div>
+            </div>
+        </div>
+    </nav>
 
-                <!-- Plumbing -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 hover:transform hover:scale-105 transition duration-500 shadow-2xl border border-gray-700">
-                    <div class="text-center">
-                        <div class="text-7xl mb-6 animate-float" style="animation-delay: -1s;">🔧</div>
-                        <h3 class="text-2xl font-bold text-orange mb-4">Plumbing Services</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">Expert plumbing solutions for leaks, blockages, pipe repairs, bathroom fittings, and water heater installations.</p>
-                        <div class="bg-orange bg-opacity-20 rounded-2xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-orange mb-2">₹299 - ₹1999</div>
-                            <div class="text-sm text-gray-300">24/7 emergency service</div>
-                        </div>
-                        <ul class="text-left text-gray-400 text-sm mb-6 space-y-2">
-                            <li>✓ Emergency repairs</li>
-                            <li>✓ Modern equipment</li>
-                            <li>✓ Quality materials</li>
-                            <li>✓ Clean work area</li>
-                        </ul>
-                        <button onclick="openBookingForm('Plumbing Services', '₹299 - ₹1999')" class="w-full bg-orange hover:bg-dark-orange text-white font-bold py-4 px-6 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
-                            Book Now
-                        </button>
-                    </div>
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="floating-elements"></div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="animate-slide-up max-w-6xl mx-auto">
+                <!-- Premium Badge -->
+                <div class="inline-flex items-center px-6 py-3 glass-effect rounded-full mb-8 animate-scale-in">
+                    <span class="text-premium-gold text-sm font-semibold">⭐ PREMIUM ROADSIDE ASSISTANCE</span>
                 </div>
-
-                <!-- Electrical -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 hover:transform hover:scale-105 transition duration-500 shadow-2xl border border-gray-700">
-                    <div class="text-center">
-                        <div class="text-7xl mb-6 animate-float" style="animation-delay: -2s;">⚡</div>
-                        <h3 class="text-2xl font-bold text-orange mb-4">Electrical Work</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">Licensed electricians for wiring, switch repairs, fan installations, and electrical safety inspections.</p>
-                        <div class="bg-orange bg-opacity-20 rounded-2xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-orange mb-2">₹199 - ₹1499</div>
-                            <div class="text-sm text-gray-300">Safety certified work</div>
-                        </div>
-                        <ul class="text-left text-gray-400 text-sm mb-6 space-y-2">
-                            <li>✓ Licensed electricians</li>
-                            <li>✓ Safety compliance</li>
-                            <li>✓ Quality wiring</li>
-                            <li>✓ Code compliance</li>
-                        </ul>
-                        <button onclick="openBookingForm('Electrical Work', '₹199 - ₹1499')" class="w-full bg-orange hover:bg-dark-orange text-white font-bold py-4 px-6 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
-                            Book Now
-                        </button>
-                    </div>
+                
+                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black mb-8 gradient-text leading-tight">
+                    Professional<br/>
+                    <span class="text-white">Roadside</span><br/>
+                    <span class="text-orange">Assistance</span>
+                </h1>
+                
+                <p class="text-2xl sm:text-3xl mb-6 text-gray-300 font-light">
+                    Available 24/7 • Expert Technicians • Premium Service
+                </p>
+                
+                <p class="text-xl mb-12 text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    Experience the difference with our premium roadside assistance. Professional technicians, state-of-the-art equipment, and unmatched customer service - all at your fingertips.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button onclick="openBookingModal()" class="premium-button text-white font-bold py-5 px-10 rounded-full text-xl transition duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-auto">
+                        🚗 Book Premium Service
+                    </button>
+                    <a href="https://api.whatsapp.com/send?phone=918851599115&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately%20or%20send%20your%20location%20for%20fastest%20response.%0A%0AThank%20you!" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-10 rounded-full text-xl transition duration-300 transform hover:scale-105 shadow-2xl animate-pulse-glow w-full sm:w-auto">
+                        🚨 Emergency Call
+                    </a>
                 </div>
-
-                <!-- Appliance Repair -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 hover:transform hover:scale-105 transition duration-500 shadow-2xl border border-gray-700">
-                    <div class="text-center">
-                        <div class="text-7xl mb-6 animate-float" style="animation-delay: -3s;">🔨</div>
-                        <h3 class="text-2xl font-bold text-orange mb-4">Appliance Repair</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">Repair services for washing machines, refrigerators, microwaves, and other home appliances with genuine parts.</p>
-                        <div class="bg-orange bg-opacity-20 rounded-2xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-orange mb-2">₹399 - ₹2499</div>
-                            <div class="text-sm text-gray-300">Warranty on repairs</div>
-                        </div>
-                        <ul class="text-left text-gray-400 text-sm mb-6 space-y-2">
-                            <li>✓ Genuine spare parts</li>
-                            <li>✓ Expert diagnosis</li>
-                            <li>✓ Warranty included</li>
-                            <li>✓ All major brands</li>
-                        </ul>
-                        <button onclick="openBookingForm('Appliance Repair', '₹399 - ₹2499')" class="w-full bg-orange hover:bg-dark-orange text-white font-bold py-4 px-6 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
-                            Book Now
-                        </button>
+                
+                <!-- Stats Section -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-4xl mx-auto">
+                    <div class="glass-effect rounded-2xl p-8 text-center">
+                        <div class="stats-counter">24/7</div>
+                        <p class="text-gray-300 text-lg font-medium">Available Always</p>
                     </div>
-                </div>
-
-                <!-- Carpentry -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 hover:transform hover:scale-105 transition duration-500 shadow-2xl border border-gray-700">
-                    <div class="text-center">
-                        <div class="text-7xl mb-6 animate-float" style="animation-delay: -4s;">🪚</div>
-                        <h3 class="text-2xl font-bold text-orange mb-4">Carpentry Work</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">Custom furniture, door fitting, cabinet repairs, and woodwork by skilled craftsmen using quality materials.</p>
-                        <div class="bg-orange bg-opacity-20 rounded-2xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-orange mb-2">₹599 - ₹3999</div>
-                            <div class="text-sm text-gray-300">Custom solutions</div>
-                        </div>
-                        <ul class="text-left text-gray-400 text-sm mb-6 space-y-2">
-                            <li>✓ Skilled craftsmen</li>
-                            <li>✓ Quality wood</li>
-                            <li>✓ Custom designs</li>
-                            <li>✓ Finishing work</li>
-                        </ul>
-                        <button onclick="openBookingForm('Carpentry Work', '₹599 - ₹3999')" class="w-full bg-orange hover:bg-dark-orange text-white font-bold py-4 px-6 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
-                            Book Now
-                        </button>
+                    <div class="glass-effect rounded-2xl p-8 text-center">
+                        <div class="stats-counter">15min</div>
+                        <p class="text-gray-300 text-lg font-medium">Average Response</p>
                     </div>
-                </div>
-
-                <!-- Painting -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 hover:transform hover:scale-105 transition duration-500 shadow-2xl border border-gray-700">
-                    <div class="text-center">
-                        <div class="text-7xl mb-6 animate-float" style="animation-delay: -5s;">🎨</div>
-                        <h3 class="text-2xl font-bold text-orange mb-4">Painting Services</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">Professional interior and exterior painting, wall texturing, and color consultation with premium paints.</p>
-                        <div class="bg-orange bg-opacity-20 rounded-2xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-orange mb-2">₹799 - ₹4999</div>
-                            <div class="text-sm text-gray-300">Premium quality paints</div>
-                        </div>
-                        <ul class="text-left text-gray-400 text-sm mb-6 space-y-2">
-                            <li>✓ Premium paints</li>
-                            <li>✓ Color consultation</li>
-                            <li>✓ Clean finish</li>
-                            <li>✓ Surface preparation</li>
-                        </ul>
-                        <button onclick="openBookingForm('Painting Services', '₹799 - ₹4999')" class="w-full bg-orange hover:bg-dark-orange text-white font-bold py-4 px-6 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
-                            Book Now
-                        </button>
+                    <div class="glass-effect rounded-2xl p-8 text-center">
+                        <div class="stats-counter">5000+</div>
+                        <p class="text-gray-300 text-lg font-medium">Happy Customers</p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 premium-section">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-6 py-3 glass-effect rounded-full mb-6">
+                    <span class="text-orange text-sm font-semibold">🛠️ OUR PREMIUM SERVICES</span>
+                </div>
+                <h2 class="text-5xl sm:text-6xl font-black mb-8 gradient-text">Expert Solutions</h2>
+                <p class="text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">Professional roadside assistance with premium service standards</p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto space-y-6">
+                <!-- Puncture Repair -->
+                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('puncture')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🔧</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Professional Puncture Repair</h3>
+                                <p class="text-gray-400">Expert tire repair and replacement services</p>
+                            </div>
+                        </div>
+                        <div class="text-orange transition-transform duration-300" id="puncture-arrow">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="puncture-details" class="hidden px-8 pb-8 border-t border-gray-800">
+                        <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Our certified technicians use professional-grade equipment and high-quality materials to repair punctures quickly and safely. We ensure your tire is road-ready with comprehensive pressure and alignment checks.</p>
+                                <div class="space-y-4">
+                                    <h4 class="text-orange font-semibold text-lg">Premium Services Include:</h4>
+                                    <ul class="text-gray-400 space-y-2">
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Professional tire inspection</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>High-quality patches & plugs</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Tire replacement if needed</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Pressure optimization</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safety assessment</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="glass-effect rounded-xl p-6">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Response Time</h4>
+                                        <p class="text-2xl font-bold text-white">15-25 min</p>
+                                        <p class="text-gray-400 text-sm">Average arrival time</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Starting Price</h4>
+                                        <p class="text-2xl font-bold text-white">₹250</p>
+                                        <p class="text-gray-400 text-sm">Professional service</p>
+                                    </div>
+                                </div>
+                                <button onclick="openBookingModal('Puncture Repair')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                    Book This Service
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battery Jump Start -->
+                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('battery')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🔋</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Battery Jump Start & Diagnosis</h3>
+                                <p class="text-gray-400">Complete battery health check and jump start service</p>
+                            </div>
+                        </div>
+                        <div class="text-orange transition-transform duration-300" id="battery-arrow">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="battery-details" class="hidden px-8 pb-8 border-t border-gray-800">
+                        <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Dead battery emergency? Our expert technicians provide safe jump-start services with comprehensive battery diagnostics to prevent future breakdowns and ensure optimal performance.</p>
+                                <div class="space-y-4">
+                                    <h4 class="text-orange font-semibold text-lg">Premium Services Include:</h4>
+                                    <ul class="text-gray-400 space-y-2">
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safe professional jump start</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Complete battery health diagnosis</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Charging system inspection</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Battery replacement service</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Preventive maintenance tips</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="glass-effect rounded-xl p-6">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Response Time</h4>
+                                        <p class="text-2xl font-bold text-white">10-20 min</p>
+                                        <p class="text-gray-400 text-sm">Priority service</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Starting Price</h4>
+                                        <p class="text-2xl font-bold text-white">₹200</p>
+                                        <p class="text-gray-400 text-sm">Includes diagnosis</p>
+                                    </div>
+                                </div>
+                                <button onclick="openBookingModal('Battery Jump Start')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                    Book This Service
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brake Emergency -->
+                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('brake')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🛑</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Emergency Brake Service</h3>
+                                <p class="text-gray-400">Critical brake system diagnosis and emergency repairs</p>
+                            </div>
+                        </div>
+                        <div class="text-orange transition-transform duration-300" id="brake-arrow">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="brake-details" class="hidden px-8 pb-8 border-t border-gray-800">
+                        <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Brake failure is a critical safety emergency. Our certified brake specialists provide immediate diagnosis and emergency repairs to ensure your safety and get you back on the road securely.</p>
+                                <div class="space-y-4">
+                                    <h4 class="text-orange font-semibold text-lg">Emergency Services Include:</h4>
+                                    <ul class="text-gray-400 space-y-2">
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Emergency brake system inspection</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Brake fluid top-up & replacement</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Brake pad emergency replacement</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Complete safety assessment</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Road safety certification</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="glass-effect rounded-xl p-6">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Response Time</h4>
+                                        <p class="text-2xl font-bold text-white">8-15 min</p>
+                                        <p class="text-gray-400 text-sm">Emergency priority</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Starting Price</h4>
+                                        <p class="text-2xl font-bold text-white">₹400</p>
+                                        <p class="text-gray-400 text-sm">Safety first service</p>
+                                    </div>
+                                </div>
+                                <button onclick="openBookingModal('Brake Emergency')" class="w-full mt-6 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                    Emergency Booking
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fuel Delivery -->
+                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('fuel')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">⛽</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Premium Fuel Delivery</h3>
+                                <p class="text-gray-400">High-quality fuel delivery service to your location</p>
+                            </div>
+                        </div>
+                        <div class="text-orange transition-transform duration-300" id="fuel-arrow">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="fuel-details" class="hidden px-8 pb-8 border-t border-gray-800">
+                        <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Ran out of fuel? We deliver premium quality petrol or diesel directly to your location with safe handling procedures, so you can continue your journey without leaving your vehicle unattended.</p>
+                                <div class="space-y-4">
+                                    <h4 class="text-orange font-semibold text-lg">Premium Services Include:</h4>
+                                    <ul class="text-gray-400 space-y-2">
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Premium quality fuel delivery</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>5-15 liters emergency supply</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safe fuel handling procedures</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Fuel system inspection</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Nearest fuel station directions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="glass-effect rounded-xl p-6">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Response Time</h4>
+                                        <p class="text-2xl font-bold text-white">20-30 min</p>
+                                        <p class="text-gray-400 text-sm">Fuel procurement time</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Service Fee</h4>
+                                        <p class="text-2xl font-bold text-white">₹150</p>
+                                        <p class="text-gray-400 text-sm">+ fuel cost</p>
+                                    </div>
+                                </div>
+                                <button onclick="openBookingModal('Fuel Delivery')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                    Book This Service
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Towing Service -->
+                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('towing')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🚛</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Professional Towing Service</h3>
+                                <p class="text-gray-400">Safe vehicle transport with damage-free guarantee</p>
+                            </div>
+                        </div>
+                        <div class="text-orange transition-transform duration-300" id="towing-arrow">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="towing-details" class="hidden px-8 pb-8 border-t border-gray-800">
+                        <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Professional towing service for all vehicle types with modern equipment and trained operators. We ensure damage-free transport to your preferred destination with full insurance coverage.</p>
+                                <div class="space-y-4">
+                                    <h4 class="text-orange font-semibold text-lg">Professional Services Include:</h4>
+                                    <ul class="text-gray-400 space-y-2">
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Flatbed & wheel-lift towing</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Cars, bikes & commercial vehicles</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Damage-free transport guarantee</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Insurance claim assistance</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>24/7 tracking & updates</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="glass-effect rounded-xl p-6">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Response Time</h4>
+                                        <p class="text-2xl font-bold text-white">25-40 min</p>
+                                        <p class="text-gray-400 text-sm">Equipment dispatch</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Pricing</h4>
+                                        <p class="text-2xl font-bold text-white">₹18/km</p>
+                                        <p class="text-gray-400 text-sm">Professional rate</p>
+                                    </div>
+                                </div>
+                                <button onclick="openBookingModal('Towing Service')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                    Book This Service
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General Assistance -->
+                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('general')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🔨</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Expert General Assistance</h3>
+                                <p class="text-gray-400">Comprehensive automotive problem-solving service</p>
+                            </div>
+                        </div>
+                        <div class="text-orange transition-transform duration-300" id="general-arrow">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="general-details" class="hidden px-8 pb-8 border-t border-gray-800">
+                        <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Facing any other automotive emergency? Our experienced technicians are equipped with advanced diagnostic tools and expertise to handle various roadside issues and provide expert solutions.</p>
+                                <div class="space-y-4">
+                                    <h4 class="text-orange font-semibold text-lg">Expert Services Include:</h4>
+                                    <ul class="text-gray-400 space-y-2">
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Advanced engine diagnostics</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Professional lockout assistance</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Minor mechanical repairs</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Expert consultation & advice</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Emergency troubleshooting</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="glass-effect rounded-xl p-6">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Response Time</h4>
+                                        <p class="text-2xl font-bold text-white">15-25 min</p>
+                                        <p class="text-gray-400 text-sm">Expert dispatch</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-orange font-semibold mb-3">Consultation</h4>
+                                        <p class="text-2xl font-bold text-white">₹300</p>
+                                        <p class="text-gray-400 text-sm">Base service fee</p>
+                                    </div>
+                                </div>
+                                <button onclick="openBookingModal('General Assistance')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                    Book This Service
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-6 py-3 glass-effect rounded-full mb-6">
+                    <span class="text-orange text-sm font-semibold">🏆 WHY CHOOSE US</span>
+                </div>
+                <h2 class="text-5xl sm:text-6xl font-black mb-8 gradient-text">Premium Excellence</h2>
+                <p class="text-2xl text-gray-400 max-w-3xl mx-auto">Experience the difference with our premium roadside assistance service</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="glass-effect rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="w-20 h-20 premium-gradient rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                        <span class="text-3xl">⚡</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Lightning Fast Response</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">Average response time of just 15 minutes. Our strategically located teams ensure we're always ready to help when you need us most.</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="w-20 h-20 premium-gradient rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                        <span class="text-3xl">🏆</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Certified Experts</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">Our technicians are certified professionals with years of experience and ongoing training in the latest automotive technologies.</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="w-20 h-20 premium-gradient rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                        <span class="text-3xl">💎</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Premium Quality</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">We use only the highest quality parts and equipment, backed by comprehensive warranties and transparent pricing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 premium-section">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-6 py-3 glass-effect rounded-full mb-6">
+                    <span class="text-orange text-sm font-semibold">⭐ CUSTOMER REVIEWS</span>
+                </div>
+                <h2 class="text-5xl sm:text-6xl font-black mb-8 gradient-text">Happy Customers</h2>
+                <p class="text-2xl text-gray-400">Real experiences from our satisfied customers</p>
+            </div>
+            
+            <div class="testimonial-slider flex overflow-x-auto space-x-8 pb-6" id="testimonialSlider">
+                <!-- Testimonial 1 -->
+                <div class="flex-none w-96 testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="ai-avatar mr-4">
+                            <span>R</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Rajesh Kumar</h4>
+                            <div class="text-orange text-lg">⭐⭐⭐⭐⭐</div>
+                            <p class="text-gray-400 text-sm">Business Executive</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-lg leading-relaxed">"Exceptional service! Got a puncture at 2 AM on the highway. MechieBro arrived in just 18 minutes and fixed it professionally. The technician was courteous and the pricing was transparent. Highly recommended!"</p>
+                    <div class="mt-6 flex items-center text-sm text-gray-400">
+                        <span class="mr-2">📍</span>
+                        <span>Mumbai-Pune Highway</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="flex-none w-96 testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="ai-avatar mr-4">
+                            <span>P</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Priya Sharma</h4>
+                            <div class="text-orange text-lg">⭐⭐⭐⭐⭐</div>
+                            <p class="text-gray-400 text-sm">Software Engineer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-lg leading-relaxed">"Battery died during a client meeting. Called MechieBro and they arrived within 15 minutes! Professional diagnosis, quick jump start, and even checked my charging system. Outstanding service quality!"</p>
+                    <div class="mt-6 flex items-center text-sm text-gray-400">
+                        <span class="mr-2">📍</span>
+                        <span>Cyber City, Gurgaon</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="flex-none w-96 testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="ai-avatar mr-4">
+                            <span>A</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Amit Patel</h4>
+                            <div class="text-orange text-lg">⭐⭐⭐⭐⭐</div>
+                            <p class="text-gray-400 text-sm">Marketing Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-lg leading-relaxed">"Needed emergency towing after an accident. The team was incredibly professional, handled my car with utmost care, and even helped with insurance paperwork. Premium service at its best!"</p>
+                    <div class="mt-6 flex items-center text-sm text-gray-400">
+                        <span class="mr-2">📍</span>
+                        <span>Ahmedabad Ring Road</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="flex-none w-96 testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="ai-avatar mr-4">
+                            <span>S</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Sneha Reddy</h4>
+                            <div class="text-orange text-lg">⭐⭐⭐⭐⭐</div>
+                            <p class="text-gray-400 text-sm">Doctor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-lg leading-relaxed">"Ran out of fuel during an emergency call. MechieBro delivered premium fuel in 25 minutes with complete safety protocols. Their professionalism and speed saved my day. Truly premium service!"</p>
+                    <div class="mt-6 flex items-center text-sm text-gray-400">
+                        <span class="mr-2">📍</span>
+                        <span>Banjara Hills, Hyderabad</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="flex-none w-96 testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="ai-avatar mr-4">
+                            <span>V</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Vikram Singh</h4>
+                            <div class="text-orange text-lg">⭐⭐⭐⭐⭐</div>
+                            <p class="text-gray-400 text-sm">Entrepreneur</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-lg leading-relaxed">"Brake failure on a busy road was terrifying. MechieBro's emergency response was incredible - arrived in 12 minutes, diagnosed the issue, and made emergency repairs. Their expertise saved lives!"</p>
+                    <div class="mt-6 flex items-center text-sm text-gray-400">
+                        <span class="mr-2">📍</span>
+                        <span>MG Road, Bangalore</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="flex-none w-96 testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="ai-avatar mr-4">
+                            <span>M</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Meera Joshi</h4>
+                            <div class="text-orange text-lg">⭐⭐⭐⭐⭐</div>
+                            <p class="text-gray-400 text-sm">Architect</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-lg leading-relaxed">"Locked my keys inside the car at a client site. MechieBro's lockout service was amazing - no damage to my car, professional tools, and solved in minutes. Premium quality service!"</p>
+                    <div class="mt-6 flex items-center text-sm text-gray-400">
+                        <span class="mr-2">📍</span>
+                        <span>Connaught Place, Delhi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Navigation -->
+            <div class="flex justify-center mt-12 space-x-4">
+                <button onclick="scrollTestimonials('left')" class="premium-button text-white p-4 rounded-full transition duration-300 shadow-2xl">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button onclick="scrollTestimonials('right')" class="premium-button text-white p-4 rounded-full transition duration-300 shadow-2xl">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="glass-effect rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-5xl mb-4 text-orange">🕐</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">24/7 Available</h3>
+                    <p class="text-gray-400">Round the clock emergency service</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-5xl mb-4 text-orange">💎</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Premium Quality</h3>
+                    <p class="text-gray-400">Professional grade equipment & parts</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-5xl mb-4 text-orange">🛡️</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Fully Insured</h3>
+                    <p class="text-gray-400">Complete insurance coverage</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-5xl mb-4 text-orange">👨‍🔧</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Certified Experts</h3>
+                    <p class="text-gray-400">Trained & certified technicians</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 premium-section">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-6 py-3 glass-effect rounded-full mb-6">
+                    <span class="text-orange text-sm font-semibold">📞 GET IN TOUCH</span>
+                </div>
+                <h2 class="text-5xl sm:text-6xl font-black mb-8 gradient-text">Contact Us</h2>
+                <p class="text-2xl text-gray-400">Need help? We're here for you 24/7</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+                <div class="glass-effect rounded-2xl p-10">
+                    <h3 class="text-3xl font-bold mb-8 text-white">Contact Information</h3>
+                    <div class="space-y-8">
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
+                                <span class="text-2xl">📞</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold text-lg">Emergency Hotline</p>
+                                <a href="tel:+918851599115" class="text-orange hover:text-white transition duration-300 text-xl font-bold">+91 88515 99115</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
+                                <span class="text-2xl">📧</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold text-lg">Email Support</p>
+                                <a href="mailto:help@mechiebro.com" class="text-orange hover:text-white transition duration-300 text-xl">help@mechiebro.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
+                                <span class="text-2xl">📍</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold text-lg">Service Coverage</p>
+                                <p class="text-gray-400 text-lg">All major cities & highways across India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
+                                <span class="text-2xl">🕐</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold text-lg">Operating Hours</p>
+                                <p class="text-gray-400 text-lg">24/7 - Always Available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-10">
+                    <h3 class="text-3xl font-bold mb-8 text-white">Quick Actions</h3>
+                    <div class="space-y-6">
+                        <button onclick="openBookingModal()" class="w-full premium-button text-white font-bold py-5 px-8 rounded-xl text-lg transition duration-300 transform hover:scale-105 shadow-2xl">
+                            🚗 Book Premium Service
+                        </button>
+                        
+                        <a href="https://api.whatsapp.com/send?phone=918851599115&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately%20or%20send%20your%20location%20for%20fastest%20response.%0A%0AThank%20you!" target="_blank" class="block w-full bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-8 rounded-xl text-lg transition duration-300 transform hover:scale-105 text-center shadow-2xl">
+                            🚨 Emergency WhatsApp
+                        </a>
+                        
+                        <a href="https://api.whatsapp.com/send?phone=918851599115" target="_blank" class="block w-full bg-green-600 hover:bg-green-700 text-white font-bold py-5 px-8 rounded-xl text-lg transition duration-300 transform hover:scale-105 text-center shadow-2xl">
+                            💬 WhatsApp Chat
+                        </a>
+                        
+                        <a href="tel:+918851599115" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded-xl text-lg transition duration-300 transform hover:scale-105 text-center shadow-2xl">
+                            📞 Call Directly
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center mr-3 shadow-2xl">
+                            <span class="text-white text-xl">🚗</span>
+                        </div>
+                        <div class="text-2xl font-black gradient-text">MechieBro</div>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Your trusted premium 24/7 roadside assistance partner. Professional, reliable, and always available when you need us most.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-bold mb-6 text-xl">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Premium Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-orange transition duration-300 text-lg">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Customer Reviews</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-white font-bold mb-6 text-xl">Premium Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Puncture Repair</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Battery Jump Start</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Emergency Towing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Fuel Delivery</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Expert Assistance</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Emergency Contact -->
+                <div>
+                    <h3 class="text-white font-bold mb-6 text-xl">Emergency Contact</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-400 mb-2">24/7 Emergency Hotline:</p>
+                            <a href="tel:+918851599115" class="text-orange hover:text-white transition duration-300 font-bold text-2xl">+91 88515 99115</a>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 mb-2">Email Support:</p>
+                            <a href="mailto:help@mechiebro.com" class="text-orange hover:text-white transition duration-300 text-lg">help@mechiebro.com</a>
+                        </div>
+                        <div class="pt-4">
+                            <a href="https://api.whatsapp.com/send?phone=918851599115" target="_blank" class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition duration-300">
+                                <span class="mr-2">💬</span>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400 text-lg">&copy; 2024 MechieBro. All rights reserved. | Premium Roadside Assistance Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="glass-effect rounded-2xl p-8 w-full max-w-lg border border-orange border-opacity-30 shadow-2xl max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-3xl font-bold gradient-text">Book Premium Service</h3>
+                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-white text-4xl transition duration-300">&times;</button>
+            </div>
+            
+            <form id="bookingForm" class="space-y-6">
+                <div>
+                    <label class="block text-white font-semibold mb-3 text-lg">Full Name *</label>
+                    <input type="text" id="customerName" required class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
+                </div>
+                
+                <div>
+                    <label class="block text-white font-semibold mb-3 text-lg">Phone Number *</label>
+                    <input type="tel" id="customerPhone" required class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
+                </div>
+                
+                <div>
+                    <label class="block text-white font-semibold mb-3 text-lg">Service Required *</label>
+                    <select id="serviceType" required class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
+                        <option value="">Select a premium service</option>
+                        <option value="Puncture Repair">Professional Puncture Repair</option>
+                        <option value="Battery Jump Start">Battery Jump Start & Diagnosis</option>
+                        <option value="Brake Emergency">Emergency Brake Service</option>
+                        <option value="Fuel Delivery">Premium Fuel Delivery</option>
+                        <option value="Towing Service">Professional Towing Service</option>
+                        <option value="General Assistance">Expert General Assistance</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-white font-semibold mb-3 text-lg">Current Location *</label>
+                    <div class="flex gap-3">
+                        <input type="text" id="customerLocation" required class="flex-1 px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg" placeholder="Enter your exact location">
+                        <button type="button" onclick="detectLocation()" class="premium-button text-white px-6 py-4 rounded-xl transition duration-300 shadow-lg">
+                            📍
+                        </button>
+                    </div>
+                    <div id="locationStatus" class="text-sm text-gray-400 mt-2"></div>
+                </div>
+                
+                <div>
+                    <label class="block text-white font-semibold mb-3 text-lg">Problem Description</label>
+                    <textarea id="problemDescription" class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg" rows="4" placeholder="Please describe your problem in detail for better assistance..."></textarea>
+                </div>
+                
+                <button type="submit" class="w-full premium-button text-white font-bold py-5 px-8 rounded-xl text-xl transition duration-300 transform hover:scale-105 shadow-2xl">
+                    📱 Send to WhatsApp
+                </button>
+            </form>
+        </div>
     </div>
 
- <!-- Booking Form Modal -->
-<div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-70 hidden z-50 flex items-center justify-center">
-  <div class="bg-white rounded-xl shadow-xl w-full max-w-md relative p-6 max-h-[85vh] overflow-y-auto">
-    
-    <!-- Close Button -->
-    <button onclick="closeBookingForm()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">&times;</button>
-
-    <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Book Your Service</h2>
-
-<form id="bookingForm" class="space-y-4">
-  <!-- Hidden Inputs -->
-  <input type="hidden" id="selectedService">
-  <input type="hidden" id="servicePrice">
-  <input type="hidden" id="bookingLocation">
-  <input type="hidden" id="bookingAddress">
-
-  <!-- Name -->
-  <div>
-    <label class="block text-gray-700 text-sm mb-1">Name</label>
-    <input id="bookingName" type="text" required 
-           class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm text-black placeholder-gray-400">
-  </div>
-
-  <!-- Phone -->
-  <div>
-    <label class="block text-gray-700 text-sm mb-1">Phone</label>
-    <input id="bookingPhone" type="tel" required 
-           class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm text-black placeholder-gray-400">
-  </div>
-
-  <!-- Date -->
-  <div>
-    <label class="block text-gray-700 text-sm mb-1">Date</label>
-    <input id="bookingDate" type="date" required 
-           class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm text-black">
-  </div>
-
-  <!-- Time -->
-  <div>
-    <label class="block text-gray-700 text-sm mb-1">Time Slot</label>
-    <select id="bookingTime" required 
-            class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm text-black">
-      <option value="">Select Time</option>
-      <option>9 AM - 12 PM</option>
-      <option>12 PM - 3 PM</option>
-      <option>3 PM - 6 PM</option>
-      <option>6 PM - 9 PM</option>
-    </select>
-  </div>
-
-  <!-- Problem -->
-  <div>
-    <label class="block text-gray-700 text-sm mb-1">Problem Description</label>
-    <textarea id="bookingDetails" rows="3" 
-              class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-orange-400 text-sm text-black placeholder-gray-400"></textarea>
-  </div>
-
-  <!-- Submit Button -->
-  <button type="submit" 
-          class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg text-sm flex items-center justify-center gap-2 transition duration-300">
-    <!-- WhatsApp SVG Icon -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current text-white" viewBox="0 0 24 24">
-      <path d="M20.52 3.48A11.93 11.93 0 0012.01 0C5.39 0 0 5.39 0 12c0 2.12.55 4.2 1.6 6.05L0 24l6.17-1.62A11.94 11.94 0 0012.01 24c6.62 0 12.01-5.39 12.01-12 0-3.19-1.24-6.2-3.5-8.52zM12 21.8a9.73 9.73 0 01-5.04-1.38l-.36-.21-3.66.96.98-3.57-.24-.37a9.75 9.75 0 01-1.5-5.21c0-5.39 4.38-9.77 9.77-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.39-4.38 9.78-9.77 9.78zm5.41-7.34c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15s-.78.97-.95 1.17c-.18.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.49-.89-.8-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53h-.58c-.2 0-.52.07-.8.37-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.25 5.13 4.56.72.31 1.28.49 1.72.62.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/>
-    </svg>
-    Send Booking to WhatsApp
-  </button>
-</form>
-
-  </div>
-</div>
-
-    <!-- Success/Error Messages -->
-    <div id="messageContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
+    <!-- Success Message -->
+    <div id="successMessage" class="hidden fixed top-6 right-6 glass-effect text-white px-8 py-6 rounded-xl shadow-2xl z-50 transform transition-all duration-300 border border-green-500">
+        <div class="flex items-center">
+            <span class="mr-4 text-2xl">✓</span>
+            <div>
+                <p class="font-bold text-lg">Booking Sent Successfully!</p>
+                <p class="text-gray-300">We'll contact you shortly</p>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Global variables
-        let registeredUsers = JSON.parse(localStorage.getItem('mechieBroUsers') || '[]');
-        let currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
         let userLocation = null;
-
-        // Initialize page
-        window.addEventListener('load', function() {
-            if (currentUser) {
-                showServicesPage();
+        
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('data:application/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZnVuY3Rpb24oZXZlbnQpIHsKICBjb25zb2xlLmxvZygnU2VydmljZSBXb3JrZXIgaW5zdGFsbGVkJyk7Cn0pOwoKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdmZXRjaCcsIGZ1bmN0aW9uKGV2ZW50KSB7CiAgLy8gQmFzaWMgY2FjaGluZyBzdHJhdGVneQogIGV2ZW50LnJlc3BvbmRXaXRoKGZldGNoKGV2ZW50LnJlcXVlc3QpKTsKfSk7')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful');
+                }).catch(function(err) {
+                    console.log('ServiceWorker registration failed');
+                });
+            });
+        }
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Booking modal functions
+        function openBookingModal(service = '') {
+            const modal = document.getElementById('bookingModal');
+            const serviceSelect = document.getElementById('serviceType');
+            
+            if (service) {
+                serviceSelect.value = service;
             }
             
-            // Set minimum date to today
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('bookingDate').min = today;
-        });
-
-        // Smooth scrolling functions
-        function scrollToRegistration() {
-            document.getElementById('registration').scrollIntoView({ behavior: 'smooth' });
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
-
-        function scrollToServices() {
-            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            document.getElementById('bookingForm').reset();
+            document.getElementById('locationStatus').textContent = '';
         }
-
-        // Location detection functions
+        
+        // Location detection
         function detectLocation() {
             const statusEl = document.getElementById('locationStatus');
-            const locationEl = document.getElementById('regLocation');
+            const locationEl = document.getElementById('customerLocation');
             
             statusEl.textContent = 'Detecting location...';
-            locationEl.value = 'Detecting...';
+            statusEl.className = 'text-sm text-orange mt-2';
             
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -596,277 +1165,203 @@
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
                         
-                        // Reverse geocoding (simplified)
+                        // Use reverse geocoding API (free service)
                         fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`)
                             .then(response => response.json())
                             .then(data => {
-                                const location = `${data.locality || data.city || 'Unknown'}, ${data.principalSubdivision || ''}`;
+                                const location = `${data.locality || data.city || 'Unknown'}, ${data.principalSubdivision || data.countryName || ''}`;
                                 locationEl.value = location;
                                 statusEl.textContent = '✓ Location detected successfully';
+                                statusEl.className = 'text-sm text-green-400 mt-2';
                                 userLocation = { lat, lng, address: location };
                             })
                             .catch(error => {
-                                locationEl.value = `Lat: ${lat.toFixed(4)}, Lng: ${lng.toFixed(4)}`;
+                                locationEl.value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
                                 statusEl.textContent = '✓ Coordinates detected';
-                                userLocation = { lat, lng, address: `${lat.toFixed(4)}, ${lng.toFixed(4)}` };
+                                statusEl.className = 'text-sm text-green-400 mt-2';
+                                userLocation = { lat, lng, address: `${lat.toFixed(6)}, ${lng.toFixed(6)}` };
                             });
                     },
                     function(error) {
-                        statusEl.textContent = '❌ Location access denied';
-                        locationEl.value = '';
-                        showMessage('Please enable location access or enter manually', 'error');
+                        statusEl.textContent = '❌ Location access denied. Please enter manually.';
+                        statusEl.className = 'text-sm text-red-400 mt-2';
+                        console.error('Geolocation error:', error);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 300000
                     }
                 );
             } else {
-                statusEl.textContent = '❌ Geolocation not supported';
-                showMessage('Geolocation not supported by this browser', 'error');
+                statusEl.textContent = '❌ Geolocation not supported by this browser';
+                statusEl.className = 'text-sm text-red-400 mt-2';
             }
         }
-
-        function detectBookingLocation() {
-            const statusEl = document.getElementById('bookingLocationStatus');
-            const locationEl = document.getElementById('bookingLocation');
-            
-            statusEl.textContent = 'Detecting location...';
-            locationEl.value = 'Detecting...';
-            
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    function(position) {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        
-                        fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`)
-                            .then(response => response.json())
-                            .then(data => {
-                                const location = `${data.locality || data.city || 'Unknown'}, ${data.principalSubdivision || ''}`;
-                                locationEl.value = location;
-                                statusEl.textContent = '✓ Location detected';
-                                userLocation = { lat, lng, address: location };
-                            })
-                            .catch(error => {
-                                locationEl.value = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
-                                statusEl.textContent = '✓ Coordinates detected';
-                                userLocation = { lat, lng, address: `${lat.toFixed(4)}, ${lng.toFixed(4)}` };
-                            });
-                    },
-                    function(error) {
-                        statusEl.textContent = '❌ Location access denied';
-                        locationEl.value = '';
-                    }
-                );
-            }
-        }
-
-        // Registration form handler
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('regName').value,
-                phone: document.getElementById('regPhone').value,
-                email: document.getElementById('regEmail').value,
-                city: document.getElementById('regCity').value,
-                location: document.getElementById('regLocation').value,
-                address: document.getElementById('regAddress').value,
-                coordinates: userLocation,
-                registrationDate: new Date().toISOString()
-            };
-            
-            // Validate required fields
-            if (!formData.name || !formData.phone || !formData.email || !formData.city) {
-                showMessage('Please fill all required fields', 'error');
-                return;
-            }
-            
-            // Save user data
-            registeredUsers.push(formData);
-            currentUser = formData;
-            
-            localStorage.setItem('mechieBroUsers', JSON.stringify(registeredUsers));
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            
-            showMessage('Registration successful! Welcome to MechieBro', 'success');
-            
-            setTimeout(() => {
-                showServicesPage();
-            }, 1500);
-        });
-
-        // Show services page
-        function showServicesPage() {
-            document.getElementById('landingPage').classList.add('hidden');
-            document.getElementById('servicesPage').classList.remove('hidden');
-            document.getElementById('userName').textContent = currentUser.name;
-        }
-
-        // Booking functions
-        function openBookingForm(serviceName, price) {
-            document.getElementById('selectedService').value = serviceName;
-            document.getElementById('servicePrice').value = price;
-            document.getElementById('bookingName').value = currentUser ? currentUser.name : '';
-            document.getElementById('bookingPhone').value = currentUser ? currentUser.phone : '';
-            document.getElementById('bookingLocation').value = currentUser && currentUser.location ? currentUser.location : '';
-            document.getElementById('bookingModal').classList.remove('hidden');
-        }
-
-        function closeBookingForm() {
-            document.getElementById('bookingModal').classList.add('hidden');
-            document.getElementById('bookingForm').reset();
-        }
-
-        // Booking form handler
+        
+        // Form submission
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const bookingData = {
-                name: document.getElementById('bookingName').value,
-                phone: document.getElementById('bookingPhone').value,
-                service: document.getElementById('selectedService').value,
-                price: document.getElementById('servicePrice').value,
-                location: document.getElementById('bookingLocation').value,
-                address: document.getElementById('bookingAddress').value,
-                date: document.getElementById('bookingDate').value,
-                time: document.getElementById('bookingTime').value,
-                details: document.getElementById('bookingDetails').value,
-                coordinates: userLocation,
-                bookingTime: new Date().toISOString()
+            const formData = {
+                name: document.getElementById('customerName').value,
+                phone: document.getElementById('customerPhone').value,
+                service: document.getElementById('serviceType').value,
+                location: document.getElementById('customerLocation').value,
+                problem: document.getElementById('problemDescription').value,
+                timestamp: new Date().toISOString(),
+                coordinates: userLocation
             };
             
             // Create WhatsApp message
-            const whatsappMessage = `🔧 *MechieBro Service Booking*
+            const whatsappMessage = `🚗 *MechieBro Premium Roadside Assistance*
 
 👤 *Customer Details:*
-Name: ${bookingData.name}
-Phone: ${bookingData.phone}
+Name: ${formData.name}
+Phone: ${formData.phone}
 
-🛠️ *Service Details:*
-Service: ${bookingData.service}
-Price Range: ${bookingData.price}
+🛠️ *Service Required:*
+${formData.service}
 
 📍 *Location:*
-Detected Location: ${bookingData.location || 'Not detected'}
-Complete Address: ${bookingData.address}
-${userLocation ? `Coordinates: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}` : ''}
-
-📅 *Scheduling:*
-Date: ${new Date(bookingData.date).toLocaleDateString()}
-Time Slot: ${bookingData.time}
+${formData.location}
+${userLocation ? `\nCoordinates: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}` : ''}
 
 📝 *Problem Description:*
-${bookingData.details || 'No additional details provided'}
+${formData.problem || 'No additional details provided'}
 
-🕒 *Booking Time:* ${new Date().toLocaleString()}
+🕒 *Request Time:* ${new Date().toLocaleString('en-IN')}
 
-Please confirm the booking and provide estimated arrival time.`;
+*This is a PREMIUM SERVICE request. Please prioritize and respond with estimated arrival time.*
 
-            // Your WhatsApp number (replace with actual)
+Thank you for choosing MechieBro!`;
+
+            // Updated WhatsApp number
             const whatsappNumber = '918851599115';
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
             
-            // Save booking data
+            // Save booking locally for reference
             const bookings = JSON.parse(localStorage.getItem('mechieBroBookings') || '[]');
-            bookings.push(bookingData);
+            bookings.push(formData);
             localStorage.setItem('mechieBroBookings', JSON.stringify(bookings));
             
             // Open WhatsApp
             window.open(whatsappURL, '_blank');
             
-            closeBookingForm();
-            showMessage('Booking sent to WhatsApp successfully!', 'success');
+            // Show success message
+            showSuccessMessage();
+            
+            // Close modal and reset form
+            closeBookingModal();
         });
-
-        // Utility functions
-        function showMessage(message, type) {
-            const container = document.getElementById('messageContainer');
-            const messageEl = document.createElement('div');
-            
-            messageEl.className = `px-6 py-4 rounded-xl shadow-2xl transform transition-all duration-300 ${
-                type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
-            }`;
-            
-            messageEl.innerHTML = `
-                <div class="flex items-center">
-                    <span class="mr-3 text-xl">${type === 'success' ? '✓' : '❌'}</span>
-                    <span class="font-semibold">${message}</span>
-                </div>
-            `;
-            
-            container.appendChild(messageEl);
+        
+        // Success message
+        function showSuccessMessage() {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.remove('hidden');
             
             setTimeout(() => {
-                messageEl.style.transform = 'translateX(100%)';
-                setTimeout(() => container.removeChild(messageEl), 300);
+                successMsg.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                    successMsg.style.transform = 'translateX(0)';
+                }, 300);
             }, 4000);
         }
-
-        function logout() {
-            localStorage.removeItem('currentUser');
-            currentUser = null;
-            document.getElementById('servicesPage').classList.add('hidden');
-            document.getElementById('landingPage').classList.remove('hidden');
-            showMessage('Logged out successfully', 'success');
-        }
-
-        // Parallax effect
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.parallax-bg');
+        
+        // Testimonials slider
+        function scrollTestimonials(direction) {
+            const slider = document.getElementById('testimonialSlider');
+            const scrollAmount = 400; // Width of one testimonial card + gap
             
-            parallaxElements.forEach(element => {
-                const speed = 0.5;
-                element.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
+            if (direction === 'left') {
+                slider.scrollLeft -= scrollAmount;
+            } else {
+                slider.scrollLeft += scrollAmount;
+            }
+        }
+        
+        // Auto-scroll testimonials
+        setInterval(() => {
+            const slider = document.getElementById('testimonialSlider');
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+            
+            if (slider.scrollLeft >= maxScroll) {
+                slider.scrollLeft = 0;
+            } else {
+                slider.scrollLeft += 400;
+            }
+        }, 6000);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-slide-up, .animate-fade-in').forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+        
+        // Service toggle functionality
+        function toggleService(serviceId) {
+            const details = document.getElementById(serviceId + '-details');
+            const arrow = document.getElementById(serviceId + '-arrow');
+            
+            if (details.classList.contains('hidden')) {
+                // Close all other services first
+                const allDetails = document.querySelectorAll('[id$="-details"]');
+                const allArrows = document.querySelectorAll('[id$="-arrow"]');
+                
+                allDetails.forEach(detail => {
+                    if (!detail.classList.contains('hidden')) {
+                        detail.classList.add('hidden');
+                    }
+                });
+                
+                allArrows.forEach(arrowEl => {
+                    arrowEl.style.transform = 'rotate(0deg)';
+                });
+                
+                // Open the clicked service
+                details.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                // Close the clicked service
+                details.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('MechieBro Premium Roadside Assistance loaded successfully!');
+            
+            // Check if user wants to install PWA
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+            });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'977b23dee6a4a804',t:'MTc1NjYyODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-<!-- Service Worker Registration -->
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js")
-      .then(() => console.log("✅ Service Worker Registered"))
-      .catch(err => console.log("❌ SW registration failed:", err));
-  }
-</script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'988bb15941f990d6',t:'MTc1OTQ4NjY3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
