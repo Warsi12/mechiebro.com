@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<!-- Static Logo Example -->
+<img src="newllogo.png" alt="MechieBro Logo">
+
+<!-- Video Logo Example -->
+<video autoplay muted loop>
+    <source src="gear.mp4" type="video/mp4">
+</video><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -247,8 +253,14 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <div class="text-3xl font-black gradient-text flex items-center">
-                        <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center mr-3 shadow-2xl">
-                            <span class="text-white text-xl">🚗</span>
+                        <!-- Replace this div with your logo image -->
+                        <div class="w-12 h-12 mr-3">
+                            <!-- Option 1: Use your logo image (recommended) -->
+                            <img src="YOUR_LOGO_URL_HERE" alt="MechieBro Logo" class="w-full h-full object-contain rounded-xl shadow-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <!-- Fallback if logo fails to load -->
+                            <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl" style="display: none;">
+                                <span class="text-white text-xl">🚗</span>
+                            </div>
                         </div>
                         MechieBro
                     </div>
@@ -260,7 +272,7 @@
                     <a href="#about" class="hover:text-orange transition duration-300 font-medium text-lg">About</a>
                     <a href="#testimonials" class="hover:text-orange transition duration-300 font-medium text-lg">Reviews</a>
                     <a href="#contact" class="hover:text-orange transition duration-300 font-medium text-lg">Contact</a>
-                    <a href="https://api.whatsapp.com/send?phone=918851599115&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately.%0A%0AThank%20you!" target="_blank" class="premium-button text-white px-6 py-3 rounded-full font-bold transition duration-300 shadow-2xl">
+                    <a href="https://api.whatsapp.com/send?phone=918851599115&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately%20or%20send%20your%20location%20for%20fastest%20response.%0A%0AThank%20you!" target="_blank" class="premium-button text-white px-6 py-3 rounded-full font-bold transition duration-300 shadow-2xl">
                         🚨 Emergency
                     </a>
                 </div>
@@ -299,6 +311,33 @@
                 <!-- Premium Badge -->
                 <div class="inline-flex items-center px-6 py-3 glass-effect rounded-full mb-8 animate-scale-in">
                     <span class="text-premium-gold text-sm font-semibold">⭐ PREMIUM ROADSIDE ASSISTANCE</span>
+                </div>
+                
+                <!-- Video Logo Section -->
+                <div class="mb-12 flex justify-center">
+                    <!-- Option 1: Video Logo (recommended for moving logo) -->
+                    <video 
+                        autoplay 
+                        muted 
+                        loop 
+                        playsinline 
+                        class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-contain rounded-2xl shadow-2xl glass-effect p-4"
+                        style="display: block;"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                    >
+                        <source src="YOUR_VIDEO_LOGO_URL_HERE.mp4" type="video/mp4">
+                        <source src="YOUR_VIDEO_LOGO_URL_HERE.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <!-- Fallback: Static Logo if video fails -->
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 glass-effect rounded-2xl flex items-center justify-center shadow-2xl" style="display: none;">
+                        <img src="YOUR_STATIC_LOGO_URL_HERE" alt="MechieBro Logo" class="w-24 h-24 sm:w-32 sm:h-32 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Final fallback -->
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 premium-gradient rounded-xl flex items-center justify-center" style="display: none;">
+                            <span class="text-white text-4xl">🚗</span>
+                        </div>
+                    </div>
                 </div>
                 
                 <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black mb-8 gradient-text leading-tight">
@@ -971,8 +1010,13 @@
                 <!-- Company Info -->
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center mr-3 shadow-2xl">
-                            <span class="text-white text-xl">🚗</span>
+                        <!-- Footer Logo -->
+                        <div class="w-12 h-12 mr-3">
+                            <img src="YOUR_LOGO_URL_HERE" alt="MechieBro Logo" class="w-full h-full object-contain rounded-xl shadow-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <!-- Fallback if logo fails to load -->
+                            <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl" style="display: none;">
+                                <span class="text-white text-xl">🚗</span>
+                            </div>
                         </div>
                         <div class="text-2xl font-black gradient-text">MechieBro</div>
                     </div>
@@ -1363,5 +1407,5 @@ Thank you for choosing MechieBro!`;
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'988bb15941f990d6',t:'MTc1OTQ4NjY3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
