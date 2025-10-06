@@ -250,21 +250,18 @@
     <nav class="fixed top-0 w-full z-50 glass-effect">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="text-3xl font-black gradient-text flex items-center">
-                        <!-- Replace this div with your logo image -->
-                        <div class="w-12 h-12 mr-3">
-                            <!-- Option 1: Use your logo image (recommended) -->
-                            <img src="newllogo.jpg" alt="MechieBro Logo" class="w-full h-full object-contain rounded-xl shadow-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <!-- Fallback if logo fails to load -->
-                            <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl" style="display: none;">
-                                <span class="text-white text-xl">🚗</span>
-                            </div>
-                        </div>
-                        MechieBro
-                    </div>
-                </div>
+<!-- Logo (Centered, clean, black background) -->
+<div class="flex items-center bg-black px-4 py-2 rounded-lg shadow-lg">
+  <img src="newllogo.jpg" 
+       alt="MechieBro Logo" 
+       class="w-20 h-20 object-contain" 
+       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <!-- Fallback -->
+  <div class="w-20 h-20 premium-gradient rounded-xl flex items-center justify-center shadow-2xl" style="display: none;">
+    <span class="text-white text-2xl">🚗</span>
+  </div>
+</div>
+
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
@@ -313,24 +310,7 @@
                     <span class="text-premium-gold text-sm font-semibold">⭐ PREMIUM ROADSIDE ASSISTANCE</span>
                 </div>
                 
-                <!-- Video Logo Section -->
-                <div class="mb-12 flex justify-center">
-                    <!-- Option 1: Video Logo (recommended for moving logo) -->
-                    <video 
-                        autoplay 
-                        muted 
-                        loop 
-                        playsinline 
-                        class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-contain rounded-2xl shadow-2xl glass-effect p-4"
-                        style="display: block;"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                    >
-                        <source src="gear.mp4" type="video/mp4">
-                        <source src="gear.webm" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-                    
-                    <!-- Fallback: Static Logo if video fails -->
+                if video fails -->
                     <div class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 glass-effect rounded-2xl flex items-center justify-center shadow-2xl" style="display: none;">
                         <img src="newllogo.jpg" alt="MechieBro Logo" class="w-24 h-24 sm:w-32 sm:h-32 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <!-- Final fallback -->
@@ -1409,5 +1389,6 @@ Thank you for choosing MechieBro!`;
     </script>
 </body>
 </html>
+
 
 
