@@ -247,60 +247,71 @@
 
 <body class="bg-black text-white overflow-x-hidden font-premium">
     <!-- Navigation -->
-<!-- Navbar -->
-<nav class="flex items-center justify-between px-6 py-3 bg-black bg-opacity-95 fixed top-0 left-0 w-full z-50 shadow-lg backdrop-blur-sm">
-  <!-- Logo (clean, no background box) -->
-  <div class="flex items-center space-x-3">
-    <img src="newllogo.jpg" 
-         alt="MechieBro Logo" 
-         class="h-16 w-auto object-contain"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-    <!-- Fallback emoji if logo fails -->
-    <div class="h-16 w-16 premium-gradient rounded-xl flex items-center justify-center shadow-2xl" style="display: none;">
-      <span class="text-white text-2xl">🚗</span>
+<!-- Responsive Navbar -->
+<nav class="fixed top-0 left-0 w-full bg-black bg-opacity-95 shadow-lg backdrop-blur-sm z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo Section -->
+      <div class="flex-shrink-0 flex items-center space-x-2">
+        <img src="newllogo.jpg" 
+             alt="MechieBro Logo" 
+             class="h-14 w-auto object-contain"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <!-- Fallback -->
+        <div class="h-12 w-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl" style="display: none;">
+          <span class="text-white text-xl">🚗</span>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobileMenuBtn" class="text-white focus:outline-none">
+          <!-- Menu icon -->
+          <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6 text-white font-medium text-lg">
+        <a href="#services" class="hover:text-orange transition duration-300">Services</a>
+        <a href="#about" class="hover:text-orange transition duration-300">About</a>
+        <a href="#contact" class="hover:text-orange transition duration-300">Contact</a>
+        <a href="https://api.whatsapp.com/send?phone=919876543210&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately%20or%20send%20your%20location%20for%20fastest%20response.%0A%0AThank%20you!"
+           target="_blank"
+           class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
+          🚨 Emergency WhatsApp
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- Navigation Menu -->
-  <ul class="flex space-x-6 text-white font-medium text-lg">
-    <li><a href="#services" class="hover:text-orange transition duration-300">Services</a></li>
-    <li><a href="#about" class="hover:text-orange transition duration-300">About</a></li>
-    <li><a href="#contact" class="hover:text-orange transition duration-300">Contact</a></li>
-    <li>
-      <a href="https://api.whatsapp.com/send?phone=919876543210&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately%20or%20send%20your%20location%20for%20fastest%20response.%0A%0AThank%20you!" 
-         target="_blank"
-         class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
-        🚨 Emergency WhatsApp
-      </a>
-    </li>
-  </ul>
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-4 text-white text-lg">
+    <a href="#services" class="block hover:text-orange transition duration-300">Services</a>
+    <a href="#about" class="block hover:text-orange transition duration-300">About</a>
+    <a href="#contact" class="block hover:text-orange transition duration-300">Contact</a>
+    <a href="https://api.whatsapp.com/send?phone=919876543210&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately%20or%20send%20your%20location%20for%20fastest%20response.%0A%0AThank%20you!"
+       target="_blank"
+       class="block bg-red-600 hover:bg-red-700 text-center text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
+      🚨 Emergency WhatsApp
+    </a>
+  </div>
 </nav>
 
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-white hover:text-orange transition duration-300">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden md:hidden glass-effect border-t border-orange border-opacity-20">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#services" class="block px-3 py-3 text-white hover:text-orange transition duration-300 text-lg">Services</a>
-                    <a href="#about" class="block px-3 py-3 text-white hover:text-orange transition duration-300 text-lg">About</a>
-                    <a href="#testimonials" class="block px-3 py-3 text-white hover:text-orange transition duration-300 text-lg">Reviews</a>
-                    <a href="#contact" class="block px-3 py-3 text-white hover:text-orange transition duration-300 text-lg">Contact</a>
-                    <a href="https://api.whatsapp.com/send?phone=918851599115&text=🚨%20EMERGENCY%20ROADSIDE%20ASSISTANCE%20NEEDED%20🚨%0A%0AThis%20is%20an%20URGENT%20request%20for%20immediate%20roadside%20assistance.%0A%0APlease%20call%20me%20back%20immediately%20or%20send%20your%20location%20for%20fastest%20response.%0A%0AThank%20you!" target="_blank" class="block px-3 py-3 premium-button text-white rounded-lg font-bold text-center">
-                        🚨 Emergency
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<!-- Mobile Menu Script -->
+<script>
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
 
     <!-- Hero Section -->
     <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
@@ -1385,6 +1396,7 @@ Thank you for choosing MechieBro!`;
     </script>
 </body>
 </html>
+
 
 
 
