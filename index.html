@@ -304,14 +304,13 @@
         <a href="#services" class="hover:text-orange transition duration-300">Services</a>
         <a href="#about" class="hover:text-orange transition duration-300">About</a>
         <a href="#contact" class="hover:text-orange transition duration-300">Contact</a>
-      <a href="https://typebot.co/mechie-bro-m0x3nxh"
-   target="_blank"
+      <button onclick="handleEmergencyClick()"
    class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-5 py-2 rounded-full font-semibold shadow-md flex items-center gap-2 transition duration-300 hover:scale-105">
   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0 3.75h.007M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
   Emergency Help
-</a>
+</button>
 
       </div>
     </div>
@@ -322,11 +321,10 @@
     <a href="#services" class="block hover:text-orange transition duration-300">Services</a>
     <a href="#about" class="block hover:text-orange transition duration-300">About</a>
     <a href="#contact" class="block hover:text-orange transition duration-300">Contact</a>
-    <a href="https://typebot.co/mechie-bro-m0x3nxh"
-       target="_blank"
-       class="block bg-red-600 hover:bg-red-700 text-center text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
+    <button onclick="handleEmergencyClick()"
+       class="block w-full bg-red-600 hover:bg-red-700 text-center text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
       🚨 Emergency Help
-    </a>
+    </button>
   </div>
 </nav>
 
@@ -1298,6 +1296,108 @@ Thank you for choosing MechieBro!`;
                 deferredPrompt = e;
             });
         });
+    </script>
+    <!-- Registration Modal -->
+    <div id="registerModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[100] backdrop-blur-sm">
+      <div class="bg-white text-black p-8 rounded-2xl w-full max-w-sm mx-4 relative shadow-2xl animate-scale-in">
+        <button onclick="toggleRegisterModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="text-center mb-6">
+          <h2 class="text-2xl font-bold mb-2">Registration Required</h2>
+          <p class="text-gray-600">Please register to access emergency assistance.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <input id="regName" type="text" placeholder="Enter your name" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <input id="regPhone" type="tel" placeholder="Enter your phone number" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <input id="regPassword" type="password" placeholder="Create a password" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
+          </div>
+
+          <button onclick="registerUser()" id="regSubmitBtn" class="bg-orange hover:bg-dark-orange text-white font-bold py-4 w-full rounded-xl shadow-lg transition duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2">
+            <span>Submit Registration</span>
+            <svg id="regSpinner" class="hidden w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        const API_BASE = "http://ec2-44-200-5-51.compute-1.amazonaws.com:8000";
+
+        function toggleRegisterModal() {
+            const modal = document.getElementById("registerModal");
+            modal.classList.toggle("hidden");
+        }
+
+        function handleEmergencyClick() {
+            const phone = localStorage.getItem("mechiebro_user_phone");
+
+            if (phone) {
+                window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+            } else {
+                toggleRegisterModal();
+            }
+        }
+
+        async function registerUser() {
+            const name = document.getElementById("regName").value.trim();
+            const phone_number = document.getElementById("regPhone").value.trim();
+            const password = document.getElementById("regPassword").value.trim();
+            const submitBtn = document.getElementById("regSubmitBtn");
+            const spinner = document.getElementById("regSpinner");
+
+            if (!name || !phone_number || !password) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // UI Feedback
+            submitBtn.disabled = true;
+            spinner.classList.remove("hidden");
+
+            try {
+                const res = await fetch(`${API_BASE}/signup`, {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({ 
+                        name: name,
+                        phone_number: phone_number, 
+                        password: password 
+                    })
+                });
+
+                if (res.ok) {
+                    localStorage.setItem("mechiebro_user_phone", phone_number);
+                    localStorage.setItem("mechiebro_user_name", name);
+
+                    alert("Registered successfully!");
+                    toggleRegisterModal();
+                    window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+                } else {
+                    const data = await res.json();
+                    alert(data.detail || "User already exists or registration error");
+                }
+            } catch (error) {
+                console.error("Registration error:", error);
+                alert("Failed to connect to the server. Please try again later.");
+            } finally {
+                submitBtn.disabled = false;
+                spinner.classList.add("hidden");
+            }
+        }
     </script>
 </body>
 </html>
