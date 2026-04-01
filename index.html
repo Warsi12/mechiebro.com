@@ -1,11 +1,10 @@
-
 <!-- Video Title Section -->
 <div class="flex justify-center items-center bg-black">
-  <video autoplay muted loop playsinline 
-         class="w-[90%] sm:w-[85%] md:w-[70%] lg:w-[60%] h-auto object-contain mt-4 sm:mt-6 mb-4 sm:mb-6 rounded-2xl">
-    <source src="gear.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <video autoplay muted loop playsinline
+        class="w-[90%] sm:w-[85%] md:w-[70%] lg:w-[60%] h-auto object-contain mt-4 sm:mt-6 mb-4 sm:mb-6 rounded-2xl">
+        <source src="gear.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </div>
 
 
@@ -14,12 +13,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MechieBro - Premium Roadside Assistance</title>
-    
+
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#FF6B35">
-    <meta name="description" content="Premium Roadside Assistance - Puncture, Battery, Towing, Fuel Delivery. Instant, Reliable, Professional.">
-    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiTWVjaGllQnJvIC0gUm9hZHNpZGUgQXNzaXN0YW5jZSIsInNob3J0X25hbWUiOiJNZWNoaWVCcm8iLCJzdGFydF91cmwiOiIvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzAwMDAwMCIsInRoZW1lX2NvbG9yIjoiI0ZGNkIzNSIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0YVdSMGFEMGlNVEk0SWlCb1pXbG5hSFE5SWpFeU9DSWdkbWxsZDBKdmVEMGlNQ0F3SURFME5DQXhORFFpSUdacGJHdzlJaU5HUmpaQ016VWlQanh5WldOMElIZzlJakl3SWlCNVBTSXlNQ0lnZDJsa2RHZzlJamc0SWlCb1pXbG5hSFE5SWpnNElpQnllRDBpTVRRaUlHWnBiR3c5SWlOR1JqWkNNelVpTHo0OEwzTjJaejQ9Iiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
-    
+    <meta name="description"
+        content="Premium Roadside Assistance - Puncture, Battery, Towing, Fuel Delivery. Instant, Reliable, Professional.">
+    <link rel="manifest"
+        href="data:application/json;base64,eyJuYW1lIjoiTWVjaGllQnJvIC0gUm9hZHNpZGUgQXNzaXN0YW5jZSIsInNob3J0X25hbWUiOiJNZWNoaWVCcm8iLCJzdGFydF91cmwiOiIvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzAwMDAwMCIsInRoZW1lX2NvbG9yIjoiI0ZGNkIzNSIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0YVdSMGFEMGlNVEk0SWlCb1pXbG5hSFE5SWpFeU9DSWdkbWxsZDBKdmVEMGlNQ0F3SURFME5DQXhORFFpSUdacGJHdzlJaU5HUmpaQ016VWlQanh5WldOMElIZzlJakl3SWlCNVBTSXlNQ0lnZDJsa2RHZzlJamc0SWlCb1pXbG5hSFE5SWpnNElpQnllRDBpTVRRaUlHWnBiR3c5SWlOR1JqWkNNelVpTHo0OEwzTjJaejQ9Iiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -52,45 +53,85 @@
             }
         }
     </script>
-    
+
     <style>
         body {
             box-sizing: border-box;
             font-family: 'Inter', system-ui, sans-serif;
         }
-        
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
-        
+
         @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        
+
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.8); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(255, 107, 53, 0.8);
+            }
         }
-        
+
         @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
-        
+
         @keyframes scaleIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, #FF6B35, #FFD700, #E55A2B);
             background-size: 200% 200%;
@@ -99,58 +140,58 @@
             background-clip: text;
             animation: gradientShift 3s ease-in-out infinite;
         }
-        
+
         .premium-gradient {
             background: linear-gradient(135deg, #FF6B35 0%, #FFD700 50%, #E55A2B 100%);
             background-size: 200% 200%;
             animation: gradientShift 3s ease-in-out infinite;
         }
-        
+
         .glass-effect {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .service-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
-        
+
         .service-card:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 25px 50px rgba(255, 107, 53, 0.15);
         }
-        
+
         .hero-bg {
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-                linear-gradient(135deg, rgba(0,0,0,0.95), rgba(30, 58, 138, 0.1)),
+                linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 58, 138, 0.1)),
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="premium-grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="%23333" stroke-width="0.5" opacity="0.2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23premium-grid)"/></svg>');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
-        
+
         .testimonial-card {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
-        
+
         .testimonial-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(255, 107, 53, 0.1);
         }
-        
+
         .premium-button {
             background: linear-gradient(135deg, #FF6B35, #FFD700);
             position: relative;
             overflow: hidden;
         }
-        
+
         .premium-button::before {
             content: '';
             position: absolute;
@@ -161,11 +202,11 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
-        
+
         .premium-button:hover::before {
             left: 100%;
         }
-        
+
         .floating-elements {
             position: absolute;
             width: 100%;
@@ -173,7 +214,7 @@
             overflow: hidden;
             pointer-events: none;
         }
-        
+
         .floating-elements::before,
         .floating-elements::after {
             content: '';
@@ -184,19 +225,19 @@
             border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
-        
+
         .floating-elements::before {
             top: 10%;
             left: 10%;
             animation-delay: -2s;
         }
-        
+
         .floating-elements::after {
             bottom: 10%;
             right: 10%;
             animation-delay: -4s;
         }
-        
+
         .ai-avatar {
             width: 80px;
             height: 80px;
@@ -211,7 +252,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .ai-avatar::before {
             content: '';
             position: absolute;
@@ -219,12 +260,12 @@
             border-radius: 50%;
             background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
         }
-        
+
         .ai-avatar span {
             position: relative;
             z-index: 1;
         }
-        
+
         .stats-counter {
             font-size: 3rem;
             font-weight: 900;
@@ -233,12 +274,12 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .premium-section {
-            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(30, 58, 138, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(30, 58, 138, 0.1) 100%);
             position: relative;
         }
-        
+
         .premium-section::before {
             content: '';
             position: absolute;
@@ -248,132 +289,137 @@
         }
     </style>
 </head>
-    
+
 
 <body class="bg-black text-white overflow-x-hidden font-premium">
     <!-- Important Notice Bar -->
-<div class="w-full bg-gradient-to-r from-orange to-dark-orange text-white text-center py-2 px-4 text-sm font-medium shadow-md fixed top-0 left-0 z-50 flex justify-center items-center space-x-2">
-  
-  <span>⚠️ Currently, MechieBro services are available only in 
-    <span class="font-bold underline">Delhi</span>.
-  </span>
+    <div
+        class="w-full bg-gradient-to-r from-orange to-dark-orange text-white text-center py-2 px-4 text-sm font-medium shadow-md fixed top-0 left-0 z-50 flex justify-center items-center space-x-2">
 
-  <!-- Info icon + tooltip -->
-  <div class="relative group inline-block cursor-pointer">
-    <span class="ml-1 text-white bg-white bg-opacity-20 rounded-full px-2 py-0.5 text-xs font-bold">i</span>
-    
-    <!-- Tooltip text -->
-    <div class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded-md px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg">
-      We’re expanding to more cities soon — stay connected!
+        <span>⚠️ Currently, MechieBro services are available only in
+            <span class="font-bold underline">Delhi</span>.
+        </span>
+
+        <!-- Info icon + tooltip -->
+        <div class="relative group inline-block cursor-pointer">
+            <span class="ml-1 text-white bg-white bg-opacity-20 rounded-full px-2 py-0.5 text-xs font-bold">i</span>
+
+            <!-- Tooltip text -->
+            <div
+                class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded-md px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg">
+                We’re expanding to more cities soon — stay connected!
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
     <!-- Navigation -->
-<!-- Responsive Navbar -->
+    <!-- Responsive Navbar -->
     <nav class="mt-10 fixed top-0 left-0 w-full bg-black bg-opacity-95 shadow-lg backdrop-blur-sm z-40">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      
-      <!-- Logo Section -->
-      <div class="flex-shrink-0 flex items-center space-x-2">
-        <img src="newllogo.jpg" 
-             alt="MechieBro Logo" 
-             class="h-14 w-auto object-contain"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <!-- Fallback -->
-        <div class="h-12 w-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl" style="display: none;">
-          <span class="text-white text-xl">🚗</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+
+                <!-- Logo Section -->
+                <div class="flex-shrink-0 flex items-center space-x-2">
+                    <img src="newllogo.jpg" alt="MechieBro Logo" class="h-14 w-auto object-contain"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- Fallback -->
+                    <div class="h-12 w-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl"
+                        style="display: none;">
+                        <span class="text-white text-xl">🚗</span>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-white focus:outline-none">
+                        <!-- Menu icon -->
+                        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6 text-white font-medium text-lg">
+                    <a href="#services" class="hover:text-orange transition duration-300">Services</a>
+                    <a href="#about" class="hover:text-orange transition duration-300">About</a>
+                    <a href="#contact" class="hover:text-orange transition duration-300">Contact</a>
+                    <button onclick="handleEmergencyClick()"
+                        class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-5 py-2 rounded-full font-semibold shadow-md flex items-center gap-2 transition duration-300 hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white animate-pulse" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 9v3.75m0 3.75h.007M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Emergency Help
+                    </button>
+
+                </div>
+            </div>
         </div>
-      </div>
 
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden">
-        <button id="mobileMenuBtn" class="text-white focus:outline-none">
-          <!-- Menu icon -->
-          <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16m-7 6h7" />
-          </svg>
-        </button>
-      </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-4 text-white text-lg">
+            <a href="#services" class="block hover:text-orange transition duration-300">Services</a>
+            <a href="#about" class="block hover:text-orange transition duration-300">About</a>
+            <a href="#contact" class="block hover:text-orange transition duration-300">Contact</a>
+            <button onclick="handleEmergencyClick()"
+                class="block w-full bg-red-600 hover:bg-red-700 text-center text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
+                🚨 Emergency Help
+            </button>
+        </div>
+    </nav>
 
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-6 text-white font-medium text-lg">
-        <a href="#services" class="hover:text-orange transition duration-300">Services</a>
-        <a href="#about" class="hover:text-orange transition duration-300">About</a>
-        <a href="#contact" class="hover:text-orange transition duration-300">Contact</a>
-      <button onclick="handleEmergencyClick()"
-   class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-5 py-2 rounded-full font-semibold shadow-md flex items-center gap-2 transition duration-300 hover:scale-105">
-  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0 3.75h.007M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-  Emergency Help
-</button>
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile Dropdown Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-4 text-white text-lg">
-    <a href="#services" class="block hover:text-orange transition duration-300">Services</a>
-    <a href="#about" class="block hover:text-orange transition duration-300">About</a>
-    <a href="#contact" class="block hover:text-orange transition duration-300">Contact</a>
-    <button onclick="handleEmergencyClick()"
-       class="block w-full bg-red-600 hover:bg-red-700 text-center text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
-      🚨 Emergency Help
-    </button>
-  </div>
-</nav>
-
-<!-- Mobile Menu Script -->
-<script>
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-</script>
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 
 
     <!-- Hero Section -->
     <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
         <div class="floating-elements"></div>
-        
+
         <div class="container mx-auto px-4 text-center relative z-10">
             <div class="animate-slide-up max-w-6xl mx-auto">
                 <!-- Premium Badge -->
                 <div class="inline-flex items-center px-6 py-3 glass-effect rounded-full mb-8 animate-scale-in">
                     <span class="text-premium-gold text-sm font-semibold">⭐ PREMIUM ROADSIDE ASSISTANCE</span>
                 </div>
-                
+
                 <div class="h-8"></div>
 
-                
+
                 <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black mb-8 gradient-text leading-tight">
-                    Professional<br/>
-                    <span class="text-white">Roadside</span><br/>
+                    Professional<br />
+                    <span class="text-white">Roadside</span><br />
                     <span class="text-orange">Assistance</span>
                 </h1>
-                
+
                 <p class="text-2xl sm:text-3xl mb-6 text-gray-300 font-light">
                     Expert Technicians • Premium Service
                 </p>
-                
+
                 <p class="text-xl mb-12 text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                    Experience the difference with our premium roadside assistance. Professional technicians, and unmatched customer service - all at your fingertips.
+                    Experience the difference with our premium roadside assistance. Professional technicians, and
+                    unmatched customer service - all at your fingertips.
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <button onclick="openBookingModal()" class="premium-button text-white font-bold py-5 px-10 rounded-full text-xl transition duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-auto">
+                    <button onclick="openBookingModal()"
+                        class="premium-button text-white font-bold py-5 px-10 rounded-full text-xl transition duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-auto">
                         🚗 Book Premium Service
                     </button>
-                   
+
                 </div>
-                
+
                 <!-- Stats Section -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-4xl mx-auto">
                     <div class="glass-effect rounded-2xl p-8 text-center">
@@ -401,15 +447,20 @@
                     <span class="text-orange text-sm font-semibold">🛠️ OUR PREMIUM SERVICES</span>
                 </div>
                 <h2 class="text-5xl sm:text-6xl font-black mb-8 gradient-text">Expert Solutions</h2>
-                <p class="text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">Professional roadside assistance with premium service standards</p>
+                <p class="text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">Professional roadside assistance
+                    with premium service standards</p>
             </div>
-            
+
             <div class="max-w-5xl mx-auto space-y-6">
                 <!-- Puncture Repair -->
-                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
-                    <button onclick="toggleService('puncture')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                <div
+                    class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('puncture')"
+                        class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
                         <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🔧</div>
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                                🔧</div>
                             <div>
                                 <h3 class="text-2xl font-bold text-white mb-2">Professional Puncture Repair</h3>
                                 <p class="text-gray-400">Expert tire repair and replacement services</p>
@@ -417,22 +468,31 @@
                         </div>
                         <div class="text-orange transition-transform duration-300" id="puncture-arrow">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </div>
                     </button>
                     <div id="puncture-details" class="hidden px-8 pb-8 border-t border-gray-800">
                         <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <div>
-                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Our certified technicians use professional-grade equipment and high-quality materials to repair punctures quickly and safely. We ensure your tire is road-ready with comprehensive pressure and alignment checks.</p>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Our certified technicians use
+                                    professional-grade equipment and high-quality materials to repair punctures quickly
+                                    and safely. We ensure your tire is road-ready with comprehensive pressure and
+                                    alignment checks.</p>
                                 <div class="space-y-4">
                                     <h4 class="text-orange font-semibold text-lg">Premium Services Include:</h4>
                                     <ul class="text-gray-400 space-y-2">
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Professional tire inspection</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>High-quality patches & plugs</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Tire replacement if needed</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Pressure optimization</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safety assessment</li>
+                                        <li class="flex items-center"><span
+                                                class="text-orange mr-3">✓</span>Professional tire inspection</li>
+                                        <li class="flex items-center"><span
+                                                class="text-orange mr-3">✓</span>High-quality patches & plugs</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Tire
+                                            replacement if needed</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Pressure
+                                            optimization</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safety
+                                            assessment</li>
                                     </ul>
                                 </div>
                             </div>
@@ -449,7 +509,8 @@
                                         <p class="text-gray-400 text-sm">Professional service</p>
                                     </div>
                                 </div>
-                                <button onclick="openBookingModal('Puncture Repair')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                <button onclick="openBookingModal('Puncture Repair')"
+                                    class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                                     Book This Service
                                 </button>
                             </div>
@@ -458,10 +519,14 @@
                 </div>
 
                 <!-- Battery Jump Start -->
-                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
-                    <button onclick="toggleService('battery')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                <div
+                    class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('battery')"
+                        class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
                         <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🔋</div>
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                                🔋</div>
                             <div>
                                 <h3 class="text-2xl font-bold text-white mb-2">Battery Jump Start & Diagnosis</h3>
                                 <p class="text-gray-400">Complete battery health check and jump start service</p>
@@ -469,22 +534,30 @@
                         </div>
                         <div class="text-orange transition-transform duration-300" id="battery-arrow">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </div>
                     </button>
                     <div id="battery-details" class="hidden px-8 pb-8 border-t border-gray-800">
                         <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <div>
-                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Dead battery emergency? Our expert technicians provide safe jump-start services with comprehensive battery diagnostics to prevent future breakdowns and ensure optimal performance.</p>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Dead battery emergency? Our expert
+                                    technicians provide safe jump-start services with comprehensive battery diagnostics
+                                    to prevent future breakdowns and ensure optimal performance.</p>
                                 <div class="space-y-4">
                                     <h4 class="text-orange font-semibold text-lg">Premium Services Include:</h4>
                                     <ul class="text-gray-400 space-y-2">
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safe professional jump start</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Complete battery health diagnosis</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Charging system inspection</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Battery replacement service</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Preventive maintenance tips</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safe
+                                            professional jump start</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Complete
+                                            battery health diagnosis</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Charging
+                                            system inspection</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Battery
+                                            replacement service</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Preventive
+                                            maintenance tips</li>
                                     </ul>
                                 </div>
                             </div>
@@ -501,7 +574,8 @@
                                         <p class="text-gray-400 text-sm">Includes diagnosis</p>
                                     </div>
                                 </div>
-                                <button onclick="openBookingModal('Battery Jump Start')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                <button onclick="openBookingModal('Battery Jump Start')"
+                                    class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                                     Book This Service
                                 </button>
                             </div>
@@ -510,10 +584,14 @@
                 </div>
 
                 <!-- Brake Emergency -->
-                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
-                    <button onclick="toggleService('brake')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                <div
+                    class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('brake')"
+                        class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
                         <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🛑</div>
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                                🛑</div>
                             <div>
                                 <h3 class="text-2xl font-bold text-white mb-2">Emergency Brake Service</h3>
                                 <p class="text-gray-400">Critical brake system diagnosis and emergency repairs</p>
@@ -521,22 +599,30 @@
                         </div>
                         <div class="text-orange transition-transform duration-300" id="brake-arrow">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </div>
                     </button>
                     <div id="brake-details" class="hidden px-8 pb-8 border-t border-gray-800">
                         <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <div>
-                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Brake failure is a critical safety emergency. Our certified brake specialists provide immediate diagnosis and emergency repairs to ensure your safety and get you back on the road securely.</p>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Brake failure is a critical safety
+                                    emergency. Our certified brake specialists provide immediate diagnosis and emergency
+                                    repairs to ensure your safety and get you back on the road securely.</p>
                                 <div class="space-y-4">
                                     <h4 class="text-orange font-semibold text-lg">Emergency Services Include:</h4>
                                     <ul class="text-gray-400 space-y-2">
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Emergency brake system inspection</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Brake fluid top-up & replacement</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Brake pad emergency replacement</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Complete safety assessment</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Road safety certification</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Emergency
+                                            brake system inspection</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Brake fluid
+                                            top-up & replacement</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Brake pad
+                                            emergency replacement</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Complete
+                                            safety assessment</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Road safety
+                                            certification</li>
                                     </ul>
                                 </div>
                             </div>
@@ -553,7 +639,8 @@
                                         <p class="text-gray-400 text-sm">Safety first service</p>
                                     </div>
                                 </div>
-                                <button onclick="openBookingModal('Brake Emergency')" class="w-full mt-6 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                <button onclick="openBookingModal('Brake Emergency')"
+                                    class="w-full mt-6 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                                     Emergency Booking
                                 </button>
                             </div>
@@ -562,10 +649,14 @@
                 </div>
 
                 <!-- Fuel Delivery -->
-                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
-                    <button onclick="toggleService('fuel')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                <div
+                    class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('fuel')"
+                        class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
                         <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">⛽</div>
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                                ⛽</div>
                             <div>
                                 <h3 class="text-2xl font-bold text-white mb-2">Premium Fuel Delivery</h3>
                                 <p class="text-gray-400">High-quality fuel delivery service to your location</p>
@@ -573,22 +664,31 @@
                         </div>
                         <div class="text-orange transition-transform duration-300" id="fuel-arrow">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </div>
                     </button>
                     <div id="fuel-details" class="hidden px-8 pb-8 border-t border-gray-800">
                         <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <div>
-                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Ran out of fuel? We deliver premium quality petrol or diesel directly to your location with safe handling procedures, so you can continue your journey without leaving your vehicle unattended.</p>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Ran out of fuel? We deliver
+                                    premium quality petrol or diesel directly to your location with safe handling
+                                    procedures, so you can continue your journey without leaving your vehicle
+                                    unattended.</p>
                                 <div class="space-y-4">
                                     <h4 class="text-orange font-semibold text-lg">Premium Services Include:</h4>
                                     <ul class="text-gray-400 space-y-2">
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Premium quality fuel delivery</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>5-15 liters emergency supply</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safe fuel handling procedures</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Fuel system inspection</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Nearest fuel station directions</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Premium
+                                            quality fuel delivery</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>5-15 liters
+                                            emergency supply</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Safe fuel
+                                            handling procedures</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Fuel system
+                                            inspection</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Nearest
+                                            fuel station directions</li>
                                     </ul>
                                 </div>
                             </div>
@@ -605,7 +705,8 @@
                                         <p class="text-gray-400 text-sm">+ fuel cost</p>
                                     </div>
                                 </div>
-                                <button onclick="openBookingModal('Fuel Delivery')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                <button onclick="openBookingModal('Fuel Delivery')"
+                                    class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                                     Coming soon
                                 </button>
                             </div>
@@ -614,10 +715,14 @@
                 </div>
 
                 <!-- Towing Service -->
-                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
-                    <button onclick="toggleService('towing')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                <div
+                    class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('towing')"
+                        class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
                         <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🚛</div>
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                                🚛</div>
                             <div>
                                 <h3 class="text-2xl font-bold text-white mb-2">Professional Towing Service</h3>
                                 <p class="text-gray-400">Safe vehicle transport with damage-free guarantee</p>
@@ -625,22 +730,30 @@
                         </div>
                         <div class="text-orange transition-transform duration-300" id="towing-arrow">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </div>
                     </button>
                     <div id="towing-details" class="hidden px-8 pb-8 border-t border-gray-800">
                         <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <div>
-                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Professional towing service for all vehicle types with modern equipment and trained operators. We ensure damage-free transport to your preferred destination with full insurance coverage.</p>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Professional towing service for
+                                    all vehicle types with modern equipment and trained operators. We ensure damage-free
+                                    transport to your preferred destination with full insurance coverage.</p>
                                 <div class="space-y-4">
                                     <h4 class="text-orange font-semibold text-lg">Professional Services Include:</h4>
                                     <ul class="text-gray-400 space-y-2">
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Flatbed & wheel-lift towing</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Cars, bikes & commercial vehicles</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Damage-free transport guarantee</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Insurance claim assistance</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>24/7 tracking & updates</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Flatbed &
+                                            wheel-lift towing</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Cars, bikes
+                                            & commercial vehicles</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Damage-free
+                                            transport guarantee</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Insurance
+                                            claim assistance</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>24/7
+                                            tracking & updates</li>
                                     </ul>
                                 </div>
                             </div>
@@ -657,7 +770,8 @@
                                         <p class="text-gray-400 text-sm">Professional rate</p>
                                     </div>
                                 </div>
-                                <button onclick="openBookingModal('Towing Service')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                <button onclick="openBookingModal('Towing Service')"
+                                    class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                                     Book This Service
                                 </button>
                             </div>
@@ -666,10 +780,14 @@
                 </div>
 
                 <!-- General Assistance -->
-                <div class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
-                    <button onclick="toggleService('general')" class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
+                <div
+                    class="service-item glass-effect rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange">
+                    <button onclick="toggleService('general')"
+                        class="w-full p-8 flex items-center justify-between text-left focus:outline-none">
                         <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">🔨</div>
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                                🔨</div>
                             <div>
                                 <h3 class="text-2xl font-bold text-white mb-2">Expert General Assistance</h3>
                                 <p class="text-gray-400">Comprehensive automotive problem-solving service</p>
@@ -677,22 +795,30 @@
                         </div>
                         <div class="text-orange transition-transform duration-300" id="general-arrow">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </div>
                     </button>
                     <div id="general-details" class="hidden px-8 pb-8 border-t border-gray-800">
                         <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <div>
-                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Facing any other automotive emergency? Our experienced technicians are equipped with advanced diagnostic tools and expertise to handle various roadside issues and provide expert solutions.</p>
+                                <p class="text-gray-300 leading-relaxed mb-6 text-lg">Facing any other automotive
+                                    emergency? Our experienced technicians are equipped with advanced diagnostic tools
+                                    and expertise to handle various roadside issues and provide expert solutions.</p>
                                 <div class="space-y-4">
                                     <h4 class="text-orange font-semibold text-lg">Expert Services Include:</h4>
                                     <ul class="text-gray-400 space-y-2">
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Advanced engine diagnostics</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Professional lockout assistance</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Minor mechanical repairs</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Expert consultation & advice</li>
-                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Emergency troubleshooting</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Advanced
+                                            engine diagnostics</li>
+                                        <li class="flex items-center"><span
+                                                class="text-orange mr-3">✓</span>Professional lockout assistance</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Minor
+                                            mechanical repairs</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Expert
+                                            consultation & advice</li>
+                                        <li class="flex items-center"><span class="text-orange mr-3">✓</span>Emergency
+                                            troubleshooting</li>
                                     </ul>
                                 </div>
                             </div>
@@ -709,7 +835,8 @@
                                         <p class="text-gray-400 text-sm">Base service fee</p>
                                     </div>
                                 </div>
-                                <button onclick="openBookingModal('General Assistance')" class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                <button onclick="openBookingModal('General Assistance')"
+                                    class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                                     Book This Service
                                 </button>
                             </div>
@@ -720,72 +847,82 @@
         </div>
     </section>
 
-<!-- About Section -->
-<section id="about" class="py-24 bg-black relative overflow-hidden">
-  <!-- Subtle Glow -->
-  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_0%,_rgba(255,107,53,0.2),_transparent_70%)]"></div>
-
-  <div class="container mx-auto px-6 relative z-10">
-    <!-- Header -->
-    <div class="text-center mb-20">
-      <div class="inline-flex items-center px-6 py-2 bg-white/10 backdrop-blur-md border border-orange/40 rounded-full mb-6 shadow-md">
-        <span class="text-orange text-sm font-medium tracking-wide">🏆 WHY CHOOSE US</span>
-      </div>
-      <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 text-white tracking-tight">Expert Assistance. Trusted Service.</h2>
-      <p class="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-        Fast, Reliable and Professional — MechieBro brings expert mechanics and premium roadside assistance wherever you are.
-      </p>
-    </div>
-
-    <!-- Features -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto text-center">
-      
-      <!-- Fast Response -->
-      <div class="group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition duration-500">
-        <div class="w-16 h-16 flex items-center justify-center mx-auto mb-5 bg-orange/20 text-orange rounded-full">
-          ⚡
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-black relative overflow-hidden">
+        <!-- Subtle Glow -->
+        <div
+            class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_0%,_rgba(255,107,53,0.2),_transparent_70%)]">
         </div>
-        <h3 class="text-xl font-semibold mb-3 text-white">Lightning Fast Response</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          We reach you in minutes — wherever you are in Delhi. Because emergencies can’t wait.
-        </p>
-      </div>
 
-      <!-- Expert Mechanic -->
-      <div class="group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition duration-500">
-        <div class="w-16 h-16 flex items-center justify-center mx-auto mb-5 bg-orange/20 text-orange rounded-full">
-          🧰
-        </div>
-        <h3 class="text-xl font-semibold mb-3 text-white">Expert Mechanics</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Skilled professionals equipped with modern tools to handle every on-road challenge with precision.
-        </p>
-      </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-20">
+                <div
+                    class="inline-flex items-center px-6 py-2 bg-white/10 backdrop-blur-md border border-orange/40 rounded-full mb-6 shadow-md">
+                    <span class="text-orange text-sm font-medium tracking-wide">🏆 WHY CHOOSE US</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 text-white tracking-tight">Expert Assistance.
+                    Trusted Service.</h2>
+                <p class="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    Fast, Reliable and Professional — MechieBro brings expert mechanics and premium roadside assistance
+                    wherever you are.
+                </p>
+            </div>
 
-      <!-- Premium Quality -->
-      <div class="group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition duration-500">
-        <div class="w-16 h-16 flex items-center justify-center mx-auto mb-5 bg-orange/20 text-orange rounded-full">
-          💎
-        </div>
-        <h3 class="text-xl font-semibold mb-3 text-white">Premium Quality</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Reliable parts and top-quality service — ensuring safety and satisfaction on every repair.
-        </p>
-      </div>
+            <!-- Features -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto text-center">
 
-      <!-- Affordable Reliability -->
-      <div class="group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition duration-500">
-        <div class="w-16 h-16 flex items-center justify-center mx-auto mb-5 bg-orange/20 text-orange rounded-full">
-          🤝
+                <!-- Fast Response -->
+                <div class="group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition duration-500">
+                    <div
+                        class="w-16 h-16 flex items-center justify-center mx-auto mb-5 bg-orange/20 text-orange rounded-full">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Lightning Fast Response</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        We reach you in minutes — wherever you are in Delhi. Because emergencies can’t wait.
+                    </p>
+                </div>
+
+                <!-- Expert Mechanic -->
+                <div class="group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition duration-500">
+                    <div
+                        class="w-16 h-16 flex items-center justify-center mx-auto mb-5 bg-orange/20 text-orange rounded-full">
+                        🧰
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Expert Mechanics</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Skilled professionals equipped with modern tools to handle every on-road challenge with
+                        precision.
+                    </p>
+                </div>
+
+                <!-- Premium Quality -->
+                <div class="group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition duration-500">
+                    <div
+                        class="w-16 h-16 flex items-center justify-center mx-auto mb-5 bg-orange/20 text-orange rounded-full">
+                        💎
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Premium Quality</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Reliable parts and top-quality service — ensuring safety and satisfaction on every repair.
+                    </p>
+                </div>
+
+                <!-- Affordable Reliability -->
+                <div class="group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition duration-500">
+                    <div
+                        class="w-16 h-16 flex items-center justify-center mx-auto mb-5 bg-orange/20 text-orange rounded-full">
+                        🤝
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Affordable Reliability</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Transparent pricing, no hidden costs — because trust is the foundation of every service.
+                    </p>
+                </div>
+            </div>
         </div>
-        <h3 class="text-xl font-semibold mb-3 text-white">Affordable Reliability</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Transparent pricing, no hidden costs — because trust is the foundation of every service.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
 
@@ -803,33 +940,39 @@
                 <h2 class="text-5xl sm:text-6xl font-black mb-8 gradient-text">Contact Us</h2>
                 <p class="text-2xl text-gray-400">Need help? We're here for you 24/7</p>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
                 <div class="glass-effect rounded-2xl p-10">
                     <h3 class="text-3xl font-bold mb-8 text-white">Contact Information</h3>
                     <div class="space-y-8">
                         <div class="flex items-center">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
                                 <span class="text-2xl">📞</span>
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-lg">Emergency Hotline</p>
-                                <a href="tel:+918851599115" class="text-orange hover:text-white transition duration-300 text-xl font-bold">+91 88515 99115</a>
+                                <a href="tel:+918851599115"
+                                    class="text-orange hover:text-white transition duration-300 text-xl font-bold">+91
+                                    88515 99115</a>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-center">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
                                 <span class="text-2xl">📧</span>
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-lg">Email Support</p>
-                                <a href="mailto:help@mechiebro.com" class="text-orange hover:text-white transition duration-300 text-xl">help@mechiebro.com</a>
+                                <a href="mailto:help@mechiebro.com"
+                                    class="text-orange hover:text-white transition duration-300 text-xl">help@mechiebro.com</a>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-center">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
                                 <span class="text-2xl">📍</span>
                             </div>
                             <div>
@@ -837,9 +980,10 @@
                                 <p class="text-gray-400 text-lg">Delhi, India</p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-center">
-                            <div class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
+                            <div
+                                class="w-16 h-16 premium-gradient rounded-xl flex items-center justify-center mr-6 shadow-lg">
                                 <span class="text-2xl">🕐</span>
                             </div>
                             <div>
@@ -849,49 +993,51 @@
                         </div>
                     </div>
                 </div>
-                
-<!-- Minimal Quick Actions Section -->
-<div class="bg-white/5 backdrop-blur-xl rounded-3xl p-10 text-center border border-white/10 shadow-xl">
-  <h3 class="text-3xl font-semibold mb-10 text-white tracking-wide">Quick Actions</h3>
 
-  <div class="flex flex-wrap justify-center gap-10">
+                <!-- Minimal Quick Actions Section -->
+                <div class="bg-white/5 backdrop-blur-xl rounded-3xl p-10 text-center border border-white/10 shadow-xl">
+                    <h3 class="text-3xl font-semibold mb-10 text-white tracking-wide">Quick Actions</h3>
 
-    <!-- Book Service -->
-    <div class="relative group flex flex-col items-center">
-      <button onclick="openBookingModal()" 
-              class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center text-white text-3xl shadow-lg transition transform hover:scale-110 hover:bg-white/20">
-        🚗
-      </button>
-      <span class="absolute bottom-[-40px] text-xs bg-black/80 text-white px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition duration-300">
-        Book Premium Service
-      </span>
-    </div>
+                    <div class="flex flex-wrap justify-center gap-10">
 
-    <!-- WhatsApp Chat -->
-    <div class="relative group flex flex-col items-center">
-      <a href="https://api.whatsapp.com/send?phone=918851599115"
-         target="_blank"
-         class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center text-white text-3xl shadow-lg transition transform hover:scale-110 hover:bg-white/20">
-        💬
-      </a>
-      <span class="absolute bottom-[-40px] text-xs bg-black/80 text-white px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition duration-300">
-        Chat on WhatsApp
-      </span>
-    </div>
+                        <!-- Book Service -->
+                        <div class="relative group flex flex-col items-center">
+                            <button onclick="openBookingModal()"
+                                class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center text-white text-3xl shadow-lg transition transform hover:scale-110 hover:bg-white/20">
+                                🚗
+                            </button>
+                            <span
+                                class="absolute bottom-[-40px] text-xs bg-black/80 text-white px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition duration-300">
+                                Book Premium Service
+                            </span>
+                        </div>
 
-    <!-- Direct Call -->
-    <div class="relative group flex flex-col items-center">
-      <a href="tel:+918851599115"
-         class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center text-white text-3xl shadow-lg transition transform hover:scale-110 hover:bg-white/20">
-        📞
-      </a>
-      <span class="absolute bottom-[-40px] text-xs bg-black/80 text-white px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition duration-300">
-        Call Directly
-      </span>
-    </div>
+                        <!-- WhatsApp Chat -->
+                        <div class="relative group flex flex-col items-center">
+                            <a href="https://api.whatsapp.com/send?phone=918851599115" target="_blank"
+                                class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center text-white text-3xl shadow-lg transition transform hover:scale-110 hover:bg-white/20">
+                                💬
+                            </a>
+                            <span
+                                class="absolute bottom-[-40px] text-xs bg-black/80 text-white px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition duration-300">
+                                Chat on WhatsApp
+                            </span>
+                        </div>
 
-  </div>
-</div>
+                        <!-- Direct Call -->
+                        <div class="relative group flex flex-col items-center">
+                            <a href="tel:+918851599115"
+                                class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center text-white text-3xl shadow-lg transition transform hover:scale-110 hover:bg-white/20">
+                                📞
+                            </a>
+                            <span
+                                class="absolute bottom-[-40px] text-xs bg-black/80 text-white px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition duration-300">
+                                Call Directly
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
 
 
     </section>
@@ -905,99 +1051,139 @@
                     <div class="flex items-center mb-6">
                         <!-- Footer Logo -->
                         <div class="w-12 h-12 mr-3">
-                            <img src="newllogo.jpg" alt="MechieBro Logo" class="w-full h-full object-contain rounded-xl shadow-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="newllogo.jpg" alt="MechieBro Logo"
+                                class="w-full h-full object-contain rounded-xl shadow-2xl"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <!-- Fallback if logo fails to load -->
-                            <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl" style="display: none;">
+                            <div class="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl"
+                                style="display: none;">
                                 <span class="text-white text-xl">🚗</span>
                             </div>
                         </div>
                         <div class="text-2xl font-black gradient-text">MechieBro</div>
                     </div>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Your trusted premium 24/7 roadside assistance partner. Professional, reliable, and always available when you need us most.</p>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Your trusted premium 24/7 roadside assistance partner.
+                        Professional, reliable, and always available when you need us most.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        <a href="#"
+                            class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+                        <a href="#"
+                            class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/></svg>
+                        <a href="#"
+                            class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-orange transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z" />
+                            </svg>
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- Quick Links -->
                 <div>
                     <h3 class="text-white font-bold mb-6 text-xl">Quick Links</h3>
                     <ul class="space-y-3">
-                        <li><a href="#services" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Premium Services</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-orange transition duration-300 text-lg">About Us</a></li>
-                        <li><a href="#testimonials" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Customer Reviews</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Contact</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Privacy Policy</a></li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-orange transition duration-300 text-lg">Premium
+                                Services</a></li>
+                        <li><a href="#about"
+                                class="text-gray-400 hover:text-orange transition duration-300 text-lg">About Us</a>
+                        </li>
+                        <li><a href="#testimonials"
+                                class="text-gray-400 hover:text-orange transition duration-300 text-lg">Customer
+                                Reviews</a></li>
+                        <li><a href="#contact"
+                                class="text-gray-400 hover:text-orange transition duration-300 text-lg">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Privacy
+                                Policy</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Services -->
                 <div>
                     <h3 class="text-white font-bold mb-6 text-xl">Premium Services</h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Puncture Repair</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Battery Jump Start</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Emergency Towing</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Fuel Delivery</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Expert Assistance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Puncture
+                                Repair</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Battery
+                                Jump Start</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-orange transition duration-300 text-lg">Emergency
+                                Towing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Fuel
+                                Delivery</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange transition duration-300 text-lg">Expert
+                                Assistance</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Emergency Contact -->
                 <div>
                     <h3 class="text-white font-bold mb-6 text-xl">Emergency Contact</h3>
                     <div class="space-y-4">
                         <div>
                             <p class="text-gray-400 mb-2">24/7 Emergency Hotline:</p>
-                            <a href="tel:+918851599115" class="text-orange hover:text-white transition duration-300 font-bold text-2xl">+91 88515 99115</a>
+                            <a href="tel:+918851599115"
+                                class="text-orange hover:text-white transition duration-300 font-bold text-2xl">+91
+                                88515 99115</a>
                         </div>
                         <div>
                             <p class="text-gray-400 mb-2">Email Support:</p>
-                            <a href="mailto:help@mechiebro.com" class="text-orange hover:text-white transition duration-300 text-lg">help@mechiebro.com</a>
+                            <a href="mailto:help@mechiebro.com"
+                                class="text-orange hover:text-white transition duration-300 text-lg">help@mechiebro.com</a>
                         </div>
                         <div class="pt-4">
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p class="text-gray-400 text-lg">&copy; 2025 MechieBro. All rights reserved. | Premium Roadside Assistance Services</p>
+                <p class="text-gray-400 text-lg">&copy; 2025 MechieBro. All rights reserved. | Premium Roadside
+                    Assistance Services</p>
             </div>
         </div>
     </footer>
 
     <!-- Booking Modal -->
-    <div id="bookingModal" class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-        <div class="glass-effect rounded-2xl p-8 w-full max-w-lg border border-orange border-opacity-30 shadow-2xl max-h-screen overflow-y-auto">
+    <div id="bookingModal"
+        class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div
+            class="glass-effect rounded-2xl p-8 w-full max-w-lg border border-orange border-opacity-30 shadow-2xl max-h-screen overflow-y-auto">
             <div class="flex justify-between items-center mb-8">
                 <h3 class="text-3xl font-bold gradient-text">Book Premium Service</h3>
-                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-white text-4xl transition duration-300">&times;</button>
+                <button onclick="closeBookingModal()"
+                    class="text-gray-400 hover:text-white text-4xl transition duration-300">&times;</button>
             </div>
-            
+
             <form id="bookingForm" class="space-y-6">
                 <div>
                     <label class="block text-white font-semibold mb-3 text-lg">Full Name *</label>
-                    <input type="text" id="customerName" required class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
+                    <input type="text" id="customerName" required
+                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
                 </div>
-                
+
                 <div>
                     <label class="block text-white font-semibold mb-3 text-lg">Phone Number *</label>
-                    <input type="tel" id="customerPhone" required class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
+                    <input type="tel" id="customerPhone" required
+                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
                 </div>
-                
+
                 <div>
                     <label class="block text-white font-semibold mb-3 text-lg">Service Required *</label>
-                    <select id="serviceType" required class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
+                    <select id="serviceType" required
+                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
                         <option value="">Select a premium service</option>
                         <option value="Puncture Repair">Professional Puncture Repair</option>
                         <option value="Battery Jump Start">Battery Jump Start & Diagnosis</option>
@@ -1007,24 +1193,31 @@
                         <option value="General Assistance">Expert General Assistance</option>
                     </select>
                 </div>
-                
+
                 <div>
                     <label class="block text-white font-semibold mb-3 text-lg">Current Location *</label>
                     <div class="flex gap-3">
-                        <input type="text" id="customerLocation" required class="flex-1 px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg" placeholder="Enter your exact location">
-                        <button type="button" onclick="detectLocation()" class="premium-button text-white px-6 py-4 rounded-xl transition duration-300 shadow-lg">
+                        <input type="text" id="customerLocation" required
+                            class="flex-1 px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg"
+                            placeholder="Enter your exact location">
+                        <button type="button" onclick="detectLocation()"
+                            class="premium-button text-white px-6 py-4 rounded-xl transition duration-300 shadow-lg">
                             📍
                         </button>
                     </div>
                     <div id="locationStatus" class="text-sm text-gray-400 mt-2"></div>
                 </div>
-                
+
                 <div>
                     <label class="block text-white font-semibold mb-3 text-lg">Problem Description</label>
-                    <textarea id="problemDescription" class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg" rows="4" placeholder="Please describe your problem in detail for better assistance..."></textarea>
+                    <textarea id="problemDescription"
+                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg"
+                        rows="4"
+                        placeholder="Please describe your problem in detail for better assistance..."></textarea>
                 </div>
-                
-                <button type="submit" class="w-full premium-button text-white font-bold py-5 px-8 rounded-xl text-xl transition duration-300 transform hover:scale-105 shadow-2xl">
+
+                <button type="submit"
+                    class="w-full premium-button text-white font-bold py-5 px-8 rounded-xl text-xl transition duration-300 transform hover:scale-105 shadow-2xl">
                     📱 Send to WhatsApp
                 </button>
             </form>
@@ -1032,7 +1225,8 @@
     </div>
 
     <!-- Success Message -->
-    <div id="successMessage" class="hidden fixed top-6 right-6 glass-effect text-white px-8 py-6 rounded-xl shadow-2xl z-50 transform transition-all duration-300 border border-green-500">
+    <div id="successMessage"
+        class="hidden fixed top-6 right-6 glass-effect text-white px-8 py-6 rounded-xl shadow-2xl z-50 transform transition-all duration-300 border border-green-500">
         <div class="flex items-center">
             <span class="mr-4 text-2xl">✓</span>
             <div>
@@ -1045,38 +1239,38 @@
     <script>
         // Global variables
         let userLocation = null;
-        
+
         // PWA Service Worker Registration
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 navigator.serviceWorker.register('data:application/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZnVuY3Rpb24oZXZlbnQpIHsKICBjb25zb2xlLmxvZygnU2VydmljZSBXb3JrZXIgaW5zdGFsbGVkJyk7Cn0pOwoKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdmZXRjaCcsIGZ1bmN0aW9uKGV2ZW50KSB7CiAgLy8gQmFzaWMgY2FjaGluZyBzdHJhdGVneQogIGV2ZW50LnJlc3BvbmRXaXRoKGZldGNoKGV2ZW50LnJlcXVlc3QpKTsKfSk7')
-                .then(function(registration) {
-                    console.log('ServiceWorker registration successful');
-                }).catch(function(err) {
-                    console.log('ServiceWorker registration failed');
-                });
+                    .then(function (registration) {
+                        console.log('ServiceWorker registration successful');
+                    }).catch(function (err) {
+                        console.log('ServiceWorker registration failed');
+                    });
             });
         }
-        
+
         // Mobile menu toggle
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('hidden');
         }
-        
+
         // Booking modal functions
         function openBookingModal(service = '') {
             const modal = document.getElementById('bookingModal');
             const serviceSelect = document.getElementById('serviceType');
-            
+
             if (service) {
                 serviceSelect.value = service;
             }
-            
+
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
-        
+
         function closeBookingModal() {
             const modal = document.getElementById('bookingModal');
             modal.classList.add('hidden');
@@ -1084,21 +1278,21 @@
             document.getElementById('bookingForm').reset();
             document.getElementById('locationStatus').textContent = '';
         }
-        
+
         // Location detection
         function detectLocation() {
             const statusEl = document.getElementById('locationStatus');
             const locationEl = document.getElementById('customerLocation');
-            
+
             statusEl.textContent = 'Detecting location...';
             statusEl.className = 'text-sm text-orange mt-2';
-            
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
-                    function(position) {
+                    function (position) {
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
-                        
+
                         // Use reverse geocoding API (free service)
                         fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`)
                             .then(response => response.json())
@@ -1116,7 +1310,7 @@
                                 userLocation = { lat, lng, address: `${lat.toFixed(6)}, ${lng.toFixed(6)}` };
                             });
                     },
-                    function(error) {
+                    function (error) {
                         statusEl.textContent = '❌ Location access denied. Please enter manually.';
                         statusEl.className = 'text-sm text-red-400 mt-2';
                         console.error('Geolocation error:', error);
@@ -1132,11 +1326,11 @@
                 statusEl.className = 'text-sm text-red-400 mt-2';
             }
         }
-        
+
         // Form submission
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const formData = {
                 name: document.getElementById('customerName').value,
                 phone: document.getElementById('customerPhone').value,
@@ -1146,7 +1340,7 @@
                 timestamp: new Date().toISOString(),
                 coordinates: userLocation
             };
-            
+
             // Create WhatsApp message
             const whatsappMessage = `🚗 *MechieBro Premium Roadside Assistance*
 
@@ -1173,27 +1367,27 @@ Thank you for choosing MechieBro!`;
             // Updated WhatsApp number
             const whatsappNumber = '918851599115';
             const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
-            
+
             // Save booking locally for reference
             const bookings = JSON.parse(localStorage.getItem('mechieBroBookings') || '[]');
             bookings.push(formData);
             localStorage.setItem('mechieBroBookings', JSON.stringify(bookings));
-            
+
             // Open WhatsApp
             window.open(whatsappURL, '_blank');
-            
+
             // Show success message
             showSuccessMessage();
-            
+
             // Close modal and reset form
             closeBookingModal();
         });
-        
+
         // Success message
         function showSuccessMessage() {
             const successMsg = document.getElementById('successMessage');
             successMsg.classList.remove('hidden');
-            
+
             setTimeout(() => {
                 successMsg.style.transform = 'translateX(100%)';
                 setTimeout(() => {
@@ -1202,31 +1396,31 @@ Thank you for choosing MechieBro!`;
                 }, 300);
             }, 4000);
         }
-        
+
         // Testimonials slider
         function scrollTestimonials(direction) {
             const slider = document.getElementById('testimonialSlider');
             const scrollAmount = 400; // Width of one testimonial card + gap
-            
+
             if (direction === 'left') {
                 slider.scrollLeft -= scrollAmount;
             } else {
                 slider.scrollLeft += scrollAmount;
             }
         }
-        
+
         // Auto-scroll testimonials
         setInterval(() => {
             const slider = document.getElementById('testimonialSlider');
             const maxScroll = slider.scrollWidth - slider.clientWidth;
-            
+
             if (slider.scrollLeft >= maxScroll) {
                 slider.scrollLeft = 0;
             } else {
                 slider.scrollLeft += 400;
             }
         }, 6000);
-        
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1240,41 +1434,41 @@ Thank you for choosing MechieBro!`;
                 }
             });
         });
-        
+
         // Close mobile menu when clicking on links
         document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('mobileMenu').classList.add('hidden');
             });
         });
-        
+
         // Close modal when clicking outside
-        document.getElementById('bookingModal').addEventListener('click', function(e) {
+        document.getElementById('bookingModal').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeBookingModal();
             }
         });
-        
+
         // Service toggle functionality
         function toggleService(serviceId) {
             const details = document.getElementById(serviceId + '-details');
             const arrow = document.getElementById(serviceId + '-arrow');
-            
+
             if (details.classList.contains('hidden')) {
                 // Close all other services first
                 const allDetails = document.querySelectorAll('[id$="-details"]');
                 const allArrows = document.querySelectorAll('[id$="-arrow"]');
-                
+
                 allDetails.forEach(detail => {
                     if (!detail.classList.contains('hidden')) {
                         detail.classList.add('hidden');
                     }
                 });
-                
+
                 allArrows.forEach(arrowEl => {
                     arrowEl.style.transform = 'rotate(0deg)';
                 });
-                
+
                 // Open the clicked service
                 details.classList.remove('hidden');
                 arrow.style.transform = 'rotate(180deg)';
@@ -1284,11 +1478,11 @@ Thank you for choosing MechieBro!`;
                 arrow.style.transform = 'rotate(0deg)';
             }
         }
-        
+
         // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             console.log('MechieBro Premium Roadside Assistance loaded successfully!');
-            
+
             // Check if user wants to install PWA
             let deferredPrompt;
             window.addEventListener('beforeinstallprompt', (e) => {
@@ -1298,44 +1492,57 @@ Thank you for choosing MechieBro!`;
         });
     </script>
     <!-- Registration Modal -->
-    <div id="registerModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[100] backdrop-blur-sm">
-      <div class="bg-white text-black p-8 rounded-2xl w-full max-w-sm mx-4 relative shadow-2xl animate-scale-in">
-        <button onclick="toggleRegisterModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black transition-colors">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-        
-        <div class="text-center mb-6">
-          <h2 class="text-2xl font-bold mb-2">Registration Required</h2>
-          <p class="text-gray-600">Please register to access emergency assistance.</p>
-        </div>
+    <div id="registerModal"
+        class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[100] backdrop-blur-sm">
+        <div class="bg-white text-black p-8 rounded-2xl w-full max-w-sm mx-4 relative shadow-2xl animate-scale-in">
+            <button onclick="toggleRegisterModal()"
+                class="absolute top-4 right-4 text-gray-500 hover:text-black transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
 
-        <div class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-            <input id="regName" type="text" placeholder="Enter your name" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-            <input id="regPhone" type="tel" placeholder="Enter your phone number" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-            <input id="regPassword" type="password" placeholder="Create a password" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
-          </div>
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold mb-2">Registration Required</h2>
+                <p class="text-gray-600">Please register to access emergency assistance.</p>
+            </div>
 
-          <button onclick="registerUser()" id="regSubmitBtn" class="bg-orange hover:bg-dark-orange text-white font-bold py-4 w-full rounded-xl shadow-lg transition duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2">
-            <span>Submit Registration</span>
-            <svg id="regSpinner" class="hidden w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-          </button>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input id="regName" type="text" placeholder="Enter your name"
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                    <input id="regPhone" type="tel" placeholder="Enter your phone number"
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input id="regPassword" type="password" placeholder="Create a password"
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
+                </div>
+
+                <button onclick="registerUser()" id="regSubmitBtn"
+                    class="bg-orange hover:bg-dark-orange text-white font-bold py-4 w-full rounded-xl shadow-lg transition duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2">
+                    <span>Submit Registration</span>
+                    <svg id="regSpinner" class="hidden w-5 h-5 animate-spin text-white"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
-      </div>
     </div>
 
     <script>
-        const API_BASE = "http://ec2-44-200-5-51.compute-1.amazonaws.com:8000";
+        const API_BASE = "https://api.mechiebro.com";
 
         function toggleRegisterModal() {
             const modal = document.getElementById("registerModal");
@@ -1371,11 +1578,11 @@ Thank you for choosing MechieBro!`;
             try {
                 const res = await fetch(`${API_BASE}/signup`, {
                     method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({ 
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
                         name: name,
-                        phone_number: phone_number, 
-                        password: password 
+                        phone_number: phone_number,
+                        password: password
                     })
                 });
 
@@ -1400,6 +1607,5 @@ Thank you for choosing MechieBro!`;
         }
     </script>
 </body>
+
 </html>
-
-
