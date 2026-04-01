@@ -1595,7 +1595,16 @@ Thank you for choosing MechieBro!`;
                     window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
                 } else {
                     const data = await res.json();
-                    alert(data.detail || "User already exists or registration error");
+                    const detail = data.detail || "";
+                    if (detail.toLowerCase().includes("already registered") || detail.toLowerCase().includes("already exists")) {
+                        localStorage.setItem("mechiebro_user_phone", phone_number);
+                        localStorage.setItem("mechiebro_user_name", name);
+                        alert("User already registered. Redirecting to assistance...");
+                        toggleRegisterModal();
+                        window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+                    } else {
+                        alert(detail || "Registration error");
+                    }
                 }
             } catch (error) {
                 console.error("Registration error:", error);
