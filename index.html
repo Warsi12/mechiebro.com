@@ -287,6 +287,24 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="0.5" fill="%23FF6B35" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
             pointer-events: none;
         }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 107, 53, 0.3);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 107, 53, 0.5);
+        }
     </style>
 </head>
 
@@ -342,10 +360,26 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-6 text-white font-medium text-lg">
+                <div class="hidden md:flex space-x-6 text-white font-medium text-lg items-center">
                     <a href="#services" class="hover:text-orange transition duration-300">Services</a>
                     <a href="#about" class="hover:text-orange transition duration-300">About</a>
                     <a href="#contact" class="hover:text-orange transition duration-300">Contact</a>
+
+                    <!-- Auth Desktop Section -->
+                    <div id="authDesktop" class="flex items-center space-x-4">
+                        <button onclick="openAuthModal()" id="loginBtn"
+                            class="text-white hover:text-orange transition duration-300">Login/Signup</button>
+                        <div id="userMenu" class="hidden flex items-center space-x-4">
+                            <a href="admin.html" id="adminDashboardBtn"
+                                class="hidden text-orange font-bold hover:text-white transition duration-300">Admin
+                                Dashboard</a>
+                            <button onclick="openTrackingModal()"
+                                class="text-white hover:text-orange transition duration-300">My Requests</button>
+                            <button onclick="logout()"
+                                class="text-sm bg-white/10 hover:bg-white/20 px-3 py-1 rounded-lg">Logout</button>
+                        </div>
+                    </div>
+
                     <button onclick="handleEmergencyClick()"
                         class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-5 py-2 rounded-full font-semibold shadow-md flex items-center gap-2 transition duration-300 hover:scale-105">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white animate-pulse" fill="none"
@@ -355,7 +389,6 @@
                         </svg>
                         Emergency Help
                     </button>
-
                 </div>
             </div>
         </div>
@@ -365,6 +398,23 @@
             <a href="#services" class="block hover:text-orange transition duration-300">Services</a>
             <a href="#about" class="block hover:text-orange transition duration-300">About</a>
             <a href="#contact" class="block hover:text-orange transition duration-300">Contact</a>
+
+            <!-- Auth Mobile Section -->
+            <div id="authMobile">
+                <button onclick="openAuthModal(); toggleMobileMenu();" id="loginBtnMobile"
+                    class="block w-full text-left hover:text-orange transition duration-300 py-2">Login/Signup</button>
+                <div id="userMenuMobile" class="hidden space-y-4">
+                    <a href="admin.html" id="adminDashboardBtnMobile"
+                        class="hidden block w-full text-left font-bold text-orange hover:text-white transition duration-300 py-2">Admin
+                        Dashboard</a>
+                    <button onclick="openTrackingModal(); toggleMobileMenu();"
+                        class="block w-full text-left hover:text-orange transition duration-300 py-2">My
+                        Requests</button>
+                    <button onclick="logout()"
+                        class="block w-full text-left text-red-400 hover:text-red-300 transition duration-300 py-2">Logout</button>
+                </div>
+            </div>
+
             <button onclick="handleEmergencyClick()"
                 class="block w-full bg-red-600 hover:bg-red-700 text-center text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
                 🚨 Emergency Help
@@ -1152,6 +1202,9 @@
             <div class="border-t border-gray-800 mt-12 pt-8 text-center">
                 <p class="text-gray-400 text-lg">&copy; 2025 MechieBro. All rights reserved. | Premium Roadside
                     Assistance Services</p>
+                <p class="text-gray-700 text-sm mt-3">
+                    <a href="admin.html" class="hover:text-orange transition duration-300">⚙️ Admin Panel</a>
+                </p>
             </div>
         </div>
     </footer>
@@ -1177,13 +1230,14 @@
                 <div>
                     <label class="block text-white font-semibold mb-3 text-lg">Phone Number *</label>
                     <input type="tel" id="customerPhone" required
-                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
+                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg"
+                        placeholder="+91XXXXXXXXXX">
                 </div>
 
                 <div>
                     <label class="block text-white font-semibold mb-3 text-lg">Service Required *</label>
                     <select id="serviceType" required
-                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg">
+                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg bg-black">
                         <option value="">Select a premium service</option>
                         <option value="Puncture Repair">Professional Puncture Repair</option>
                         <option value="Battery Jump Start">Battery Jump Start & Diagnosis</option>
@@ -1191,6 +1245,19 @@
                         <option value="Fuel Delivery">Premium Fuel Delivery</option>
                         <option value="Towing Service">Professional Towing Service</option>
                         <option value="General Assistance">Expert General Assistance</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-white font-semibold mb-3 text-lg">Vehicle Type *</label>
+                    <select id="vehicleType" required
+                        class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg bg-black">
+                        <option value="">Select vehicle type</option>
+                        <option value="CAR">🚗 Car</option>
+                        <option value="BIKE">🏍️ Bike / Scooter</option>
+                        <option value="TRUCK">🚛 Truck / Commercial</option>
+                        <option value="AUTO">🛺 Auto Rickshaw</option>
+                        <option value="OTHER">🚙 Other</option>
                     </select>
                 </div>
 
@@ -1216,9 +1283,17 @@
                         placeholder="Please describe your problem in detail for better assistance..."></textarea>
                 </div>
 
-                <button type="submit"
-                    class="w-full premium-button text-white font-bold py-5 px-8 rounded-xl text-xl transition duration-300 transform hover:scale-105 shadow-2xl">
-                    📱 Send to WhatsApp
+                <button type="submit" id="bookingSubmitBtn"
+                    class="w-full premium-button text-white font-bold py-5 px-8 rounded-xl text-xl transition duration-300 transform hover:scale-105 shadow-2xl flex items-center justify-center gap-3">
+                    <span id="bookingBtnText">🚀 Request Service</span>
+                    <svg id="bookingSpinner" class="hidden w-6 h-6 animate-spin text-white"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
                 </button>
             </form>
         </div>
@@ -1327,59 +1402,66 @@
             }
         }
 
-        // Form submission
-        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+        // Form submission — saves request to backend + opens WhatsApp
+        document.getElementById('bookingForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            const formData = {
-                name: document.getElementById('customerName').value,
-                phone: document.getElementById('customerPhone').value,
-                service: document.getElementById('serviceType').value,
-                location: document.getElementById('customerLocation').value,
-                problem: document.getElementById('problemDescription').value,
-                timestamp: new Date().toISOString(),
-                coordinates: userLocation
-            };
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const service = document.getElementById('serviceType').value;
+            const vehicle = document.getElementById('vehicleType').value;
+            const location = document.getElementById('customerLocation').value.trim();
+            const problem = document.getElementById('problemDescription').value.trim();
 
-            // Create WhatsApp message
-            const whatsappMessage = `🚗 *MechieBro Premium Roadside Assistance*
+            // Use logged-in phone if available
+            const userPhone = localStorage.getItem('mechiebro_user_phone') || phone;
 
-👤 *Customer Details:*
-Name: ${formData.name}
-Phone: ${formData.phone}
+            // Build lat,lng location string if we have GPS coords
+            let locationStr = location;
+            if (userLocation) {
+                locationStr = `${userLocation.lat.toFixed(6)},${userLocation.lng.toFixed(6)}`;
+            }
 
-🛠️ *Service Required:*
-${formData.service}
+            const btn = document.getElementById('bookingSubmitBtn');
+            const btnText = document.getElementById('bookingBtnText');
+            const spinner = document.getElementById('bookingSpinner');
+            btn.disabled = true;
+            btnText.textContent = 'Submitting...';
+            spinner.classList.remove('hidden');
 
-📍 *Location:*
-${formData.location}
-${userLocation ? `\nCoordinates: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}` : ''}
+            // 1. POST to backend API
+            try {
+                await fetch(`${API_BASE}/emergency-request`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        customer_phone_number: userPhone,
+                        location: locationStr,
+                        service_type: service,
+                        vehicle_type: vehicle || 'OTHER',
+                        description: problem || null
+                    })
+                });
+            } catch (apiErr) {
+                console.warn('API save failed (offline?), continuing with WhatsApp:', apiErr);
+            }
 
-📝 *Problem Description:*
-${formData.problem || 'No additional details provided'}
+            btn.disabled = false;
+            btnText.textContent = '🚀 Request Service';
+            spinner.classList.add('hidden');
 
-🕒 *Request Time:* ${new Date().toLocaleString('en-IN')}
+            // 2. Also open WhatsApp for instant contact
+            const whatsappMessage = `🚗 *MechieBro Premium Roadside Assistance*\n\n👤 *Customer:* ${name} (${userPhone})\n🛠️ *Service:* ${service}\n🚗 *Vehicle:* ${vehicle}\n📍 *Location:* ${location}${userLocation ? `\n📌 GPS: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}` : ''}\n📝 ${problem || 'No extra details'}\n🕒 ${new Date().toLocaleString('en-IN')}\n\n*Please respond with ETA.*`;
 
-*This is a PREMIUM SERVICE request. Please prioritize and respond with estimated arrival time.*
-
-Thank you for choosing MechieBro!`;
-
-            // Updated WhatsApp number
-            const whatsappNumber = '918851599115';
-            const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
-
-            // Save booking locally for reference
-            const bookings = JSON.parse(localStorage.getItem('mechieBroBookings') || '[]');
-            bookings.push(formData);
-            localStorage.setItem('mechieBroBookings', JSON.stringify(bookings));
-
-            // Open WhatsApp
+            const whatsappURL = `https://api.whatsapp.com/send?phone=918851599115&text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, '_blank');
 
-            // Show success message
-            showSuccessMessage();
+            // 3. Save locally as backup
+            const bookings = JSON.parse(localStorage.getItem('mechieBroBookings') || '[]');
+            bookings.push({ name, phone: userPhone, service, vehicle, location, problem, timestamp: new Date().toISOString() });
+            localStorage.setItem('mechieBroBookings', JSON.stringify(bookings));
 
-            // Close modal and reset form
+            showSuccessMessage();
             closeBookingModal();
         });
 
@@ -1504,30 +1586,32 @@ Thank you for choosing MechieBro!`;
             </button>
 
             <div class="text-center mb-6">
-                <h2 class="text-2xl font-bold mb-2">Registration Required</h2>
-                <p class="text-gray-600">Please register to access emergency assistance.</p>
+                <h2 id="regModalTitle" class="text-2xl font-bold mb-2">Login / Signup</h2>
+                <p id="regModalDesc" class="text-gray-600">Enter your details to access MechieBro services.</p>
             </div>
 
             <div class="space-y-4">
-                <div>
+                <div id="nameField">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                     <input id="regName" type="text" placeholder="Enter your name"
                         class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                    <input id="regPhone" type="tel" placeholder="Enter your phone number"
+                    <input id="regPhone" type="tel" placeholder="+91XXXXXXXXXX"
                         class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                    <input id="regPassword" type="password" placeholder="Create a password"
-                        class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
+                <!-- OTP Field (Hidden Initially) -->
+                <div id="otpField" class="hidden animate-scale-in">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Enter OTP</label>
+                    <input id="regOTP" type="text" maxlength="6" placeholder="Enter 6-digit OTP"
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all tracking-widest text-center text-lg font-bold">
+                    <p class="text-xs text-gray-500 mt-1">Check your messages for the OTP.</p>
                 </div>
 
-                <button onclick="registerUser()" id="regSubmitBtn"
+                <button onclick="handleAuthAction()" id="regSubmitBtn"
                     class="bg-orange hover:bg-dark-orange text-white font-bold py-4 w-full rounded-xl shadow-lg transition duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2">
-                    <span>Submit Registration</span>
+                    <span id="submitBtnText">Send OTP</span>
                     <svg id="regSpinner" class="hidden w-5 h-5 animate-spin text-white"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
@@ -1537,16 +1621,68 @@ Thank you for choosing MechieBro!`;
                         </path>
                     </svg>
                 </button>
+
+                <p class="text-center text-gray-500 text-sm">
+                    <button onclick="toggleAuthMode()" id="toggleModeBtn"
+                        class="text-orange font-bold hover:underline">Already have an account? Login</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracking Modal -->
+    <div id="trackingModal"
+        class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[100] backdrop-blur-md">
+        <div
+            class="bg-[#121212] border border-white/10 text-white p-6 sm:p-8 rounded-3xl w-full max-w-2xl mx-4 relative shadow-2xl animate-slide-up max-h-[90vh] flex flex-col">
+            <button onclick="closeTrackingModal()"
+                class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-black gradient-text">My Emergency Requests</h2>
+                <p class="text-gray-400 mt-2">Track the status of your current and past requests.</p>
+            </div>
+
+            <div id="requestList" class="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
+                <!-- Requests will be injected here -->
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/10 text-center">
+                <p class="text-sm text-gray-500">Need immediate help? Call us at <a href="tel:+918851599115"
+                        class="text-orange font-bold">+91 88515 99115</a></p>
             </div>
         </div>
     </div>
 
     <script>
         const API_BASE = "https://api.mechiebro.com";
+        // const API_BASE = "http://localhost:8000";
 
         function toggleRegisterModal() {
             const modal = document.getElementById("registerModal");
             modal.classList.toggle("hidden");
+            console.log(API_BASE);
+
+            // Reset OTP state when modal is closed
+            if (modal.classList.contains("hidden")) {
+                isOTPSent = false;
+                document.getElementById("otpField").classList.add("hidden");
+                document.getElementById("regPhone").disabled = false;
+                document.getElementById("regName").disabled = false;
+                document.getElementById("regOTP").value = "";
+                document.getElementById("submitBtnText").innerText = authMode === 'signup' ? "Send Signup OTP" : "Send Login OTP";
+            }
+        }
+
+        function openAuthModal() {
+            document.getElementById("regModalTitle").innerText = "Login / Signup";
+            document.getElementById("regModalDesc").innerText = "Enter your details to access MechieBro services.";
+            toggleRegisterModal();
         }
 
         function handleEmergencyClick() {
@@ -1555,64 +1691,299 @@ Thank you for choosing MechieBro!`;
             if (phone) {
                 window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
             } else {
+                document.getElementById("regModalTitle").innerText = "Registration Required";
+                document.getElementById("regModalDesc").innerText = "Please register to access emergency assistance.";
                 toggleRegisterModal();
             }
         }
 
-        async function registerUser() {
+        let isOTPSent = false;
+        let authMode = 'signup'; // 'signup' or 'login'
+
+        function toggleAuthMode() {
+            const nameField = document.getElementById("nameField");
+            const toggleBtn = document.getElementById("toggleModeBtn");
+            const modalTitle = document.getElementById("regModalTitle");
+            const submitBtnText = document.getElementById("submitBtnText");
+
+            if (authMode === 'signup') {
+                authMode = 'login';
+                nameField.classList.add("hidden");
+                toggleBtn.innerText = "Need an account? Signup";
+                modalTitle.innerText = "Login";
+                submitBtnText.innerText = isOTPSent ? "Verify OTP" : "Send Login OTP";
+            } else {
+                authMode = 'signup';
+                nameField.classList.remove("hidden");
+                toggleBtn.innerText = "Already have an account? Login";
+                modalTitle.innerText = "Signup";
+                submitBtnText.innerText = isOTPSent ? "Verify OTP" : "Send Signup OTP";
+            }
+        }
+
+        async function handleAuthAction() {
+            if (!isOTPSent) {
+                await sendOTP();
+            } else {
+                await verifyOTP();
+            }
+        }
+
+        async function sendOTP() {
             const name = document.getElementById("regName").value.trim();
             const phone_number = document.getElementById("regPhone").value.trim();
-            const password = document.getElementById("regPassword").value.trim();
             const submitBtn = document.getElementById("regSubmitBtn");
             const spinner = document.getElementById("regSpinner");
+            const submitBtnText = document.getElementById("submitBtnText");
+            const otpField = document.getElementById("otpField");
 
-            if (!name || !phone_number || !password) {
-                alert("Please fill in all fields.");
+            if (!phone_number) {
+                alert("Please enter your phone number.");
+                return;
+            }
+            if (authMode === 'signup' && !name) {
+                alert("Please enter your full name.");
                 return;
             }
 
-            // UI Feedback
             submitBtn.disabled = true;
             spinner.classList.remove("hidden");
 
             try {
-                const res = await fetch(`${API_BASE}/signup`, {
+                const endpoint = authMode === 'signup' ? '/signup' : '/login';
+                const body = authMode === 'signup' ? { phone_number, full_name: name } : { phone_number };
+
+                const res = await fetch(`${API_BASE}${endpoint}`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        name: name,
-                        phone_number: phone_number,
-                        password: password
-                    })
+                    body: JSON.stringify(body)
                 });
 
-                if (res.ok) {
-                    localStorage.setItem("mechiebro_user_phone", phone_number);
-                    localStorage.setItem("mechiebro_user_name", name);
+                const data = await res.json();
+                console.log("Auth response data:", data);
 
-                    alert("Registered successfully!");
-                    toggleRegisterModal();
-                    window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+                if (res.ok) {
+                    isOTPSent = true;
+                    otpField.classList.remove("hidden");
+                    submitBtnText.innerText = "Verify OTP";
+                    alert("OTP sent to your phone number!");
+                    // Disable phone input once OTP is sent
+                    document.getElementById("regPhone").disabled = true;
+                    if (authMode === 'signup') document.getElementById("regName").disabled = true;
                 } else {
-                    const data = await res.json();
-                    const detail = data.detail || "";
-                    if (detail.toLowerCase().includes("already registered") || detail.toLowerCase().includes("already exists")) {
-                        localStorage.setItem("mechiebro_user_phone", phone_number);
-                        localStorage.setItem("mechiebro_user_name", name);
-                        alert("User already registered. Redirecting to assistance...");
-                        toggleRegisterModal();
-                        window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
-                    } else {
-                        alert(detail || "Registration error");
-                    }
+                    console.error("Auth error detail:", data.detail);
+                    alert(JSON.stringify(data.detail) || "Error sending OTP");
                 }
             } catch (error) {
-                console.error("Registration error:", error);
-                alert("Failed to connect to the server. Please try again later.");
+                console.error("Auth error:", error);
+                alert("Failed to connect to the server.");
             } finally {
                 submitBtn.disabled = false;
                 spinner.classList.add("hidden");
             }
+        }
+
+        async function verifyOTP() {
+            const phone_number = document.getElementById("regPhone").value.trim();
+            const otp = document.getElementById("regOTP").value.trim();
+            const submitBtn = document.getElementById("regSubmitBtn");
+            const spinner = document.getElementById("regSpinner");
+
+            if (!otp || otp.length < 4) {
+                alert("Please enter a valid OTP.");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            spinner.classList.remove("hidden");
+
+            try {
+                const res = await fetch(`${API_BASE}/verify-otp`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ phone_number, otp })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    localStorage.setItem("mechiebro_user_phone", phone_number);
+                    // If login, data might contain full_name. If signup, we use the local input.
+                    const name = data.full_name || document.getElementById("regName").value.trim() || "User";
+                    localStorage.setItem("mechiebro_user_name", name);
+                    localStorage.setItem("mechiebro_roles", data.roles || "USER");
+
+                    alert("Logged in successfully!");
+                    toggleRegisterModal();
+
+                    // Specific logic for emergency button triggered registration
+                    const regModalTitle = document.getElementById("regModalTitle").innerText;
+                    if (regModalTitle === "Registration Required") {
+                        window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+                    }
+
+                    updateAuthUI();
+                    window.location.reload();
+                } else {
+                    alert(data.detail || "Invalid OTP");
+                }
+            } catch (error) {
+                console.error("Verification error:", error);
+                alert("Failed to connect to the server.");
+            } finally {
+                submitBtn.disabled = false;
+                spinner.classList.add("hidden");
+            }
+        }
+
+        // Auth UI sync
+        function updateAuthUI() {
+            const phone = localStorage.getItem("mechiebro_user_phone");
+            const desktopLogin = document.getElementById("loginBtn");
+            const desktopUser = document.getElementById("userMenu");
+            const mobileLogin = document.getElementById("loginBtnMobile");
+            const mobileUser = document.getElementById("userMenuMobile");
+
+            if (phone) {
+                desktopLogin.classList.add("hidden");
+                desktopUser.classList.remove("hidden");
+                mobileLogin.classList.add("hidden");
+                mobileUser.classList.remove("hidden");
+
+                const roles = localStorage.getItem("mechiebro_roles") || "";
+                const isAdmin = roles.includes("ADMIN");
+                document.getElementById("adminDashboardBtn").classList.toggle("hidden", !isAdmin);
+                document.getElementById("adminDashboardBtnMobile").classList.toggle("hidden", !isAdmin);
+            } else {
+                desktopLogin.classList.remove("hidden");
+                desktopUser.classList.add("hidden");
+                mobileLogin.classList.remove("hidden");
+                mobileUser.classList.add("hidden");
+            }
+        }
+
+        function logout() {
+            if (confirm("Are you sure you want to logout?")) {
+                localStorage.removeItem("mechiebro_user_phone");
+                localStorage.removeItem("mechiebro_user_name");
+                updateAuthUI();
+                window.location.reload();
+            }
+        }
+
+        // Initialize UI
+        document.addEventListener('DOMContentLoaded', updateAuthUI);
+
+        // Tracking Modal Functions
+        async function openTrackingModal() {
+            const modal = document.getElementById("trackingModal");
+            const phone = localStorage.getItem("mechiebro_user_phone");
+
+            if (!phone) {
+                alert("Please login first.");
+                return;
+            }
+
+            modal.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+
+            // Show loading state
+            const listContainer = document.getElementById("requestList");
+            listContainer.innerHTML = `
+                <div class="flex flex-col items-center justify-center py-10 space-y-4">
+                    <div class="w-10 h-10 border-4 border-orange border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-gray-400">Fetching your requests...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`${API_BASE}/list_requests?phone_number=${phone}`);
+                if (!response.ok) throw new Error("Failed to fetch requests");
+
+                const requests = await response.json();
+                renderRequests(requests);
+            } catch (error) {
+                console.error(error);
+                listContainer.innerHTML = `
+                    <div class="text-center py-10">
+                        <p class="text-red-400 mb-4">Failed to load request history.</p>
+                        <button onclick="openTrackingModal()" class="text-orange underline">Try again</button>
+                    </div>
+                `;
+            }
+        }
+
+        function closeTrackingModal() {
+            document.getElementById("trackingModal").classList.add("hidden");
+            document.body.style.overflow = "";
+        }
+
+        function renderRequests(requests) {
+            const listContainer = document.getElementById("requestList");
+
+            if (!requests || requests.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="text-center py-10">
+                        <div class="text-6xl mb-4">📭</div>
+                        <p class="text-gray-400">No emergency requests found.</p>
+                        <p class="text-gray-600 text-sm mt-2">Book a service to get started!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            listContainer.innerHTML = requests.map(req => {
+                // Use created_at (API field), fallback gracefully
+                const raw = req.created_at || req.requested_at || req.timestamp;
+                const date = raw ? new Date(raw) : null;
+                const dateStr = (date && !isNaN(date.getTime())) ? date.toLocaleString('en-IN') : (raw || "Date unknown");
+                const serviceTitle = req.service_type || "Emergency Service";
+                const vehicleLabel = req.vehicle_type ? `<span class="text-gray-500 text-xs ml-2">${getVehicleEmoji(req.vehicle_type)} ${req.vehicle_type}</span>` : '';
+                const descHtml = req.description ? `<p class="text-gray-500 text-xs mt-1 italic">"${req.description}"</p>` : '';
+
+                return `
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-3 hover:border-orange/50 transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">${getServiceEmoji(serviceTitle)} ${serviceTitle}${vehicleLabel}</h4>
+                                <p class="text-gray-400 text-sm">📅 ${dateStr}</p>
+                                ${descHtml}
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap ml-2 ${getStatusStyle(req.status)}">
+                                ${getStatusEmoji(req.status)} ${req.status || "PENDING"}
+                            </span>
+                        </div>
+                        <div class="flex items-center text-gray-300 text-sm">
+                            <span class="mr-2">📍</span>
+                            <span class="truncate">${req.location || "Location not specified"}</span>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        function getServiceEmoji(type) {
+            const map = { 'Puncture Repair': '🔧', 'Battery Jump Start': '🔋', 'Towing Service': '🚛', 'Fuel Delivery': '⛽', 'Brake Emergency': '🛑', 'General Assistance': '🔨' };
+            return map[type] || '🚗';
+        }
+
+        function getVehicleEmoji(v) {
+            const map = { CAR: '🚗', BIKE: '🏍️', TRUCK: '🚛', AUTO: '🛺', OTHER: '🚙' };
+            return map[v] || '🚙';
+        }
+
+        function getStatusEmoji(status) {
+            const map = { PENDING: '⏳', ASSIGNED: '📋', IN_PROGRESS: '⚙️', COMPLETED: '✅', CANCELLED: '❌' };
+            return map[status] || '⏳';
+        }
+
+        function getStatusStyle(status) {
+            const s = (status || '').toUpperCase();
+            if (s === 'COMPLETED') return 'bg-green-500/20 text-green-400 border border-green-500/30';
+            if (s === 'CANCELLED') return 'bg-red-500/20 text-red-400 border border-red-500/30';
+            if (s === 'IN_PROGRESS') return 'bg-blue-500/20 text-blue-400 border border-blue-500/30';
+            if (s === 'ASSIGNED') return 'bg-purple-500/20 text-purple-400 border border-purple-500/30';
+            return 'bg-orange/20 text-orange border border-orange/30';
         }
     </script>
 </body>
