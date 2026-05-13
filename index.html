@@ -369,14 +369,32 @@
                     <div id="authDesktop" class="flex items-center space-x-4">
                         <button onclick="openAuthModal()" id="loginBtn"
                             class="text-white hover:text-orange transition duration-300">Login/Signup</button>
-                        <div id="userMenu" class="hidden flex items-center space-x-4">
-                            <a href="admin.html" id="adminDashboardBtn"
-                                class="hidden text-orange font-bold hover:text-white transition duration-300">Admin
-                                Dashboard</a>
-                            <button onclick="openTrackingModal()"
-                                class="text-white hover:text-orange transition duration-300">My Requests</button>
-                            <button onclick="logout()"
-                                class="text-sm bg-white/10 hover:bg-white/20 px-3 py-1 rounded-lg">Logout</button>
+                        <div id="userMenu" class="hidden relative block">
+                            <button id="accountDropdownBtn"
+                                class="flex items-center gap-2 text-white hover:text-orange transition duration-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+                                <span>👤 Account</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <!-- Dropdown menu -->
+                            <div id="accountDropdown"
+                                class="hidden absolute right-0 mt-2 w-48 bg-black border border-white/10 rounded-xl shadow-2xl py-2 z-50">
+                                <button onclick="openProfileModal()"
+                                    class="w-full text-left px-4 py-2 text-gray-300 hover:text-orange hover:bg-white/5 transition block">👤
+                                    My Profile</button>
+                                <button onclick="openTrackingModal()"
+                                    class="w-full text-left px-4 py-2 text-gray-300 hover:text-orange hover:bg-white/5 transition block">📋
+                                    My Requests</button>
+                                <a href="admin.html" id="adminDashboardBtn"
+                                    class="hidden w-full text-left px-4 py-2 text-orange font-bold hover:bg-white/5 transition block">⚙️
+                                    Admin Panel</a>
+                                <hr class="border-white/10 my-1">
+                                <button onclick="logout()"
+                                    class="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 transition block">🚪
+                                    Logout</button>
+                            </div>
                         </div>
                     </div>
 
@@ -402,16 +420,22 @@
             <!-- Auth Mobile Section -->
             <div id="authMobile">
                 <button onclick="openAuthModal(); toggleMobileMenu();" id="loginBtnMobile"
-                    class="block w-full text-left hover:text-orange transition duration-300 py-2">Login/Signup</button>
-                <div id="userMenuMobile" class="hidden space-y-4">
-                    <a href="admin.html" id="adminDashboardBtnMobile"
-                        class="hidden block w-full text-left font-bold text-orange hover:text-white transition duration-300 py-2">Admin
-                        Dashboard</a>
+                    class="block w-full text-left hover:text-orange transition duration-300 py-2 border-b border-white/10">Login/Signup</button>
+                <div id="userMenuMobile" class="hidden space-y-2 py-2 border-b border-white/10">
+                    <div class="text-xs text-gray-500 uppercase tracking-widest mb-2 font-bold focus:outline-none">My
+                        Account</div>
+                    <button onclick="openProfileModal(); toggleMobileMenu();"
+                        class="block w-full text-left text-gray-300 hover:text-orange transition duration-300 py-2">👤
+                        Profile</button>
                     <button onclick="openTrackingModal(); toggleMobileMenu();"
-                        class="block w-full text-left hover:text-orange transition duration-300 py-2">My
-                        Requests</button>
+                        class="block w-full text-left text-gray-300 hover:text-orange transition duration-300 py-2">📋
+                        My Requests</button>
+                    <a href="admin.html" id="adminDashboardBtnMobile"
+                        class="hidden block w-full text-left font-bold text-orange hover:text-white transition duration-300 py-2">⚙️
+                        Admin Dashboard</a>
                     <button onclick="logout()"
-                        class="block w-full text-left text-red-400 hover:text-red-300 transition duration-300 py-2">Logout</button>
+                        class="block w-full text-left text-red-400 hover:text-red-300 transition duration-300 py-2 mt-2">🚪
+                        Logout</button>
                 </div>
             </div>
 
@@ -426,10 +450,28 @@
     <script>
         const menuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const accountDropdownBtn = document.getElementById('accountDropdownBtn');
+        const accountDropdown = document.getElementById('accountDropdown');
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        if (accountDropdownBtn) {
+            accountDropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                accountDropdown.classList.toggle('hidden');
+            });
+            document.addEventListener('click', (e) => {
+                if (!accountDropdown.contains(e.target) && !accountDropdownBtn.contains(e.target)) {
+                    accountDropdown.classList.add('hidden');
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
     </script>
 
 
@@ -1630,6 +1672,56 @@
         </div>
     </div>
 
+    <!-- Profile Modal -->
+    <div id="profileModal"
+        class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-md justify-center items-center z-[100] transition-opacity duration-300 opacity-0">
+        <div
+            class="glass-effect rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl border border-white/10 transform scale-95 transition-transform duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-black text-white">My <span class="text-orange">Profile</span></h2>
+                <button onclick="closeProfileModal()"
+                    class="text-gray-400 hover:text-white text-4xl transition duration-300">&times;</button>
+            </div>
+
+            <div id="profileLoading" class="text-center py-10 hidden">
+                <svg class="w-10 h-10 animate-spin text-orange mx-auto" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                    </path>
+                </svg>
+            </div>
+
+            <form id="profileForm" class="space-y-5" onsubmit="saveProfile(event)">
+                <div>
+                    <label class="block text-gray-400 font-semibold mb-2 text-sm">Phone Number (Linked)</label>
+                    <input type="text" id="profilePhone" disabled
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-gray-500 cursor-not-allowed font-mono">
+                </div>
+                <div>
+                    <label class="block text-white font-semibold mb-2 text-sm">Full Name</label>
+                    <input type="text" id="profileName" required
+                        class="w-full px-4 py-3 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-white font-semibold mb-2 text-sm">Email Address</label>
+                    <input type="email" id="profileEmail" placeholder="optional@example.com"
+                        class="w-full px-4 py-3 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent">
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" id="profileSaveBtn"
+                        class="w-full premium-button text-white font-bold py-4 rounded-xl text-lg transition duration-300">
+                        💾 Save Profile
+                    </button>
+                    <p id="profileError" class="text-red-400 text-sm mt-3 text-center hidden"></p>
+                    <p id="profileSuccess" class="text-green-400 text-sm mt-3 text-center hidden">Profile updated
+                        successfully!</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Tracking Modal -->
     <div id="trackingModal"
         class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[100] backdrop-blur-md">
@@ -1660,8 +1752,8 @@
     </div>
 
     <script>
-        const API_BASE = "https://api.mechiebro.com";
-        // const API_BASE = "http://localhost:8000";
+        // const API_BASE = "https://api.mechiebro.com";
+        const API_BASE = "http://localhost:8000";
 
         function toggleRegisterModal() {
             const modal = document.getElementById("registerModal");
@@ -1984,6 +2076,89 @@
             if (s === 'IN_PROGRESS') return 'bg-blue-500/20 text-blue-400 border border-blue-500/30';
             if (s === 'ASSIGNED') return 'bg-purple-500/20 text-purple-400 border border-purple-500/30';
             return 'bg-orange/20 text-orange border border-orange/30';
+        }
+
+        // ================= PROFILE FEATURE =================
+        async function openProfileModal() {
+            document.getElementById("profileModal").classList.remove("hidden");
+            document.getElementById("profileModal").classList.add("flex");
+            // Delay to allow fade-in
+            setTimeout(() => { document.getElementById("profileModal").classList.add("opacity-100"); }, 10);
+            document.body.style.overflow = "hidden";
+
+            document.getElementById("profileLoading").classList.remove("hidden");
+            document.getElementById("profileForm").classList.add("hidden");
+            document.getElementById("profileSuccess").classList.add("hidden");
+            document.getElementById("profileError").classList.add("hidden");
+
+            const phone = localStorage.getItem("mechiebro_user_phone");
+            try {
+                const res = await fetch(`${API_BASE}/users/me`, {
+                    headers: { 'Authorization': `Bearer ${phone}` }
+                });
+                if (!res.ok) throw new Error("Failed to load profile");
+
+                const user = await res.json();
+                document.getElementById("profilePhone").value = user.phone_number;
+                document.getElementById("profileName").value = user.full_name || '';
+                document.getElementById("profileEmail").value = user.email || '';
+
+                document.getElementById("profileLoading").classList.add("hidden");
+                document.getElementById("profileForm").classList.remove("hidden");
+            } catch (e) {
+                document.getElementById("profileError").textContent = "Could not load profile data.";
+                document.getElementById("profileError").classList.remove("hidden");
+                document.getElementById("profileLoading").classList.add("hidden");
+            }
+        }
+
+        function closeProfileModal() {
+            document.getElementById("profileModal").classList.remove("opacity-100");
+            setTimeout(() => {
+                document.getElementById("profileModal").classList.add("hidden");
+                document.getElementById("profileModal").classList.remove("flex");
+                document.body.style.overflow = "";
+            }, 300);
+        }
+
+        async function saveProfile(e) {
+            e.preventDefault();
+            const phone = localStorage.getItem("mechiebro_user_phone");
+            const btn = document.getElementById("profileSaveBtn");
+            const name = document.getElementById("profileName").value.trim();
+            const email = document.getElementById("profileEmail").value.trim() || null; // allow null
+
+            btn.disabled = true;
+            btn.innerHTML = "Saving...";
+            document.getElementById("profileSuccess").classList.add("hidden");
+            document.getElementById("profileError").classList.add("hidden");
+
+            try {
+                const res = await fetch(`${API_BASE}/users/me`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${phone}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ full_name: name, email: email })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.detail || "Failed to update API");
+                }
+
+                // Update local storage name too
+                localStorage.setItem("mechiebro_user_name", name);
+
+                document.getElementById("profileSuccess").classList.remove("hidden");
+            } catch (error) {
+                document.getElementById("profileError").textContent = error.message;
+                document.getElementById("profileError").classList.remove("hidden");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = "💾 Save Profile";
+            }
         }
     </script>
 </body>
