@@ -973,15 +973,13 @@
 
         // ---- INIT ----
         window.addEventListener('DOMContentLoaded', () => {
-            // Automatically determine backend URL (local testing vs production)
-            // API_BASE = 'http://localhost:8000'
-            API_BASE = 'https://api.mechiebro.com';
+            API_BASE = window.location.hostname === 'localhost' || window.location.protocol === 'file:' ? 'http://localhost:8000' : 'https://api.mechiebro.com';
 
-            const phone = localStorage.getItem('mechiebro_user_phone');
+            const email = localStorage.getItem('mechiebro_user_email');
             const roles = localStorage.getItem('mechiebro_roles') || '';
 
-            if (phone && roles.includes('ADMIN')) {
-                ADMIN_TOKEN = phone; // Phone acts as our bearer token
+            if (email && roles.includes('ADMIN')) {
+                ADMIN_TOKEN = email; // Email acts as our bearer token
                 autoLoginAdmin();
             } else {
                 showLoginError('Access Denied: You must log in as an Administrator via the main page first.');
@@ -1040,6 +1038,7 @@
 
         function adminLogout() {
             if (!confirm('Logout from admin dashboard?')) return;
+            localStorage.removeItem('mechiebro_user_email');
             localStorage.removeItem('mechiebro_user_phone');
             localStorage.removeItem('mechiebro_roles');
             window.location.href = 'index.html';

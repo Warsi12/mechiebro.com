@@ -1639,8 +1639,8 @@
                         class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                    <input id="regPhone" type="tel" placeholder="+91XXXXXXXXXX"
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                    <input id="regEmail" type="email" placeholder="yourname@example.com"
                         class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all">
                 </div>
                 <!-- OTP Field (Hidden Initially) -->
@@ -1648,7 +1648,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-1">Enter OTP</label>
                     <input id="regOTP" type="text" maxlength="6" placeholder="Enter 6-digit OTP"
                         class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all tracking-widest text-center text-lg font-bold">
-                    <p class="text-xs text-gray-500 mt-1">Check your messages for the OTP.</p>
+                    <p class="text-xs text-gray-500 mt-1">Check your email inbox for the OTP.</p>
                 </div>
 
                 <button onclick="handleAuthAction()" id="regSubmitBtn"
@@ -1694,9 +1694,9 @@
 
             <form id="profileForm" class="space-y-5" onsubmit="saveProfile(event)">
                 <div>
-                    <label class="block text-gray-400 font-semibold mb-2 text-sm">Phone Number (Linked)</label>
-                    <input type="text" id="profilePhone" disabled
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-gray-500 cursor-not-allowed font-mono">
+                    <label class="block text-white font-semibold mb-2 text-sm">Phone Number (Linked)</label>
+                    <input type="text" id="profilePhone" placeholder="+91XXXXXXXXXX"
+                        class="w-full px-4 py-3 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent font-mono">
                 </div>
                 <div>
                     <label class="block text-white font-semibold mb-2 text-sm">Full Name</label>
@@ -1722,6 +1722,64 @@
         </div>
     </div>
 
+    <!-- Phone Number Required Modal (Non-dismissible) -->
+    <div id="phoneRequiredModal"
+        class="hidden fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-[110] backdrop-blur-md">
+        <div class="bg-white text-black p-8 rounded-2xl w-full max-w-sm mx-4 relative shadow-2xl animate-scale-in">
+            <div class="text-center mb-6">
+                <div class="text-4xl mb-2">📞</div>
+                <h2 class="text-2xl font-bold mb-2 text-gray-900">Phone Number Required</h2>
+                <p class="text-sm text-gray-600">Please provide your mobile number. This is necessary to coordinate emergency services.</p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Mobile Number</label>
+                    <div class="flex gap-2">
+                        <!-- Country Code Dropdown -->
+                        <div class="relative">
+                            <select id="reqCountryCode"
+                                class="appearance-none h-full px-3 py-3 pr-7 border border-gray-300 rounded-xl bg-white text-gray-800 font-medium focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all text-sm cursor-pointer"
+                                onchange="validatePhoneInput()">
+                                <option value="+91" data-flag="🇮🇳" data-len="10">🇮🇳 +91</option>
+                                <option value="+1" data-flag="🇺🇸" data-len="10">🇺🇸 +1</option>
+                                <option value="+44" data-flag="🇬🇧" data-len="10">🇬🇧 +44</option>
+                                <option value="+61" data-flag="🇦🇺" data-len="9">🇦🇺 +61</option>
+                                <option value="+971" data-flag="🇦🇪" data-len="9">🇦🇪 +971</option>
+                                <option value="+65" data-flag="🇸🇬" data-len="8">🇸🇬 +65</option>
+                                <option value="+60" data-flag="🇲🇾" data-len="9">🇲🇾 +60</option>
+                                <option value="+92" data-flag="🇵🇰" data-len="10">🇵🇰 +92</option>
+                                <option value="+880" data-flag="🇧🇩" data-len="10">🇧🇩 +880</option>
+                                <option value="+94" data-flag="🇱🇰" data-len="9">🇱🇰 +94</option>
+                                <option value="+977" data-flag="🇳🇵" data-len="10">🇳🇵 +977</option>
+                                <option value="+966" data-flag="🇸🇦" data-len="9">🇸🇦 +966</option>
+                                <option value="+49" data-flag="🇩🇪" data-len="11">🇩🇪 +49</option>
+                                <option value="+33" data-flag="🇫🇷" data-len="9">🇫🇷 +33</option>
+                                <option value="+81" data-flag="🇯🇵" data-len="10">🇯🇵 +81</option>
+                                <option value="+86" data-flag="🇨🇳" data-len="11">🇨🇳 +86</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-1 flex items-center px-1 text-gray-500">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </div>
+                        <!-- Phone Number Input -->
+                        <input id="reqPhoneInput" type="tel" placeholder="9876543210"
+                            oninput="validatePhoneInput()"
+                            class="flex-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange outline-none transition-all tracking-wider"
+                            maxlength="12">
+                    </div>
+                    <!-- Validation feedback -->
+                    <div id="phoneValidationMsg" class="mt-1 text-xs hidden"></div>
+                </div>
+                <button onclick="submitRequiredPhone()" id="phoneSubmitBtn" disabled
+                    class="bg-gray-300 text-gray-500 font-bold py-4 w-full rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-not-allowed"
+                    style="transition: background 0.3s, color 0.3s;">
+                    <span>Save and Proceed</span>
+                </button>
+                <p id="phoneRequiredError" class="text-red-600 text-sm text-center hidden"></p>
+            </div>
+        </div>
+    </div>
+
     <!-- Tracking Modal -->
     <div id="trackingModal"
         class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[100] backdrop-blur-md">
@@ -1735,9 +1793,12 @@
                 </svg>
             </button>
 
-            <div class="mb-8">
-                <h2 class="text-3xl font-black gradient-text">My Emergency Requests</h2>
-                <p class="text-gray-400 mt-2">Track the status of your current and past requests.</p>
+            <div class="mb-6 flex items-center justify-between">
+                <div>
+                    <h2 class="text-3xl font-black gradient-text">My Emergency Requests</h2>
+                    <p class="text-gray-400 mt-1">Track the status of your current and past requests.</p>
+                </div>
+                <div id="requestCountBadge" class="hidden bg-orange/20 border border-orange/40 text-orange text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap"></div>
             </div>
 
             <div id="requestList" class="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
@@ -1752,8 +1813,7 @@
     </div>
 
     <script>
-        const API_BASE = "https://api.mechiebro.com";
-        // const API_BASE = "http://localhost:8000";
+        const API_BASE = window.location.hostname === 'localhost' || window.location.protocol === 'file:' ? 'http://localhost:8000' : 'https://api.mechiebro.com';
 
         function toggleRegisterModal() {
             const modal = document.getElementById("registerModal");
@@ -1764,7 +1824,7 @@
             if (modal.classList.contains("hidden")) {
                 isOTPSent = false;
                 document.getElementById("otpField").classList.add("hidden");
-                document.getElementById("regPhone").disabled = false;
+                document.getElementById("regEmail").disabled = false;
                 document.getElementById("regName").disabled = false;
                 document.getElementById("regOTP").value = "";
                 document.getElementById("submitBtnText").innerText = authMode === 'signup' ? "Send Signup OTP" : "Send Login OTP";
@@ -1777,15 +1837,121 @@
             toggleRegisterModal();
         }
 
+        function openPhoneRequiredModal() {
+            document.getElementById("phoneRequiredModal").classList.remove("hidden");
+            // Reset state
+            document.getElementById("reqPhoneInput").value = "";
+            document.getElementById("phoneRequiredError").classList.add("hidden");
+            document.getElementById("phoneValidationMsg").classList.add("hidden");
+            const btn = document.getElementById("phoneSubmitBtn");
+            btn.disabled = true;
+            btn.className = "bg-gray-300 text-gray-500 font-bold py-4 w-full rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-not-allowed";
+        }
+
+        function validatePhoneInput() {
+            const input = document.getElementById("reqPhoneInput");
+            const select = document.getElementById("reqCountryCode");
+            const btn = document.getElementById("phoneSubmitBtn");
+            const msgEl = document.getElementById("phoneValidationMsg");
+
+            // Allow only digits
+            input.value = input.value.replace(/[^0-9]/g, '');
+
+            const selectedOpt = select.options[select.selectedIndex];
+            const expectedLen = parseInt(selectedOpt.getAttribute("data-len"));
+            const digits = input.value.trim();
+            const len = digits.length;
+
+            msgEl.classList.remove("hidden");
+
+            if (len === 0) {
+                msgEl.textContent = `Enter ${expectedLen}-digit number for ${select.value}`;
+                msgEl.className = "mt-1 text-xs text-gray-400";
+                btn.disabled = true;
+                btn.className = "bg-gray-300 text-gray-500 font-bold py-4 w-full rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-not-allowed";
+            } else if (len < expectedLen) {
+                msgEl.textContent = `⚠️ ${expectedLen - len} more digit(s) needed`;
+                msgEl.className = "mt-1 text-xs text-yellow-600";
+                btn.disabled = true;
+                btn.className = "bg-gray-300 text-gray-500 font-bold py-4 w-full rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-not-allowed";
+            } else if (len === expectedLen) {
+                msgEl.textContent = `✅ Looks good!`;
+                msgEl.className = "mt-1 text-xs text-green-600";
+                btn.disabled = false;
+                btn.className = "bg-orange hover:bg-dark-orange text-white font-bold py-4 w-full rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2 cursor-pointer";
+            } else {
+                msgEl.textContent = `❌ Too many digits (max ${expectedLen})`;
+                msgEl.className = "mt-1 text-xs text-red-500";
+                btn.disabled = true;
+                btn.className = "bg-gray-300 text-gray-500 font-bold py-4 w-full rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-not-allowed";
+            }
+        }
+
+        async function submitRequiredPhone() {
+            const email = localStorage.getItem("mechiebro_user_email");
+            const countryCode = document.getElementById("reqCountryCode").value;
+            const localNumber = document.getElementById("reqPhoneInput").value.trim();
+            const fullPhone = countryCode + localNumber;
+            const btn = document.getElementById("phoneSubmitBtn");
+            const errorEl = document.getElementById("phoneRequiredError");
+
+            if (!localNumber) {
+                errorEl.textContent = "Please enter your phone number.";
+                errorEl.classList.remove("hidden");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<svg class="w-5 h-5 animate-spin mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>Saving...';
+            errorEl.classList.add("hidden");
+
+            try {
+                const res = await fetch(`${API_BASE}/users/me`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${email}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ phone_number: fullPhone })
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    localStorage.setItem("mechiebro_user_phone", fullPhone);
+                    document.getElementById("phoneRequiredModal").classList.add("hidden");
+                    
+                    const regModalTitle = document.getElementById("regModalTitle").innerText;
+                    if (regModalTitle === "Registration Required") {
+                        window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+                    }
+                    window.location.reload();
+                } else {
+                    errorEl.textContent = data.detail || "Failed to update phone number.";
+                    errorEl.classList.remove("hidden");
+                    btn.disabled = false;
+                    btn.innerHTML = "<span>Save and Proceed</span>";
+                }
+            } catch (err) {
+                console.error(err);
+                errorEl.textContent = "Error connecting to the server. Please try again.";
+                errorEl.classList.remove("hidden");
+                btn.disabled = false;
+                btn.innerHTML = "<span>Save and Proceed</span>";
+            }
+        }
+
         function handleEmergencyClick() {
+            const email = localStorage.getItem("mechiebro_user_email");
             const phone = localStorage.getItem("mechiebro_user_phone");
 
-            if (phone) {
-                window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
-            } else {
+            if (!email) {
                 document.getElementById("regModalTitle").innerText = "Registration Required";
                 document.getElementById("regModalDesc").innerText = "Please register to access emergency assistance.";
                 toggleRegisterModal();
+            } else if (!phone) {
+                openPhoneRequiredModal();
+            } else {
+                window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
             }
         }
 
@@ -1823,14 +1989,14 @@
 
         async function sendOTP() {
             const name = document.getElementById("regName").value.trim();
-            const phone_number = document.getElementById("regPhone").value.trim();
+            const email = document.getElementById("regEmail").value.trim();
             const submitBtn = document.getElementById("regSubmitBtn");
             const spinner = document.getElementById("regSpinner");
             const submitBtnText = document.getElementById("submitBtnText");
             const otpField = document.getElementById("otpField");
 
-            if (!phone_number) {
-                alert("Please enter your phone number.");
+            if (!email) {
+                alert("Please enter your email address.");
                 return;
             }
             if (authMode === 'signup' && !name) {
@@ -1843,7 +2009,7 @@
 
             try {
                 const endpoint = authMode === 'signup' ? '/signup' : '/login';
-                const body = authMode === 'signup' ? { phone_number, full_name: name } : { phone_number };
+                const body = authMode === 'signup' ? { email, full_name: name } : { email };
 
                 const res = await fetch(`${API_BASE}${endpoint}`, {
                     method: "POST",
@@ -1858,9 +2024,9 @@
                     isOTPSent = true;
                     otpField.classList.remove("hidden");
                     submitBtnText.innerText = "Verify OTP";
-                    alert("OTP sent to your phone number!");
-                    // Disable phone input once OTP is sent
-                    document.getElementById("regPhone").disabled = true;
+                    alert("OTP sent to your email!");
+                    // Disable email input once OTP is sent
+                    document.getElementById("regEmail").disabled = true;
                     if (authMode === 'signup') document.getElementById("regName").disabled = true;
                 } else {
                     console.error("Auth error detail:", data.detail);
@@ -1876,7 +2042,7 @@
         }
 
         async function verifyOTP() {
-            const phone_number = document.getElementById("regPhone").value.trim();
+            const email = document.getElementById("regEmail").value.trim();
             const otp = document.getElementById("regOTP").value.trim();
             const submitBtn = document.getElementById("regSubmitBtn");
             const spinner = document.getElementById("regSpinner");
@@ -1893,29 +2059,35 @@
                 const res = await fetch(`${API_BASE}/verify-otp`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ phone_number, otp })
+                    body: JSON.stringify({ email, otp })
                 });
 
                 const data = await res.json();
 
                 if (res.ok) {
-                    localStorage.setItem("mechiebro_user_phone", phone_number);
+                    localStorage.setItem("mechiebro_user_email", email);
                     // If login, data might contain full_name. If signup, we use the local input.
                     const name = data.full_name || document.getElementById("regName").value.trim() || "User";
                     localStorage.setItem("mechiebro_user_name", name);
                     localStorage.setItem("mechiebro_roles", data.roles || "USER");
 
-                    alert("Logged in successfully!");
                     toggleRegisterModal();
-
-                    // Specific logic for emergency button triggered registration
-                    const regModalTitle = document.getElementById("regModalTitle").innerText;
-                    if (regModalTitle === "Registration Required") {
-                        window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+                    
+                    if (data.phone_number) {
+                        localStorage.setItem("mechiebro_user_phone", data.phone_number);
+                        alert("Logged in successfully!");
+                        // Specific logic for emergency button triggered registration
+                        const regModalTitle = document.getElementById("regModalTitle").innerText;
+                        if (regModalTitle === "Registration Required") {
+                            window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+                        }
+                        updateAuthUI();
+                        window.location.reload();
+                    } else {
+                        // Phone is required
+                        updateAuthUI();
+                        openPhoneRequiredModal();
                     }
-
-                    updateAuthUI();
-                    window.location.reload();
                 } else {
                     alert(data.detail || "Invalid OTP");
                 }
@@ -1930,13 +2102,14 @@
 
         // Auth UI sync
         function updateAuthUI() {
+            const email = localStorage.getItem("mechiebro_user_email");
             const phone = localStorage.getItem("mechiebro_user_phone");
             const desktopLogin = document.getElementById("loginBtn");
             const desktopUser = document.getElementById("userMenu");
             const mobileLogin = document.getElementById("loginBtnMobile");
             const mobileUser = document.getElementById("userMenuMobile");
 
-            if (phone) {
+            if (email) {
                 desktopLogin.classList.add("hidden");
                 desktopUser.classList.remove("hidden");
                 mobileLogin.classList.add("hidden");
@@ -1946,6 +2119,11 @@
                 const isAdmin = roles.includes("ADMIN");
                 document.getElementById("adminDashboardBtn").classList.toggle("hidden", !isAdmin);
                 document.getElementById("adminDashboardBtnMobile").classList.toggle("hidden", !isAdmin);
+
+                // Enforce phone entry on reload/load
+                if (!phone) {
+                    openPhoneRequiredModal();
+                }
             } else {
                 desktopLogin.classList.remove("hidden");
                 desktopUser.classList.add("hidden");
@@ -1956,8 +2134,10 @@
 
         function logout() {
             if (confirm("Are you sure you want to logout?")) {
+                localStorage.removeItem("mechiebro_user_email");
                 localStorage.removeItem("mechiebro_user_phone");
                 localStorage.removeItem("mechiebro_user_name");
+                localStorage.removeItem("mechiebro_roles");
                 updateAuthUI();
                 window.location.reload();
             }
@@ -1970,14 +2150,24 @@
         async function openTrackingModal() {
             const modal = document.getElementById("trackingModal");
             const phone = localStorage.getItem("mechiebro_user_phone");
+            const email = localStorage.getItem("mechiebro_user_email");
+
+            if (!email) {
+                alert("Please login first.");
+                return;
+            }
 
             if (!phone) {
-                alert("Please login first.");
+                openPhoneRequiredModal();
                 return;
             }
 
             modal.classList.remove("hidden");
             document.body.style.overflow = "hidden";
+
+            // Hide count badge while loading
+            const badge = document.getElementById("requestCountBadge");
+            badge.classList.add("hidden");
 
             // Show loading state
             const listContainer = document.getElementById("requestList");
@@ -1989,17 +2179,21 @@
             `;
 
             try {
-                const response = await fetch(`${API_BASE}/list_requests?phone_number=${phone}`);
-                if (!response.ok) throw new Error("Failed to fetch requests");
+                const response = await fetch(`${API_BASE}/list_requests?phone_number=${encodeURIComponent(phone)}`);
+                if (!response.ok) throw new Error(`Server returned ${response.status}`);
 
                 const requests = await response.json();
+                console.log(`[MechieBro] Fetched ${requests.length} request(s) for phone: ${phone}`);
                 renderRequests(requests);
             } catch (error) {
-                console.error(error);
+                console.error("[MechieBro] Request fetch error:", error);
+                badge.classList.add("hidden");
                 listContainer.innerHTML = `
                     <div class="text-center py-10">
-                        <p class="text-red-400 mb-4">Failed to load request history.</p>
-                        <button onclick="openTrackingModal()" class="text-orange underline">Try again</button>
+                        <div class="text-5xl mb-4">⚠️</div>
+                        <p class="text-red-400 mb-2 font-semibold">Failed to load request history.</p>
+                        <p class="text-gray-500 text-sm mb-4">${error.message || "Network error"}</p>
+                        <button onclick="openTrackingModal()" class="text-orange underline hover:text-dark-orange transition-colors">Try again</button>
                     </div>
                 `;
             }
@@ -2012,8 +2206,11 @@
 
         function renderRequests(requests) {
             const listContainer = document.getElementById("requestList");
+            const badge = document.getElementById("requestCountBadge");
 
             if (!requests || requests.length === 0) {
+                badge.textContent = "0 requests";
+                badge.classList.remove("hidden");
                 listContainer.innerHTML = `
                     <div class="text-center py-10">
                         <div class="text-6xl mb-4">📭</div>
@@ -2023,6 +2220,10 @@
                 `;
                 return;
             }
+
+            // Show count badge
+            badge.textContent = `${requests.length} request${requests.length !== 1 ? 's' : ''}`;
+            badge.classList.remove("hidden");
 
             listContainer.innerHTML = requests.map(req => {
                 // Use created_at (API field), fallback gracefully
@@ -2091,15 +2292,15 @@
             document.getElementById("profileSuccess").classList.add("hidden");
             document.getElementById("profileError").classList.add("hidden");
 
-            const phone = localStorage.getItem("mechiebro_user_phone");
+            const email = localStorage.getItem("mechiebro_user_email");
             try {
                 const res = await fetch(`${API_BASE}/users/me`, {
-                    headers: { 'Authorization': `Bearer ${phone}` }
+                    headers: { 'Authorization': `Bearer ${email}` }
                 });
                 if (!res.ok) throw new Error("Failed to load profile");
 
                 const user = await res.json();
-                document.getElementById("profilePhone").value = user.phone_number;
+                document.getElementById("profilePhone").value = user.phone_number || '';
                 document.getElementById("profileName").value = user.full_name || '';
                 document.getElementById("profileEmail").value = user.email || '';
 
@@ -2123,10 +2324,11 @@
 
         async function saveProfile(e) {
             e.preventDefault();
-            const phone = localStorage.getItem("mechiebro_user_phone");
+            const email = localStorage.getItem("mechiebro_user_email");
             const btn = document.getElementById("profileSaveBtn");
             const name = document.getElementById("profileName").value.trim();
-            const email = document.getElementById("profileEmail").value.trim() || null; // allow null
+            const newEmail = document.getElementById("profileEmail").value.trim();
+            const phone = document.getElementById("profilePhone").value.trim();
 
             btn.disabled = true;
             btn.innerHTML = "Saving...";
@@ -2137,10 +2339,10 @@
                 const res = await fetch(`${API_BASE}/users/me`, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `Bearer ${phone}`,
+                        'Authorization': `Bearer ${email}`,
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ full_name: name, email: email })
+                    body: JSON.stringify({ full_name: name, email: newEmail, phone_number: phone || null })
                 });
 
                 if (!res.ok) {
@@ -2148,10 +2350,23 @@
                     throw new Error(err.detail || "Failed to update API");
                 }
 
-                // Update local storage name too
-                localStorage.setItem("mechiebro_user_name", name);
+                const updatedUser = await res.json();
+
+                // Update local storage too
+                if (newEmail !== email) {
+                    localStorage.setItem("mechiebro_user_email", newEmail);
+                }
+                localStorage.setItem("mechiebro_user_name", updatedUser.full_name || name);
+                if (updatedUser.phone_number) {
+                    localStorage.setItem("mechiebro_user_phone", updatedUser.phone_number);
+                } else {
+                    localStorage.removeItem("mechiebro_user_phone");
+                }
 
                 document.getElementById("profileSuccess").classList.remove("hidden");
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
             } catch (error) {
                 document.getElementById("profileError").textContent = error.message;
                 document.getElementById("profileError").classList.remove("hidden");
