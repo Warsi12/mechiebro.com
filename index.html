@@ -1,5 +1,5 @@
 <!-- Video Title Section -->
-<div class="flex justify-center items-center bg-black">
+<div class="flex justify-center items-center bg-black pt-36 sm:pt-32">
     <video autoplay muted loop playsinline
         class="w-[90%] sm:w-[85%] md:w-[70%] lg:w-[60%] h-auto object-contain mt-4 sm:mt-6 mb-4 sm:mb-6 rounded-2xl">
         <source src="gear.mp4" type="video/mp4">
@@ -18,6 +18,7 @@
     <meta name="theme-color" content="#FF6B35">
     <meta name="description"
         content="Premium Roadside Assistance - Puncture, Battery, Towing, Fuel Delivery. Instant, Reliable, Professional.">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
     <link rel="manifest"
         href="data:application/json;base64,eyJuYW1lIjoiTWVjaGllQnJvIC0gUm9hZHNpZGUgQXNzaXN0YW5jZSIsInNob3J0X25hbWUiOiJNZWNoaWVCcm8iLCJzdGFydF91cmwiOiIvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzAwMDAwMCIsInRoZW1lX2NvbG9yIjoiI0ZGNkIzNSIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0YVdSMGFEMGlNVEk0SWlCb1pXbG5hSFE5SWpFeU9DSWdkbWxsZDBKdmVEMGlNQ0F3SURFME5DQXhORFFpSUdacGJHdzlJaU5HUmpaQ016VWlQanh5WldOMElIZzlJakl3SWlCNVBTSXlNQ0lnZDJsa2RHZzlJamc0SWlCb1pXbG5hSFE5SWpnNElpQnllRDBpTVRRaUlHWnBiR3c5SWlOR1JqWkNNelVpTHo0OEwzTjJaejQ9Iiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
 
@@ -310,141 +311,143 @@
 
 
 <body class="bg-black text-white overflow-x-hidden font-premium">
-    <!-- Important Notice Bar -->
-    <div
-        class="w-full bg-gradient-to-r from-orange to-dark-orange text-white text-center py-2 px-4 text-sm font-medium shadow-md fixed top-0 left-0 z-50 flex justify-center items-center space-x-2">
+    <!-- Fixed Header wrapper to stack notice bar and navbar cleanly -->
+    <header class="fixed top-0 left-0 w-full z-50">
+        <!-- Important Notice Bar -->
+        <div
+            class="w-full bg-gradient-to-r from-orange to-dark-orange text-white text-center py-2 px-4 text-sm font-medium shadow-md flex justify-center items-center space-x-2">
 
-        <span>⚠️ Currently, MechieBro services are available only in
-            <span class="font-bold underline">Delhi</span>.
-        </span>
+            <span>⚠️ Currently, MechieBro services are available only in
+                <span class="font-bold underline">Delhi</span>.
+            </span>
 
-        <!-- Info icon + tooltip -->
-        <div class="relative group inline-block cursor-pointer">
-            <span class="ml-1 text-white bg-white bg-opacity-20 rounded-full px-2 py-0.5 text-xs font-bold">i</span>
+            <!-- Info icon + tooltip -->
+            <div class="relative group inline-block cursor-pointer">
+                <span class="ml-1 text-white bg-white bg-opacity-20 rounded-full px-2 py-0.5 text-xs font-bold">i</span>
 
-            <!-- Tooltip text -->
-            <div
-                class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded-md px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg">
-                We’re expanding to more cities soon — stay connected!
+                <!-- Tooltip text -->
+                <div
+                    class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded-md px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg">
+                    We’re expanding to more cities soon — stay connected!
+                </div>
             </div>
         </div>
-    </div>
 
+        <!-- Navigation -->
+        <!-- Responsive Navbar -->
+        <nav class="w-full bg-black bg-opacity-95 shadow-lg backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
 
-    <!-- Navigation -->
-    <!-- Responsive Navbar -->
-    <nav class="mt-10 fixed top-0 left-0 w-full bg-black bg-opacity-95 shadow-lg backdrop-blur-sm z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-
-                <!-- Logo Section -->
-                <div class="flex-shrink-0 flex items-center space-x-2">
-                    <img src="newllogo.jpg" alt="MechieBro Logo" class="h-14 w-auto object-contain"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <!-- Fallback -->
-                    <div class="h-12 w-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl"
-                        style="display: none;">
-                        <span class="text-white text-xl">🚗</span>
-                    </div>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobileMenuBtn" class="text-white focus:outline-none">
-                        <!-- Menu icon -->
-                        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-6 text-white font-medium text-lg items-center">
-                    <a href="#services" class="hover:text-orange transition duration-300">Services</a>
-                    <a href="#about" class="hover:text-orange transition duration-300">About</a>
-                    <a href="#contact" class="hover:text-orange transition duration-300">Contact</a>
-
-                    <!-- Auth Desktop Section -->
-                    <div id="authDesktop" class="flex items-center space-x-4">
-                        <button onclick="openAuthModal()" id="loginBtn"
-                            class="text-white hover:text-orange transition duration-300">Login/Signup</button>
-                        <div id="userMenu" class="hidden relative block">
-                            <button id="accountDropdownBtn"
-                                class="flex items-center gap-2 text-white hover:text-orange transition duration-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
-                                <span>👤 Account</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown menu -->
-                            <div id="accountDropdown"
-                                class="hidden absolute right-0 mt-2 w-48 bg-black border border-white/10 rounded-xl shadow-2xl py-2 z-50">
-                                <button onclick="openProfileModal()"
-                                    class="w-full text-left px-4 py-2 text-gray-300 hover:text-orange hover:bg-white/5 transition block">👤
-                                    My Profile</button>
-                                <button onclick="openTrackingModal()"
-                                    class="w-full text-left px-4 py-2 text-gray-300 hover:text-orange hover:bg-white/5 transition block">📋
-                                    My Requests</button>
-                                <a href="admin.html" id="adminDashboardBtn"
-                                    class="hidden w-full text-left px-4 py-2 text-orange font-bold hover:bg-white/5 transition block">⚙️
-                                    Admin Panel</a>
-                                <hr class="border-white/10 my-1">
-                                <button onclick="logout()"
-                                    class="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 transition block">🚪
-                                    Logout</button>
-                            </div>
+                    <!-- Logo Section -->
+                    <div class="flex-shrink-0 flex items-center space-x-2">
+                        <img src="newllogo.jpg" alt="MechieBro Logo" class="h-14 w-auto object-contain"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback -->
+                        <div class="h-12 w-12 premium-gradient rounded-xl flex items-center justify-center shadow-2xl"
+                            style="display: none;">
+                            <span class="text-white text-xl">🚗</span>
                         </div>
                     </div>
 
-                    <button onclick="handleEmergencyClick()"
-                        class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-5 py-2 rounded-full font-semibold shadow-md flex items-center gap-2 transition duration-300 hover:scale-105">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white animate-pulse" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 9v3.75m0 3.75h.007M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        Emergency Help
-                    </button>
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button id="mobileMenuBtn" class="text-white focus:outline-none">
+                            <!-- Menu icon -->
+                            <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex space-x-6 text-white font-medium text-lg items-center">
+                        <a href="#services" class="hover:text-orange transition duration-300">Services</a>
+                        <a href="#about" class="hover:text-orange transition duration-300">About</a>
+                        <a href="#contact" class="hover:text-orange transition duration-300">Contact</a>
+
+                        <!-- Auth Desktop Section -->
+                        <div id="authDesktop" class="flex items-center space-x-4">
+                            <button onclick="openAuthModal()" id="loginBtn"
+                                class="text-white hover:text-orange transition duration-300">Login/Signup</button>
+                            <div id="userMenu" class="hidden relative block">
+                                <button id="accountDropdownBtn"
+                                    class="flex items-center gap-2 text-white hover:text-orange transition duration-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+                                    <span>👤 Account</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <!-- Dropdown menu -->
+                                <div id="accountDropdown"
+                                    class="hidden absolute right-0 mt-2 w-48 bg-black border border-white/10 rounded-xl shadow-2xl py-2 z-50">
+                                    <button onclick="openProfileModal()"
+                                        class="w-full text-left px-4 py-2 text-gray-300 hover:text-orange hover:bg-white/5 transition block">👤
+                                        My Profile</button>
+                                    <button onclick="openTrackingModal()"
+                                        class="w-full text-left px-4 py-2 text-gray-300 hover:text-orange hover:bg-white/5 transition block">📋
+                                        My Requests</button>
+                                    <a href="admin.html" id="adminDashboardBtn"
+                                        class="hidden w-full text-left px-4 py-2 text-orange font-bold hover:bg-white/5 transition block">⚙️
+                                        Admin Panel</a>
+                                    <hr class="border-white/10 my-1">
+                                    <button onclick="logout()"
+                                        class="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 transition block">🚪
+                                        Logout</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="handleEmergencyClick()"
+                            class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-5 py-2 rounded-full font-semibold shadow-md flex items-center gap-2 transition duration-300 hover:scale-105">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white animate-pulse" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m0 3.75h.007M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Emergency Help
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-4 text-white text-lg">
-            <a href="#services" class="block hover:text-orange transition duration-300">Services</a>
-            <a href="#about" class="block hover:text-orange transition duration-300">About</a>
-            <a href="#contact" class="block hover:text-orange transition duration-300">Contact</a>
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobileMenu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-4 text-white text-lg">
+                <a href="#services" class="block hover:text-orange transition duration-300">Services</a>
+                <a href="#about" class="block hover:text-orange transition duration-300">About</a>
+                <a href="#contact" class="block hover:text-orange transition duration-300">Contact</a>
 
-            <!-- Auth Mobile Section -->
-            <div id="authMobile">
-                <button onclick="openAuthModal(); toggleMobileMenu();" id="loginBtnMobile"
-                    class="block w-full text-left hover:text-orange transition duration-300 py-2 border-b border-white/10">Login/Signup</button>
-                <div id="userMenuMobile" class="hidden space-y-2 py-2 border-b border-white/10">
-                    <div class="text-xs text-gray-500 uppercase tracking-widest mb-2 font-bold focus:outline-none">My
-                        Account</div>
-                    <button onclick="openProfileModal(); toggleMobileMenu();"
-                        class="block w-full text-left text-gray-300 hover:text-orange transition duration-300 py-2">👤
-                        Profile</button>
-                    <button onclick="openTrackingModal(); toggleMobileMenu();"
-                        class="block w-full text-left text-gray-300 hover:text-orange transition duration-300 py-2">📋
-                        My Requests</button>
-                    <a href="admin.html" id="adminDashboardBtnMobile"
-                        class="hidden block w-full text-left font-bold text-orange hover:text-white transition duration-300 py-2">⚙️
-                        Admin Dashboard</a>
-                    <button onclick="logout()"
-                        class="block w-full text-left text-red-400 hover:text-red-300 transition duration-300 py-2 mt-2">🚪
-                        Logout</button>
+                <!-- Auth Mobile Section -->
+                <div id="authMobile">
+                    <button onclick="openAuthModal(); toggleMobileMenu();" id="loginBtnMobile"
+                        class="block w-full text-left hover:text-orange transition duration-300 py-2 border-b border-white/10">Login/Signup</button>
+                    <div id="userMenuMobile" class="hidden space-y-2 py-2 border-b border-white/10">
+                        <div class="text-xs text-gray-500 uppercase tracking-widest mb-2 font-bold focus:outline-none">My
+                            Account</div>
+                        <button onclick="openProfileModal(); toggleMobileMenu();"
+                            class="block w-full text-left text-gray-300 hover:text-orange transition duration-300 py-2">👤
+                            Profile</button>
+                        <button onclick="openTrackingModal(); toggleMobileMenu();"
+                            class="block w-full text-left text-gray-300 hover:text-orange transition duration-300 py-2">📋
+                            My Requests</button>
+                        <a href="admin.html" id="adminDashboardBtnMobile"
+                            class="hidden block w-full text-left font-bold text-orange hover:text-white transition duration-300 py-2">⚙️
+                            Admin Dashboard</a>
+                        <button onclick="logout()"
+                            class="block w-full text-left text-red-400 hover:text-red-300 transition duration-300 py-2 mt-2">🚪
+                            Logout</button>
+                    </div>
                 </div>
-            </div>
 
-            <button onclick="handleEmergencyClick()"
-                class="block w-full bg-red-600 hover:bg-red-700 text-center text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
-                🚨 Emergency Help
-            </button>
-        </div>
-    </nav>
+                <button onclick="handleEmergencyClick()"
+                    class="block w-full bg-red-600 hover:bg-red-700 text-center text-white px-5 py-2 rounded-full font-semibold shadow-md transition duration-300 animate-pulse">
+                    🚨 Emergency Help
+                </button>
+            </div>
+        </nav>
+    </header>
 
     <!-- Mobile Menu Script -->
     <script>
@@ -595,11 +598,11 @@
                                         <p class="text-2xl font-bold text-white">15-25 min</p>
                                         <p class="text-gray-400 text-sm">Average arrival time</p>
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <h4 class="text-orange font-semibold mb-3">Starting Price</h4>
                                         <p class="text-2xl font-bold text-white">₹119</p>
                                         <p class="text-gray-400 text-sm">Professional service</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <button onclick="openBookingModal('Puncture Repair')"
                                     class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
@@ -660,11 +663,11 @@
                                         <p class="text-2xl font-bold text-white">10-20 min</p>
                                         <p class="text-gray-400 text-sm">Priority service</p>
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <h4 class="text-orange font-semibold mb-3">Starting Price</h4>
                                         <p class="text-2xl font-bold text-white">₹219</p>
                                         <p class="text-gray-400 text-sm">Includes diagnosis</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <button onclick="openBookingModal('Battery Jump Start')"
                                     class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
@@ -725,11 +728,11 @@
                                         <p class="text-2xl font-bold text-white">8-15 min</p>
                                         <p class="text-gray-400 text-sm">Emergency priority</p>
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <h4 class="text-orange font-semibold mb-3">Starting Price</h4>
                                         <p class="text-2xl font-bold text-white">₹359</p>
                                         <p class="text-gray-400 text-sm">Safety first service</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <button onclick="openBookingModal('Brake Emergency')"
                                     class="w-full mt-6 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
@@ -791,11 +794,11 @@
                                         <p class="text-2xl font-bold text-white">20-30 min</p>
                                         <p class="text-gray-400 text-sm">Fuel procurement time</p>
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <h4 class="text-orange font-semibold mb-3">Service Fee</h4>
                                         <p class="text-2xl font-bold text-white">₹119</p>
                                         <p class="text-gray-400 text-sm">+ fuel cost</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <button onclick="openBookingModal('Fuel Delivery')"
                                     class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
@@ -856,11 +859,11 @@
                                         <p class="text-2xl font-bold text-white">25-40 min</p>
                                         <p class="text-gray-400 text-sm">Equipment dispatch</p>
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <h4 class="text-orange font-semibold mb-3">Pricing</h4>
                                         <p class="text-2xl font-bold text-white">₹24/km</p>
                                         <p class="text-gray-400 text-sm">Professional rate</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <button onclick="openBookingModal('Towing Service')"
                                     class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
@@ -920,12 +923,12 @@
                                         <h4 class="text-orange font-semibold mb-3">Response Time</h4>
                                         <p class="text-2xl font-bold text-white">15-25 min</p>
                                         <p class="text-gray-400 text-sm">Expert dispatch</p>
-                                    </div>
-                                    <div>
+                                    </div>a
+                                    <!-- <div>
                                         <h4 class="text-orange font-semibold mb-3">Consultation</h4>
                                         <p class="text-2xl font-bold text-white">₹300</p>
                                         <p class="text-gray-400 text-sm">Base service fee</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <button onclick="openBookingModal('General Assistance')"
                                     class="w-full mt-6 bg-orange hover:bg-dark-orange text-white font-bold py-3 px-6 rounded-lg transition duration-300">
@@ -1536,6 +1539,7 @@
         // Auto-scroll testimonials
         setInterval(() => {
             const slider = document.getElementById('testimonialSlider');
+            if (!slider) return;
             const maxScroll = slider.scrollWidth - slider.clientWidth;
 
             if (slider.scrollLeft >= maxScroll) {
