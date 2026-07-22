@@ -1491,45 +1491,44 @@
             btnText.textContent = 'Submitting...';
             spinner.classList.remove('hidden');
 
-            // 1. POST to backend API to ensure it gets saved in DB
+            // 1. POST to backend /bookings API
             try {
-                const response = await fetch(`${API_BASE}/emergency-request`, {
+                const response = await fetch(`${API_BASE}/bookings`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        customer_name: name,
                         customer_phone_number: phone,
-                        location: locationStr,
                         service_type: service,
                         vehicle_type: vehicle || 'OTHER',
+                        location: locationStr,
+                        address: location,
                         description: problem || null
                     })
                 });
+
                 if (!response.ok) {
                     const errData = await response.json();
-                    throw new Error(errData.detail || 'Server error');
+                    throw new Error(errData.detail || 'Failed to save booking');
                 }
-                console.log('Request saved to database successfully.');
+
+                console.log('Booking saved to database successfully.');
+                
+                // Save locally as backup
+                const bookings = JSON.parse(localStorage.getItem('mechieBroBookings') || '[]');
+                bookings.push({ name, phone, service, vehicle, location, problem, timestamp: new Date().toISOString() });
+                localStorage.setItem('mechieBroBookings', JSON.stringify(bookings));
+
+                showSuccessMessage();
+                closeBookingModal();
             } catch (apiErr) {
                 console.error('DB Save error:', apiErr);
+                alert(`Booking Error: Could not save your booking. ${apiErr.message}`);
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = '🚀 Request Service';
+                spinner.classList.add('hidden');
             }
-
-            btn.disabled = false;
-            btnText.textContent = '🚀 Request Service';
-            spinner.classList.add('hidden');
-
-            // 2. Also open WhatsApp for instant contact
-            const whatsappMessage = `🚗 *MechieBro Premium Roadside Assistance*\n\n👤 *Customer:* ${name} (${phone})\n🛠️ *Service:* ${service}\n🚗 *Vehicle:* ${vehicle}\n📍 *Location:* ${location}${userLocation ? `\n📌 GPS: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}` : ''}\n📝 ${problem || 'No extra details'}\n🕒 ${new Date().toLocaleString('en-IN')}\n\n*Please respond with ETA.*`;
-
-            const whatsappURL = `https://api.whatsapp.com/send?phone=918851599115&text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(whatsappURL, '_blank');
-
-            // 3. Save locally as backup
-            const bookings = JSON.parse(localStorage.getItem('mechieBroBookings') || '[]');
-            bookings.push({ name, phone: phone, service, vehicle, location, problem, timestamp: new Date().toISOString() });
-            localStorage.setItem('mechieBroBookings', JSON.stringify(bookings));
-
-            showSuccessMessage();
-            closeBookingModal();
         });
 
         // Success message
@@ -2223,12 +2222,48 @@
             `;
 
             try {
-                const response = await fetch(`${API_BASE}/list_requests?phone_number=${encodeURIComponent(phone)}`);
-                if (!response.ok) throw new Error(`Server returned ${response.status}`);
+                // Fetch both emergency requests and service bookings in parallel
+                const [emergencyRes, bookingsRes] = await Promise.all([
+                    fetch(`${API_BASE}/list_requests?phone_number=${encodeURIComponent(phone)}`),
+                    fetch(`${API_BASE}/bookings/history/${encodeURIComponent(phone)}`)
+                ]);
 
-                allTrackingRequests = await response.json();
-                console.log(`[MechieBro] Fetched ${allTrackingRequests.length} request(s) for phone: ${phone}`);
-                
+                if (!emergencyRes.ok) throw new Error(`Emergency API returned ${emergencyRes.status}`);
+                if (!bookingsRes.ok) throw new Error(`Bookings API returned ${bookingsRes.status}`);
+
+                const emergencyRequests = await emergencyRes.json();
+                const bookingsData = await bookingsRes.json();
+
+                // Unpack and format service bookings to match request schema
+                const formattedBookings = bookingsData.map(b => {
+                    let service_type = "Premium Service";
+                    let vehicle_type = "OTHER";
+                    let description = "";
+                    try {
+                        if (b.bike_details) {
+                            const details = typeof b.bike_details === 'string' ? JSON.parse(b.bike_details) : b.bike_details;
+                            service_type = details.service_type || service_type;
+                            vehicle_type = details.vehicle_type || vehicle_type;
+                            description = details.description || description;
+                        }
+                    } catch (e) {
+                        console.warn("Failed to parse bike_details:", e);
+                    }
+                    return {
+                        id: b.id,
+                        customer_phone_number: phone,
+                        location: b.address || b.location || "Location not specified",
+                        service_type: service_type,
+                        vehicle_type: vehicle_type,
+                        description: description,
+                        status: b.status,
+                        created_at: b.created_at || b.scheduled_time
+                    };
+                });
+
+                allTrackingRequests = [...emergencyRequests, ...formattedBookings];
+                console.log(`[MechieBro] Loaded ${allTrackingRequests.length} total request(s).`);
+
                 // Switch to default tab and render
                 switchTrackingTab('emergency');
             } catch (error) {
