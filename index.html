@@ -306,6 +306,13 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 107, 53, 0.5);
         }
+
+        /* Booking Modal Select and Option Styling */
+        #bookingModal select,
+        #bookingModal option {
+            background-color: #121212 !important;
+            color: #ffffff !important;
+        }
     </style>
 </head>
 
@@ -510,7 +517,7 @@
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
                     <button onclick="openBookingModal()"
                         class="premium-button text-white font-bold py-5 px-10 rounded-full text-xl transition duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-auto">
-                        🚗 Book Premium Service
+                        Book Premium Service
                     </button>
 
                 </div>
@@ -1060,8 +1067,8 @@
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-lg">Email Support</p>
-                                <a href="mailto:help@mechiebro.com"
-                                    class="text-orange hover:text-white transition duration-300 text-xl">help@mechiebro.com</a>
+                                <a href="mailto:support@mechiebro.com"
+                                    class="text-orange hover:text-white transition duration-300 text-xl">support@mechiebro.com</a>
                             </div>
                         </div>
 
@@ -1234,8 +1241,8 @@
                         </div>
                         <div>
                             <p class="text-gray-400 mb-2">Email Support:</p>
-                            <a href="mailto:help@mechiebro.com"
-                                class="text-orange hover:text-white transition duration-300 text-lg">help@mechiebro.com</a>
+                            <a href="mailto:support@mechiebro.com"
+                                class="text-orange hover:text-white transition duration-300 text-lg">support@mechiebro.com</a>
                         </div>
                         <div class="pt-4">
 
@@ -1258,7 +1265,7 @@
     <div id="bookingModal"
         class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div
-            class="glass-effect rounded-2xl p-8 w-full max-w-lg border border-orange border-opacity-30 shadow-2xl max-h-screen overflow-y-auto">
+            class="glass-effect rounded-3xl p-6 sm:p-8 w-full max-w-lg border border-white/10 shadow-2xl max-h-[85vh] overflow-y-auto custom-scrollbar">
             <div class="flex justify-between items-center mb-8">
                 <h3 class="text-3xl font-bold gradient-text">Book Premium Service</h3>
                 <button onclick="closeBookingModal()"
@@ -1298,11 +1305,11 @@
                     <select id="vehicleType" required
                         class="w-full px-4 py-4 glass-effect border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-orange focus:border-transparent text-lg bg-black">
                         <option value="">Select vehicle type</option>
-                        <option value="CAR">🚗 Car</option>
-                        <option value="BIKE">🏍️ Bike / Scooter</option>
-                        <option value="TRUCK">🚛 Truck / Commercial</option>
-                        <option value="AUTO">🛺 Auto Rickshaw</option>
-                        <option value="OTHER">🚙 Other</option>
+                        <option value="CAR">Car</option>
+                        <option value="BIKE">Bike / Scooter</option>
+                        <option value="TRUCK">Truck / Commercial</option>
+                        <option value="AUTO">Auto Rickshaw</option>
+                        <option value="OTHER">Other</option>
                     </select>
                 </div>
 
@@ -1387,6 +1394,19 @@
                 serviceSelect.value = service;
             }
 
+            // Prefill user details if logged in
+            const nameInput = document.getElementById('customerName');
+            const phoneInput = document.getElementById('customerPhone');
+            const loggedInName = localStorage.getItem('mechiebro_user_name');
+            const loggedInPhone = localStorage.getItem('mechiebro_user_phone');
+
+            if (loggedInName && !nameInput.value) {
+                nameInput.value = loggedInName;
+            }
+            if (loggedInPhone && !phoneInput.value) {
+                phoneInput.value = loggedInPhone;
+            }
+
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -1458,9 +1478,6 @@
             const location = document.getElementById('customerLocation').value.trim();
             const problem = document.getElementById('problemDescription').value.trim();
 
-            // Use logged-in phone if available
-            const userPhone = localStorage.getItem('mechiebro_user_phone') || phone;
-
             // Build lat,lng location string if we have GPS coords
             let locationStr = location;
             if (userLocation) {
@@ -1474,21 +1491,26 @@
             btnText.textContent = 'Submitting...';
             spinner.classList.remove('hidden');
 
-            // 1. POST to backend API
+            // 1. POST to backend API to ensure it gets saved in DB
             try {
-                await fetch(`${API_BASE}/emergency-request`, {
+                const response = await fetch(`${API_BASE}/emergency-request`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        customer_phone_number: userPhone,
+                        customer_phone_number: phone,
                         location: locationStr,
                         service_type: service,
                         vehicle_type: vehicle || 'OTHER',
                         description: problem || null
                     })
                 });
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.detail || 'Server error');
+                }
+                console.log('Request saved to database successfully.');
             } catch (apiErr) {
-                console.warn('API save failed (offline?), continuing with WhatsApp:', apiErr);
+                console.error('DB Save error:', apiErr);
             }
 
             btn.disabled = false;
@@ -1496,14 +1518,14 @@
             spinner.classList.add('hidden');
 
             // 2. Also open WhatsApp for instant contact
-            const whatsappMessage = `🚗 *MechieBro Premium Roadside Assistance*\n\n👤 *Customer:* ${name} (${userPhone})\n🛠️ *Service:* ${service}\n🚗 *Vehicle:* ${vehicle}\n📍 *Location:* ${location}${userLocation ? `\n📌 GPS: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}` : ''}\n📝 ${problem || 'No extra details'}\n🕒 ${new Date().toLocaleString('en-IN')}\n\n*Please respond with ETA.*`;
+            const whatsappMessage = `🚗 *MechieBro Premium Roadside Assistance*\n\n👤 *Customer:* ${name} (${phone})\n🛠️ *Service:* ${service}\n🚗 *Vehicle:* ${vehicle}\n📍 *Location:* ${location}${userLocation ? `\n📌 GPS: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}` : ''}\n📝 ${problem || 'No extra details'}\n🕒 ${new Date().toLocaleString('en-IN')}\n\n*Please respond with ETA.*`;
 
             const whatsappURL = `https://api.whatsapp.com/send?phone=918851599115&text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, '_blank');
 
             // 3. Save locally as backup
             const bookings = JSON.parse(localStorage.getItem('mechieBroBookings') || '[]');
-            bookings.push({ name, phone: userPhone, service, vehicle, location, problem, timestamp: new Date().toISOString() });
+            bookings.push({ name, phone: phone, service, vehicle, location, problem, timestamp: new Date().toISOString() });
             localStorage.setItem('mechieBroBookings', JSON.stringify(bookings));
 
             showSuccessMessage();
@@ -1797,12 +1819,24 @@
                 </svg>
             </button>
 
-            <div class="mb-6 flex items-center justify-between">
+            <div class="mb-4 flex items-center justify-between">
                 <div>
-                    <h2 class="text-3xl font-black gradient-text">My Emergency Requests</h2>
+                    <h2 class="text-3xl font-black gradient-text">My Requests</h2>
                     <p class="text-gray-400 mt-1">Track the status of your current and past requests.</p>
                 </div>
                 <div id="requestCountBadge" class="hidden bg-orange/20 border border-orange/40 text-orange text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap"></div>
+            </div>
+
+            <!-- Tabs to toggle separate views -->
+            <div class="flex border-b border-white/10 mb-6">
+                <button id="tabEmergencyBtn" onclick="switchTrackingTab('emergency')"
+                    class="flex-1 pb-3 text-center border-b-2 border-orange text-orange font-semibold transition-all">
+                    🚨 Emergency Help
+                </button>
+                <button id="tabServiceBtn" onclick="switchTrackingTab('service')"
+                    class="flex-1 pb-3 text-center border-b-2 border-transparent text-gray-400 font-semibold hover:text-white transition-all">
+                    🛠️ Premium Services
+                </button>
             </div>
 
             <div id="requestList" class="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
@@ -1947,6 +1981,7 @@
         function handleEmergencyClick() {
             const email = localStorage.getItem("mechiebro_user_email");
             const phone = localStorage.getItem("mechiebro_user_phone");
+            const name = localStorage.getItem("mechiebro_user_name") || "";
 
             if (!email) {
                 document.getElementById("regModalTitle").innerText = "Registration Required";
@@ -1955,7 +1990,9 @@
             } else if (!phone) {
                 openPhoneRequiredModal();
             } else {
-                window.open("https://typebot.co/mechie-bro-m0x3nxh", "_blank");
+                const encodedName = encodeURIComponent(name);
+                const encodedPhone = encodeURIComponent(phone);
+                window.open(`https://typebot.co/mechie-bro-m0x3nxh?Name=${encodedName}&phoneNumber=${encodedPhone}`, "_blank");
             }
         }
 
@@ -2151,6 +2188,9 @@
         document.addEventListener('DOMContentLoaded', updateAuthUI);
 
         // Tracking Modal Functions
+        let allTrackingRequests = [];
+        let activeTrackingTab = 'emergency';
+
         async function openTrackingModal() {
             const modal = document.getElementById("trackingModal");
             const phone = localStorage.getItem("mechiebro_user_phone");
@@ -2186,9 +2226,11 @@
                 const response = await fetch(`${API_BASE}/list_requests?phone_number=${encodeURIComponent(phone)}`);
                 if (!response.ok) throw new Error(`Server returned ${response.status}`);
 
-                const requests = await response.json();
-                console.log(`[MechieBro] Fetched ${requests.length} request(s) for phone: ${phone}`);
-                renderRequests(requests);
+                allTrackingRequests = await response.json();
+                console.log(`[MechieBro] Fetched ${allTrackingRequests.length} request(s) for phone: ${phone}`);
+                
+                // Switch to default tab and render
+                switchTrackingTab('emergency');
             } catch (error) {
                 console.error("[MechieBro] Request fetch error:", error);
                 badge.classList.add("hidden");
@@ -2203,33 +2245,55 @@
             }
         }
 
+        function switchTrackingTab(tab) {
+            activeTrackingTab = tab;
+            const emergencyBtn = document.getElementById('tabEmergencyBtn');
+            const serviceBtn = document.getElementById('tabServiceBtn');
+
+            if (tab === 'emergency') {
+                emergencyBtn.className = "flex-1 pb-3 text-center border-b-2 border-orange text-orange font-semibold transition-all";
+                serviceBtn.className = "flex-1 pb-3 text-center border-b-2 border-transparent text-gray-400 font-semibold hover:text-white transition-all";
+            } else {
+                serviceBtn.className = "flex-1 pb-3 text-center border-b-2 border-orange text-orange font-semibold transition-all";
+                emergencyBtn.className = "flex-1 pb-3 text-center border-b-2 border-transparent text-gray-400 font-semibold hover:text-white transition-all";
+            }
+
+            renderRequests();
+        }
+
         function closeTrackingModal() {
             document.getElementById("trackingModal").classList.add("hidden");
             document.body.style.overflow = "";
         }
 
-        function renderRequests(requests) {
+        function renderRequests() {
             const listContainer = document.getElementById("requestList");
             const badge = document.getElementById("requestCountBadge");
 
-            if (!requests || requests.length === 0) {
-                badge.textContent = "0 requests";
-                badge.classList.remove("hidden");
+            const premiumServiceTypes = ['Puncture Repair', 'Battery Jump Start', 'Towing Service', 'Fuel Delivery', 'General Assistance'];
+
+            // Filter requests based on tab
+            const filteredRequests = allTrackingRequests.filter(req => {
+                const isPremiumService = premiumServiceTypes.includes(req.service_type);
+                return activeTrackingTab === 'service' ? isPremiumService : !isPremiumService;
+            });
+
+            // Show count badge for active tab
+            badge.textContent = `${filteredRequests.length} request${filteredRequests.length !== 1 ? 's' : ''}`;
+            badge.classList.remove("hidden");
+
+            if (filteredRequests.length === 0) {
                 listContainer.innerHTML = `
                     <div class="text-center py-10">
-                        <div class="text-6xl mb-4">📭</div>
-                        <p class="text-gray-400">No emergency requests found.</p>
-                        <p class="text-gray-600 text-sm mt-2">Book a service to get started!</p>
+                        <div class="text-5xl mb-4">📭</div>
+                        <p class="text-gray-400 font-medium">No ${activeTrackingTab === 'service' ? 'premium service bookings' : 'emergency requests'} found.</p>
+                        <p class="text-gray-600 text-sm mt-1">Status updates will appear here once requested.</p>
                     </div>
                 `;
                 return;
             }
 
-            // Show count badge
-            badge.textContent = `${requests.length} request${requests.length !== 1 ? 's' : ''}`;
-            badge.classList.remove("hidden");
-
-            listContainer.innerHTML = requests.map(req => {
+            listContainer.innerHTML = filteredRequests.map(req => {
                 // Use created_at (API field), fallback gracefully
                 const raw = req.created_at || req.requested_at || req.timestamp;
                 const date = raw ? new Date(raw) : null;
