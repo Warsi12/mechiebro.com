@@ -1337,11 +1337,13 @@
                 const rows = users.map(u => `<tr>
                 <td style="color:var(--muted);font-size:12px;">#${u.id}</td>
                 <td style="font-weight:600;">${u.full_name || '—'}</td>
-                <td><span class="phone-pill">${u.phone_number}</span></td>
+                <td><a href="mailto:${u.email}" style="color:var(--orange);text-decoration:none;">${u.email || '—'}</a></td>
+                <td><span class="phone-pill">${u.phone_number || '—'}</span></td>
+                <td><span style="font-size:11px;padding:2px 8px;border-radius:20px;background:${u.roles && u.roles.includes('ADMIN') ? 'rgba(255,107,53,0.15)' : 'rgba(255,255,255,0.07)'};color:${u.roles && u.roles.includes('ADMIN') ? 'var(--orange)' : 'var(--muted)'}">${u.roles || 'USER'}</span></td>
             </tr>`).join('');
 
                 document.getElementById('usersTable').innerHTML = `<table>
-                <thead><tr><th>#</th><th>Name</th><th>Phone</th></tr></thead>
+                <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Role</th></tr></thead>
                 <tbody>${rows}</tbody>
             </table>`;
             } catch (e) {
